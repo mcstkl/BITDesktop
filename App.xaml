@@ -1,0 +1,75 @@
+﻿<Application x:Class="BITServices.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BITServices"
+             StartupUri="./View/Splash.xaml">
+    <Application.Resources>
+        
+        <!--Button-->
+        <Style x:Key="button" TargetType="Button">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="170"/>
+            <Setter Property="Background" Value="#187bcd"/>
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Margin" Value="30"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="12" 
+                                BorderThickness="0" BorderBrush="#232023" Padding="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="#2a9df4"/>
+                    <Setter Property="Foreground" Value="white"/>
+                </Trigger>
+                <Trigger Property="IsMouseCaptured" Value="True">
+                    <Setter Property="Background" Value="#d0efff"/>
+                    <Setter Property="Foreground" Value="#232023"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Hint-->
+        <Style x:Key="hint" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Panel.ZIndex" Value="1"/>
+            <Setter Property="Margin" Value="12 0 0 0"/>
+            <Setter Property="Foreground" Value="#acb0af"/>
+        </Style>
+
+        <!--TextBox-->
+        <Style x:Key="textBox" TargetType="Control">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Margin" Value="10 0 0 0"/>
+            <Setter Property="Foreground" Value="#232323"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <!--Image-->
+        <Style x:Key="imgClose" TargetType="Image">
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="0 13 13 0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Application.Resources>
+</Application>
