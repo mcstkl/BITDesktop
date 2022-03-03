@@ -3,11 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:BITServices"
         mc:Ignorable="d"
         Title="BITServices Login" Width="1280" Height="800"
         WindowStartupLocation="CenterScreen" 
-        WindowStyle="None"
+        WindowStyle="None" 
+        SnapsToDevicePixels="True"
         AllowsTransparency="True" 
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Background="Transparent">
@@ -19,11 +21,11 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Border Width="220" CornerRadius="25 0 0 25">
+            <Border Width="240" CornerRadius="25 0 0 25">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="#343155" Offset="0"/>
-                        <GradientStop Color="#3B2E58" Offset="1"/>
+                        <GradientStop Color="#fff" Offset="0"/>
+                        <GradientStop Color="#f2e1d0" Offset="0.5"/>
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
@@ -31,22 +33,144 @@
             <Border CornerRadius="0 25 25 0" Grid.Column="1">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="#3E3A65" Offset="0"/>
-                        <GradientStop Color="#473765" Offset="1"/>
+                        <GradientStop Color="#777" Offset="0"/>
+                        <GradientStop Color="#ecd1b9" Offset="0.5"/>
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
 
-            
+
             <!--CONTROLS-->
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition  Width="auto"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+
+                <!--MAIN MENU-->
+                <StackPanel Width="240">
+                    <StackPanel Orientation="Horizontal" Margin="0 50 20 40" HorizontalAlignment="Center">
+                        <Image Source="../Images/logo.png"/>
+                    </StackPanel>
+
+                    <Button Style="{StaticResource menuButton}" x:Name="btnDashboard" Click="btnDashboard_Click">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <fa:ImageAwesome Icon="Dashboard" Style="{StaticResource buttonIcon}"/>
+                                <TextBlock Text="Dashboard" Style="{StaticResource buttonText}"/>
+                            </StackPanel>
+
+                            <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
+                                     Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Style="{StaticResource menuButton}" x:Name="btnClients" Click="btnClients_Click">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <fa:ImageAwesome Icon="AddressBook" Style="{StaticResource buttonIcon}"/>
+                                <TextBlock Text="Clients" Style="{StaticResource buttonText}"/>
+                            </StackPanel>
+
+                            <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
+                                     Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Style="{StaticResource menuButton}" x:Name="btnContractors" Click="btnContractors_Click">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <fa:ImageAwesome Icon="Wrench" Style="{StaticResource buttonIcon}"/>
+                                <TextBlock Text="Contractors" Style="{StaticResource buttonText}"/>
+                            </StackPanel>
+
+                            <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
+                                     Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
+                        </Grid>
+                    </Button>
+
+
+                    <Button Style="{StaticResource menuButton}" x:Name="btnJobs" Click="btnJobs_Click">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <fa:ImageAwesome Icon="File" Style="{StaticResource buttonIcon}"/>
+                                <TextBlock Text="Jobs" Style="{StaticResource buttonText}"/>
+                            </StackPanel>
+
+                            <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
+                                     Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
+                        </Grid>
+                    </Button>
+                    
+                    <Button Style="{StaticResource menuButton}" x:Name="btnAvailabilities" Click="btnAvailabilities_Click">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <fa:ImageAwesome Icon="ClockOutline" Style="{StaticResource buttonIcon}"/>
+                                <TextBlock Text="Availabilities" Style="{StaticResource buttonText}"/>
+                            </StackPanel>
+
+                            <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
+                                     Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Style="{StaticResource menuButton}" x:Name="btnRecords" Click="btnRecords_Click">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <fa:ImageAwesome Icon="PaperPlane" Style="{StaticResource buttonIcon}"/>
+                                <TextBlock Text="Records" Style="{StaticResource buttonText}"/>
+                            </StackPanel>
+
+                            <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
+                                     Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Style="{StaticResource menuButton}" x:Name="btnSettings" Click="btnSettings_Click">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <fa:ImageAwesome Icon="Cogs" Style="{StaticResource buttonIcon}"/>
+                                <TextBlock Text="Settings" Style="{StaticResource buttonText}"/>
+                            </StackPanel>
+
+                            <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
+                                     Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
+                        </Grid>
+                    </Button>
+
+
+                    <Separator Background="#555555" Opacity="0.5" Margin="50 15 60 15"/>
+
+                    <Button Style="{StaticResource menuButton}" x:Name="btnAccounts" Click="btnAccounts_Click">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <fa:ImageAwesome Icon="FolderOutline" Style="{StaticResource buttonIcon}"/>
+                                <TextBlock Text="Accounts" Style="{StaticResource buttonText}"/>
+                            </StackPanel>
+
+                            <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
+                                     Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Style="{StaticResource menuButton}" x:Name="btnLogout" Click="btnLogout_Click">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <fa:ImageAwesome Icon="CircleOutlineNotch" Style="{StaticResource buttonIcon}"/>
+                                <TextBlock Text="Logout" Style="{StaticResource buttonText}"/>
+                            </StackPanel>
+
+                            <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
+                                     Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
+                        </Grid>
+                    </Button>
+
+                </StackPanel>
             </Grid>
-            
+            <Frame x:Name="contentFrame" Grid.Column="1" 
+               NavigationUIVisibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>
+ 
