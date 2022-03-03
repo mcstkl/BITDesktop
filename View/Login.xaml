@@ -27,8 +27,8 @@
         <Border CornerRadius="10 0 0 10">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
-                    <GradientStop Color="white" Offset="1"/>
-                    <GradientStop Color="#00b4d8" Offset="0"/>
+                    <GradientStop Color="WhiteSmoke" Offset="1"/>
+                    <GradientStop Color="#f2e1d0" Offset="0"/>
                 </LinearGradientBrush>
             </Border.Background>
             <StackPanel Grid.Column="0" VerticalAlignment="Center">
@@ -38,7 +38,7 @@
 
 
             
-        <Border Background="#ffffffff" Grid.Column="1" CornerRadius="0 10 10 0">
+        <Border Background=whitesmoke Grid.Column="1" CornerRadius="0 10 10 0">
         <StackPanel Grid.Column="1" Background="Transparent" VerticalAlignment="Center">
                
                     
