@@ -3,7 +3,8 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
-
+using System.Windows.Controls;
+using System.Windows.Media.Animation;
 using System.Windows.Threading;
 
 namespace BITServices.View
@@ -17,8 +18,15 @@ namespace BITServices.View
         public Splash()
         {
             InitializeComponent();
+            ProgressBar pb = new ProgressBar();
+            pb.Height = 5;
+            Duration duration = new Duration(TimeSpan.FromSeconds(3.5));
+            DoubleAnimation db = new DoubleAnimation(100, duration);
+            pb.BeginAnimation(ProgressBar.ValueProperty, db);
+            spSplash.Children.Add(pb);
+
             dt.Tick += new EventHandler(dt_Tick);
-            dt.Interval = new TimeSpan(0, 0, 5);
+            dt.Interval = new TimeSpan(0, 0, 4);
             dt.Start();
         }
 

@@ -74,7 +74,7 @@
                         <PasswordBox Cursor="Hand" x:Name="txtPassword" PasswordChanged="txtPassword_PasswordChanged" Style="{StaticResource textBox}"/>
                     </Grid>
                 </Border>
-                <TextBlock Cursor="Hand" Margin="70 0 0 0" Text="Forgot your Password?" Foreground="#0095ff" />
+                <TextBlock Cursor="Hand" Margin="70 0 240 0" Text="Forgot your Password?" Foreground="#0095ff" />
                 <Button x:Name="btnLogin" Cursor="Hand" Content="Login" 
                         Style="{StaticResource button}" Click="btnLogin_Click" />
               
