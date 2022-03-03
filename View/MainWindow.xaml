@@ -54,7 +54,8 @@
                         <Image Source="../Images/logo.png"/>
                     </StackPanel>
 
-                    <Button Style="{StaticResource menuButton}" x:Name="btnDashboard" Click="btnDashboard_Click">
+                    <Button Style="{StaticResource menuButton}" x:Name="btnDashboard" 
+                            Click="btnDashboard_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <fa:ImageAwesome Icon="Dashboard" Style="{StaticResource buttonIcon}"/>
@@ -66,7 +67,8 @@
                         </Grid>
                     </Button>
 
-                    <Button Style="{StaticResource menuButton}" x:Name="btnClients" Click="btnClients_Click">
+                    <Button Style="{StaticResource menuButton}" x:Name="btnClients" 
+                            Click="btnClients_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <fa:ImageAwesome Icon="AddressBook" Style="{StaticResource buttonIcon}"/>
