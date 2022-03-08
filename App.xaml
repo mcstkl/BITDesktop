@@ -19,7 +19,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="20 0"
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5" Padding="20 0"
                                 BorderThickness="3 0 0 0" BorderBrush="Transparent">
                             <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
                         </Border>
@@ -33,7 +33,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Border Background="{TemplateBinding Background}" CornerRadius="20" Padding="20 0"
+                                <Border Background="{TemplateBinding Background}" CornerRadius="5" Padding="20 0"
                                 BorderThickness="3 0 0 0">
                                     <Border.BorderBrush>
                                         <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5,1">

@@ -21,7 +21,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Border Width="240" CornerRadius="25 0 0 25">
+            <Border Width="240" CornerRadius="10 0 0 10">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                         <GradientStop Color="#fff" Offset="0"/>
@@ -30,11 +30,11 @@
                 </Border.Background>
             </Border>
 
-            <Border CornerRadius="0 25 25 0" Grid.Column="1">
+            <Border CornerRadius="0 10 10 0" Grid.Column="1">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                         <GradientStop Color="#eaeaea" Offset="0"/>
-                        <GradientStop Color="#ecd1b9" Offset="0.5"/>
+                        <GradientStop Color="#ecd1b9" Offset="0.8"/>
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
@@ -50,7 +50,7 @@
 
                 <!--MAIN MENU-->
                 <StackPanel Width="240">
-                    <StackPanel Orientation="Horizontal" Margin="0 50 20 40" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 60" HorizontalAlignment="Center">
                         <Image Source="../Images/logo.png"/>
                     </StackPanel>
 
@@ -104,7 +104,7 @@
                                      Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                         </Grid>
                     </Button>
-                    
+
                     <Button Style="{StaticResource menuButton}" x:Name="btnAvailabilities" Click="btnAvailabilities_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
@@ -142,7 +142,7 @@
                     </Button>
 
 
-                    <Separator Background="#555555" Opacity="0.5" Margin="50 15 60 15"/>
+                    <Separator Background="#555555" Opacity="0.5" Margin="40 15 40 15"/>
 
                     <Button Style="{StaticResource menuButton}" x:Name="btnAccounts" Click="btnAccounts_Click">
                         <Grid>
@@ -170,8 +170,10 @@
 
                 </StackPanel>
             </Grid>
-            <Frame x:Name="contentFrame" Grid.Column="1" 
+            <Grid Grid.Column="1">
+                <Frame x:Name="contentFrame"
                NavigationUIVisibility="Hidden"/>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
