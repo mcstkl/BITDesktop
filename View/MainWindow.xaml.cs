@@ -68,5 +68,17 @@ namespace BITServices
         {
             Environment.Exit(0);
         }
+
+
+        private void btnMinimizeMainWindow_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void btnCloseMainWindow_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
     }
 }

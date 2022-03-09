@@ -106,5 +106,15 @@ namespace BITServices
                 btnLogin_Click(null, null);
             }
         }
+
+        private void btnMinimizeLoginWindow_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void btnCloseLoginWindow_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

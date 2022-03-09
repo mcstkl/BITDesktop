@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:BITServices"
         mc:Ignorable="d"
         Title="BITServices Login" Height="500" Width="800" FontSize="14" 
@@ -11,84 +12,101 @@
         SnapsToDevicePixels="True" 
         MouseLeftButtonDown="Window_MouseLeftButtonDown" KeyDown="Window_KeyDown">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.5*"/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
+  
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
 
-        <Image Source="../Images/close.png" Grid.Column="1" Panel.ZIndex="1" 
-               PreviewMouseLeftButtonDown="Image_PreviewMouseLeftButtonDown" 
-               Style="{StaticResource imgClose}"/>
+        <StackPanel Grid.Row="0" Background="Transparent" Grid.ColumnSpan="2">
+            <Border CornerRadius="10 10 0 0" Background="#3D59AB" Height="30">
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Label VerticalAlignment="Stretch" Margin="0 0 290 0" FontWeight="Bold" Foreground="white">Login</Label>
+                    <StackPanel x:Name="spTopbar" Orientation="Horizontal">
+                        <Button x:Name="btnMinimizeLoginWindow" Background="#3D59AB" Margin="0" Click="btnMinimizeLoginWindow_Click">
+                            <fa:ImageAwesome  Margin="5 8 5 0" Icon="WindowMinimize" Style="{StaticResource buttonIcon}" Width="15" Height="15" Foreground="white" />
+                        </Button>
+                        <Button x:Name="btnCloseLoginWindow" Background="#3D59AB" Margin="0 0 10 0" Click="btnCloseLoginWindow_Click">
+                            <fa:ImageAwesome Margin="5"  Icon="Close" Style="{StaticResource buttonIcon}" Width="15" Height="15" Foreground="white" />
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
 
-
-        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Height="110" Margin="30 0 0 0"
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Image HorizontalAlignment="Left" VerticalAlignment="Top" Height="110" Margin="30 0 0 0"
                Source="../Images/logo.png" Panel.ZIndex="1"/>
-        <Border CornerRadius="10 0 0 10">
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
-                    <GradientStop Color="WhiteSmoke" Offset="1"/>
-                    <GradientStop Color="#ecd1b9" Offset="0"/>
-                </LinearGradientBrush>
-            </Border.Background>
-            <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                <Image Margin="30" Source="../Images/background.png"/>
-            </StackPanel>
-        </Border>
+            <Border CornerRadius="0 0 0 10">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
+                        <GradientStop Color="WhiteSmoke" Offset="1"/>
+                        <GradientStop Color="#ecd1b9" Offset="0"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                    <Image Margin="30" Source="../Images/background.png"/>
+                </StackPanel>
+            </Border>
 
 
-            
-        <Border Background="whitesmoke" Grid.Column="1" CornerRadius="0 10 10 0">
-        <StackPanel Grid.Column="1" Background="Transparent" VerticalAlignment="Center">
-               
-                    
-                
-            <Label Margin="20" x:Name="lblLogin" FontWeight="Bold" 
+
+            <Border Background="whitesmoke" Grid.Column="1" CornerRadius="0 0 10 0">
+                <StackPanel Grid.Column="1" Background="Transparent" VerticalAlignment="Center">
+
+
+
+                    <Label Margin="20" x:Name="lblLogin" FontWeight="Bold" 
                        HorizontalAlignment="Center" FontSize="24" Foreground="#301a00"
                        FontFamily="Arial Rounded MT Bold" Content="Welcome to BITServices"/>
-                <Label x:Name="lblLoginHint" Foreground="#824700" 
+                    <Label x:Name="lblLoginHint" Foreground="#824700" 
                        Content="Please enter your login details"
                        HorizontalAlignment="Center"/>
 
-                <Border BorderThickness="1" BorderBrush="#acb0af" Margin="70 7" CornerRadius="5">
-                    <Grid Margin="7 9">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="../Images/profile.png" Height="20"/>
-                        <TextBlock Cursor="Hand" x:Name="textUsername" MouseDown="textUsername_MouseDown" Text="Username" Style="{StaticResource hint}"/>
-                        <TextBox Cursor="Hand" x:Name="txtUsername" TextChanged="txtUsername_TextChanged" Style="{StaticResource textBox}"/>
-                    </Grid>
-                </Border>
+                    <Border BorderThickness="1" BorderBrush="#acb0af" Margin="70 7" CornerRadius="5">
+                        <Grid Margin="7 9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="../Images/profile.png" Height="20"/>
+                            <TextBlock Cursor="Hand" x:Name="textUsername" MouseDown="textUsername_MouseDown" Text="Username" Style="{StaticResource hint}"/>
+                            <TextBox Cursor="Hand" x:Name="txtUsername" TextChanged="txtUsername_TextChanged" Style="{StaticResource textBox}"/>
+                        </Grid>
+                    </Border>
 
 
-                <Border BorderThickness="1" BorderBrush="#acb0af" Margin="70 7" CornerRadius="5">
-                    <Grid Margin="7 9">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="../Images/key.png" Height="20"/>
-                        <TextBlock Cursor="Hand" x:Name="textPassword" MouseDown="textPassword_MouseDown" Text="Password" Style="{StaticResource hint}"/>
-                        <PasswordBox Cursor="Hand" x:Name="txtPassword" PasswordChanged="txtPassword_PasswordChanged" Style="{StaticResource textBox}"/>
-                    </Grid>
-                </Border>
-                <TextBlock Cursor="Hand" Margin="70 0 240 0" Text="Forgot your Password?" Foreground="#0095ff" />
-                <Button x:Name="btnLogin" Cursor="Hand" Content="Login" 
+                    <Border BorderThickness="1" BorderBrush="#acb0af" Margin="70 7" CornerRadius="5">
+                        <Grid Margin="7 9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="../Images/key.png" Height="20"/>
+                            <TextBlock Cursor="Hand" x:Name="textPassword" MouseDown="textPassword_MouseDown" Text="Password" Style="{StaticResource hint}"/>
+                            <PasswordBox Cursor="Hand" x:Name="txtPassword" PasswordChanged="txtPassword_PasswordChanged" Style="{StaticResource textBox}"/>
+                        </Grid>
+                    </Border>
+                    <TextBlock Cursor="Hand" Margin="70 0 240 0" Text="Forgot your Password?" Foreground="#0095ff" />
+                    <Button x:Name="btnLogin" Cursor="Hand" Content="Login" 
                         Style="{StaticResource button}" Click="btnLogin_Click" />
-              
-            </StackPanel>
-        </Border>
-        <TextBlock Cursor="Hand" FontSize="10" Margin="70 0 0 10" Text="Copyright Policy" Grid.Column="1" Panel.ZIndex="1" 
+
+                </StackPanel>
+            </Border>
+            <TextBlock Cursor="Hand" FontSize="10" Margin="70 0 0 10" Text="Copyright Policy" Grid.Column="1" Panel.ZIndex="1" 
                VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="#187bcd"/>
-        <TextBlock Cursor="Hand" FontSize="10" Margin="150 0 0 10" Text="User Agreement" 
+            <TextBlock Cursor="Hand" FontSize="10" Margin="150 0 0 10" Text="User Agreement" 
                    Grid.Column="1" Panel.ZIndex="1" Foreground="#187bcd"
                VerticalAlignment="Bottom" HorizontalAlignment="Left" />
-        <TextBlock Cursor="Hand" FontSize="10" Margin="230 0 0 10" Text="Send Feedback" Grid.Column="1" Panel.ZIndex="1" 
+            <TextBlock Cursor="Hand" FontSize="10" Margin="230 0 0 10" Text="Send Feedback" Grid.Column="1" Panel.ZIndex="1" 
                VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="#187bcd"/>
-        <TextBlock FontSize="12" Margin="0 0 10 10" Text="BITServices ©2022" Grid.Column="1" Panel.ZIndex="1" 
+            <TextBlock FontSize="12" Margin="0 0 10 10" Text="BITServices ©2022" Grid.Column="1" Panel.ZIndex="1" 
                VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="#187bcd"/>
-
+        </Grid>
     </Grid>
 </Window>

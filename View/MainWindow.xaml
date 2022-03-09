@@ -177,11 +177,19 @@
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" Background="Transparent">
                     <Border CornerRadius="0 10 0 0" Background="#3D59AB" Height="30">
-                        
-                    <Label HorizontalAlignment="Center" FontWeight="Bold" Foreground="white">ADMIN</Label>
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <Label VerticalAlignment="Stretch" Margin="0 0 520 0" FontWeight="Bold" Foreground="white">ADMIN</Label>
+                            <StackPanel x:Name="spTopbar" Orientation="Horizontal">
+                                <Button x:Name="btnMinimizeMainWindow" Background="#3D59AB" Margin="0" Click="btnMinimizeMainWindow_Click">
+                                    <fa:ImageAwesome  Margin="5 8 5 0" Icon="WindowMinimize" Style="{StaticResource buttonIcon}" Width="15" Height="15" Foreground="white" />
+                                </Button>
+                                <Button x:Name="btnCloseMainWindow" Background="#3D59AB" Margin="0" Click="btnCloseMainWindow_Click">
+                                    <fa:ImageAwesome Margin="5"  Icon="Close" Style="{StaticResource buttonIcon}" Width="15" Height="15" Foreground="white" />
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
                     </Border>
                 </StackPanel>
-                
                 <Frame x:Name="contentFrame" Grid.Row="1"
                NavigationUIVisibility="Hidden"/>
             </Grid>
