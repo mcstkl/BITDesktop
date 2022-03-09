@@ -171,7 +171,18 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
-                <Frame x:Name="contentFrame"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Background="Transparent">
+                    <Border CornerRadius="0 10 0 0" Background="#3D59AB" Height="30">
+                        
+                    <Label HorizontalAlignment="Center" FontWeight="Bold" Foreground="white">ADMIN</Label>
+                    </Border>
+                </StackPanel>
+                
+                <Frame x:Name="contentFrame" Grid.Row="1"
                NavigationUIVisibility="Hidden"/>
             </Grid>
         </Grid>
