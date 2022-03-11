@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using BITServices.Model;
 using BITServices.View;
 
 namespace BITServices
@@ -76,7 +77,7 @@ namespace BITServices
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                String query = "Select count(1) from staff where username=@username AND password=@password";
+                String query = "Select count(1) from coordinator where username=@username AND password=@password";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.CommandType = CommandType.Text;
                 command.Parameters.AddWithValue("@username", txtUsername.Text);
@@ -84,13 +85,14 @@ namespace BITServices
                 int count = Convert.ToInt32(command.ExecuteScalar());
                 if (count == 1)
                 {
-                    MainWindow dashboard = new MainWindow();
-                    dashboard.Show();
+                    string userName = txtUsername.Text;
+                    MainWindow mainWindow = new MainWindow(userName);
+                    mainWindow.Show();
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("test");
+                    MessageBox.Show("Couldn't log in. Please try again", "Wrong Username or Password!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (SqlException ex)

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace BITServices.View
 {
     /// <summary>
-    /// Interaction logic for ClientManagementView.xaml
+    /// Interaction logic for HomeView.xaml
     /// </summary>
-    public partial class ClientManagementView : Page
+    public partial class HomeView : Page
     {
-        public ClientManagementView()
+        public HomeView()
         {
             InitializeComponent();
         }

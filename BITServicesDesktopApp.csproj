@@ -59,20 +59,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="View\AccountManagementView.xaml.cs">
-      <DependentUpon>AccountManagementView.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="DAL\SQLHelper.cs" />
+    <Compile Include="Model\Contractor.cs" />
+    <Compile Include="Model\Contractors.cs" />
+    <Compile Include="Model\Coordinator.cs" />
+    <Compile Include="Model\Coordinators.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\Customers.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="ViewModel\ContractorManagementViewModel.cs" />
+    <Compile Include="ViewModel\CoordinatorManagementViewModel.cs" />
+    <Compile Include="ViewModel\CustomerManagementViewModel.cs" />
     <Compile Include="View\AvailabilityManagementView.xaml.cs">
       <DependentUpon>AvailabilityManagementView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ClientManagementView.xaml.cs">
-      <DependentUpon>ClientManagementView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ContractorManagementView.xaml.cs">
       <DependentUpon>ContractorManagementView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DashboardView.xaml.cs">
-      <DependentUpon>DashboardView.xaml</DependentUpon>
+    <Compile Include="View\CoordinatorManagementView.xaml.cs">
+      <DependentUpon>CoordinatorManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomerManagementView.xaml.cs">
+      <DependentUpon>CustomerManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\JobManagementView.xaml.cs">
       <DependentUpon>JobManagementView.xaml</DependentUpon>
@@ -86,15 +97,7 @@
     <Compile Include="View\Splash.xaml.cs">
       <DependentUpon>Splash.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\AccountManagementView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\AvailabilityManagementView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ClientManagementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,7 +105,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\DashboardView.xaml">
+    <Page Include="View\CoordinatorManagementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CustomerManagementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,10 +181,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\background.png" />
   </ItemGroup>
   <ItemGroup>
@@ -186,9 +193,6 @@
     <Resource Include="Images\close.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\banner.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +203,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\placeholder-profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bitlogo.png" />
+    <Resource Include="Images\bitbanner.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

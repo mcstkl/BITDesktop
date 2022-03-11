@@ -3,6 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
+using BITServices.Model;
 
 
 namespace BITServices
@@ -12,10 +13,24 @@ namespace BITServices
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
-            contentFrame.Navigate(new DashboardView());
+            contentFrame.Navigate(new HomeView());
+        }
+        public MainWindow(string user)
+        {
+            InitializeComponent();
+            contentFrame.Navigate(new HomeView());
+            Coordinators coordinators = new Coordinators();
+            foreach(Coordinator coordinator in coordinators)
+            {
+               if(coordinator.UserName == user)
+                {
+                    lblUser.Content = "Logged in as " + user;
+                }
+            }
         }
 
 
@@ -24,14 +39,14 @@ namespace BITServices
             this.DragMove();
         }
 
-        private void btnDashboard_Click(object sender, RoutedEventArgs e)
+        private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            contentFrame.Navigate(new DashboardView());
+            contentFrame.Navigate(new HomeView());
         }
 
-        private void btnClients_Click(object sender, RoutedEventArgs e)
+        private void btnCustomers_Click(object sender, RoutedEventArgs e)
         {
-            contentFrame.Navigate(new ClientManagementView());
+            contentFrame.Navigate(new CustomerManagementView());
         }
 
         private void btnContractors_Click(object sender, RoutedEventArgs e)
@@ -61,7 +76,7 @@ namespace BITServices
 
         private void btnAccounts_Click(object sender, RoutedEventArgs e)
         {
-            contentFrame.Navigate(new AccountManagementView());
+            contentFrame.Navigate(new CoordinatorManagementView());
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)

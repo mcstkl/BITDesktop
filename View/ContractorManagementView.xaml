@@ -5,10 +5,87 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BITServices.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="770" d:DesignWidth="1040"
       Title="ContractorManagementView">
 
     <Grid>
-        <Label>CONTRACTORS</Label>
+        <!--DATAGRID-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DataGrid VerticalAlignment="top" 
+                  ItemsSource="{Binding Contractors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedContractor}"
+                  Height="350" MaxWidth="1040" Margin="0 50 0 0" BorderThickness="0" Background="Transparent">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell" >
+                    <Setter Property="Background" Value="WhiteSmoke"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#3D59AB"/>
+                        </Trigger>
+                    </Style.Triggers>
+
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+        
+        
+        <!--DATAFIELDS-->
+        <StackPanel Grid.Row="1" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" FontSize="18">FirstName</Label>
+                <Label Grid.Row="0" Grid.Column="2" FontSize="18">LastName</Label>
+                <Label Grid.Row="1" Grid.Column="0" FontSize="18">Street</Label>
+                <Label Grid.Row="1" Grid.Column="2" FontSize="18">Suburb</Label>
+                <Label Grid.Row="2" Grid.Column="0" FontSize="18">Postcode</Label>
+                <Label Grid.Row="2" Grid.Column="2" FontSize="18">State</Label>
+                <Label Grid.Row="3" Grid.Column="0" FontSize="18">Email</Label>
+                <Label Grid.Row="3" Grid.Column="2" FontSize="18">Rating</Label>
+                <Label Grid.Row="4" Grid.Column="0" FontSize="18">Username</Label>
+                <Label Grid.Row="4" Grid.Column="2" FontSize="18">Password</Label>
+                <Label Grid.Row="5" Grid.Column="0" FontSize="18">Deleted</Label>
+
+                <TextBox Text="{Binding SelectedContractor.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" FontSize="18"/>
+                <TextBox Text="{Binding SelectedContractor.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="3" FontSize="18"/>
+                <TextBox Text="{Binding SelectedContractor.Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" FontSize="18"/>
+                <TextBox Text="{Binding SelectedContractor.Suburb, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="3" FontSize="18"/>
+                <TextBox Text="{Binding SelectedContractor.PostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" FontSize="18"/>
+                <TextBox Text="{Binding SelectedContractor.State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="3" FontSize="18"/>
+                <TextBox Text="{Binding SelectedContractor.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" FontSize="18"/>
+                <TextBox Text="{Binding SelectedContractor.ContractorRating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="3" FontSize="18"/>
+                <TextBox Text="{Binding SelectedContractor.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" FontSize="18"/>
+                <TextBox Text="{Binding SelectedContractor.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="3" FontSize="18"/>
+                <TextBox Text="{Binding SelectedContractor.Deleted, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="1" FontSize="18"/>
+
+                <Button Content="Add" Height="50" Grid.Row="6" Margin="0 50 0 0" />
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>

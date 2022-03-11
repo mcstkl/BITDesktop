@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/placeholder-profile.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/bitnew.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/bitnew2.png")]
 
 

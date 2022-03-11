@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BITServices.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,14 @@ using System.Windows.Shapes;
 namespace BITServices.View
 {
     /// <summary>
-    /// Interaction logic for AccountManagementView.xaml
+    /// Interaction logic for CustomerManagementView.xaml
     /// </summary>
-    public partial class AccountManagementView : Page
+    public partial class CustomerManagementView : Page
     {
-        public AccountManagementView()
+        public CustomerManagementView()
         {
             InitializeComponent();
+            this.DataContext = new CustomerManagementViewModel();
         }
     }
 }

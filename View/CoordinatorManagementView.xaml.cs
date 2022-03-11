@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BITServices.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,14 @@ using System.Windows.Shapes;
 namespace BITServices.View
 {
     /// <summary>
-    /// Interaction logic for DashboardView.xaml
+    /// Interaction logic for CoordinatorManagementView.xaml
     /// </summary>
-    public partial class DashboardView : Page
+    public partial class CoordinatorManagementView : Page
     {
-        public DashboardView()
+        public CoordinatorManagementView()
         {
             InitializeComponent();
+            this.DataContext = new CoordinatorManagementViewModel();
         }
     }
 }

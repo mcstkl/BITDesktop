@@ -22,7 +22,7 @@
         <StackPanel Grid.Row="0" Background="Transparent" Grid.ColumnSpan="2">
             <Border CornerRadius="10 10 0 0" Background="#3D59AB" Height="30">
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Label VerticalAlignment="Stretch" Margin="0 0 290 0" FontWeight="Bold" Foreground="white">Login</Label>
+                    <Label VerticalAlignment="Stretch" Margin="0 0 310 0" FontWeight="Bold" Foreground="white">Login</Label>
                     <StackPanel x:Name="spTopbar" Orientation="Horizontal">
                         <Button x:Name="btnMinimizeLoginWindow" Background="#3D59AB" Margin="0" Click="btnMinimizeLoginWindow_Click">
                             <fa:ImageAwesome  Margin="5 8 5 0" Icon="WindowMinimize" Style="{StaticResource buttonIcon}" Width="15" Height="15" Foreground="white" />
@@ -40,8 +40,8 @@
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <Image HorizontalAlignment="Left" VerticalAlignment="Top" Height="110" Margin="30 0 0 0"
-               Source="../Images/logo.png" Panel.ZIndex="1"/>
+            <Image HorizontalAlignment="Left" VerticalAlignment="Top" Height="110" Margin="10 20 0 0"
+               Source="../Images/bitlogo.png" Panel.ZIndex="1"/>
             <Border CornerRadius="0 0 0 10">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
@@ -50,7 +50,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
                 <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                    <Image Margin="30" Source="../Images/background.png"/>
+                    <Image Margin="40 60 0 0" Source="../Images/background.png"/>
                 </StackPanel>
             </Border>
 
@@ -63,7 +63,7 @@
 
                     <Label Margin="20" x:Name="lblLogin" FontWeight="Bold" 
                        HorizontalAlignment="Center" FontSize="24" Foreground="#301a00"
-                       FontFamily="Arial Rounded MT Bold" Content="Welcome to BITServices"/>
+                       FontFamily="Arial Rounded MT Bold" Content="Welcome to BIT Services"/>
                     <Label x:Name="lblLoginHint" Foreground="#824700" 
                        Content="Please enter your login details"
                        HorizontalAlignment="Center"/>

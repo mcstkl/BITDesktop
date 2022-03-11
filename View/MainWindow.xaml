@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="BITServices Login" Width="1280" Height="800"
         WindowStartupLocation="CenterScreen" 
-        WindowStyle="None" 
+        WindowStyle="None"
+        ResizeMode="NoResize"
         SnapsToDevicePixels="True"
         AllowsTransparency="True" 
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
@@ -20,7 +21,8 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+           
+                
             <Border Width="240" CornerRadius="10 0 0 10">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -33,8 +35,8 @@
             <Border CornerRadius="0 10 10 0" Grid.Column="1">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="#eaeaea" Offset="0"/>
-                        <GradientStop Color="#ecd1b9" Offset="0.8"/>
+                        <GradientStop Color="#eaeaea" Offset="0.7"/>
+                        <GradientStop Color="#f2e1d0" Offset="0"/>
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
@@ -50,16 +52,16 @@
 
                 <!--MAIN MENU-->
                 <StackPanel Width="240">
-                    <StackPanel Orientation="Horizontal" Margin="0 20 0 60" HorizontalAlignment="Center">
-                        <Image Source="../Images/logo.png"/>
+                    <StackPanel Orientation="Horizontal" Margin="0 30 0 60" HorizontalAlignment="Center">
+                        <Image Source="../Images/bitlogo.png" Width="200"/>
                     </StackPanel>
 
-                    <Button Style="{StaticResource menuButton}" x:Name="btnDashboard" 
-                            Click="btnDashboard_Click">
+                    <Button Style="{StaticResource menuButton}" x:Name="btnHome" 
+                            Click="btnHome_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <fa:ImageAwesome Icon="Dashboard" Style="{StaticResource buttonIcon}"/>
-                                <TextBlock Text="Dashboard" Style="{StaticResource buttonText}"/>
+                                <fa:ImageAwesome Icon="Home" Style="{StaticResource buttonIcon}"/>
+                                <TextBlock Text="Home" Style="{StaticResource buttonText}"/>
                             </StackPanel>
 
                             <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
@@ -67,12 +69,12 @@
                         </Grid>
                     </Button>
 
-                    <Button Style="{StaticResource menuButton}" x:Name="btnClients" 
-                            Click="btnClients_Click">
+                    <Button Style="{StaticResource menuButton}" x:Name="btnCustomers" 
+                            Click="btnCustomers_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <fa:ImageAwesome Icon="AddressBook" Style="{StaticResource buttonIcon}"/>
-                                <TextBlock Text="Clients" Style="{StaticResource buttonText}"/>
+                                <TextBlock Text="Customers" Style="{StaticResource buttonText}"/>
                             </StackPanel>
 
                             <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
@@ -83,7 +85,7 @@
                     <Button Style="{StaticResource menuButton}" x:Name="btnContractors" Click="btnContractors_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <fa:ImageAwesome Icon="Wrench" Style="{StaticResource buttonIcon}"/>
+                                <fa:ImageAwesome Icon="Users" Style="{StaticResource buttonIcon}"/>
                                 <TextBlock Text="Contractors" Style="{StaticResource buttonText}"/>
                             </StackPanel>
 
@@ -96,7 +98,7 @@
                     <Button Style="{StaticResource menuButton}" x:Name="btnJobs" Click="btnJobs_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <fa:ImageAwesome Icon="File" Style="{StaticResource buttonIcon}"/>
+                                <fa:ImageAwesome Icon="Wrench" Style="{StaticResource buttonIcon}"/>
                                 <TextBlock Text="Jobs" Style="{StaticResource buttonText}"/>
                             </StackPanel>
 
@@ -159,7 +161,7 @@
                     <Button Style="{StaticResource menuButton}" x:Name="btnLogout" Click="btnLogout_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <fa:ImageAwesome Icon="CircleOutlineNotch" Style="{StaticResource buttonIcon}"/>
+                                <fa:ImageAwesome Icon="PowerOff" Style="{StaticResource buttonIcon}"/>
                                 <TextBlock Text="Logout" Style="{StaticResource buttonText}"/>
                             </StackPanel>
 
@@ -167,7 +169,7 @@
                                      Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                         </Grid>
                     </Button>
-
+                    <Label FontSize="8.5" Margin="40 25 0 0">Copyright © 2022 BIT Services</Label>
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
@@ -178,8 +180,8 @@
                 <StackPanel Grid.Row="0" Background="Transparent">
                     <Border CornerRadius="0 10 0 0" Background="#3D59AB" Height="30">
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                            <Label VerticalAlignment="Stretch" Margin="0 0 520 0" FontWeight="Bold" Foreground="white">ADMIN</Label>
-                            <StackPanel x:Name="spTopbar" Orientation="Horizontal">
+                            <Label FontSize="16" x:Name="lblUser" VerticalAlignment="Stretch" Margin="0 0 440 0" FontWeight="Bold" Foreground="white"/>
+                            <StackPanel x:Name="spTopbar" Orientation="Horizontal" Margin="0 0 8 0">
                                 <Button x:Name="btnMinimizeMainWindow" Background="#3D59AB" Margin="0" Click="btnMinimizeMainWindow_Click">
                                     <fa:ImageAwesome  Margin="5 8 5 0" Icon="WindowMinimize" Style="{StaticResource buttonIcon}" Width="15" Height="15" Foreground="white" />
                                 </Button>
