@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       xmlns:local="clr-namespace:BITServices.View"
       mc:Ignorable="d" 
       d:DesignHeight="770" d:DesignWidth="1040"
@@ -15,14 +16,60 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Height="100">
-            <Label>Clients</Label>
-        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="40" Margin="0 5 0 0">
+                <fa:ImageAwesome Foreground="#666" Icon="ChevronCircleRight" HorizontalAlignment="Right" 
+                                     Visibility="Visible" Height="20"  Margin="10 0 0 0"/>
+                <Label Foreground="#666" FontSize="20" FontWeight="Bold" Margin="10 0 0 0">Clients</Label>
+                <Label Height="35" FontSize="18" Margin="50 0 0 0">Search By:</Label>
+                <ComboBox  Margin="10 0 0 0" FontSize="16" Height="28">
+                    <ComboBoxItem  IsSelected="True">Name</ComboBoxItem>
+                    <ComboBoxItem>Username</ComboBoxItem>
+                    <ComboBoxItem>Suburb</ComboBoxItem>
+                    <ComboBoxItem>Phone</ComboBoxItem>
+                </ComboBox>
+                <TextBox FontSize="18" Margin="10 0 0 0" Width="250" Height="28"></TextBox>
+                <StackPanel Margin="50 0 0 0" Orientation="Horizontal" >
+                    
+            <Button Height="28" FontWeight="Bold" Background="WhiteSmoke" Foreground="#666">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:ImageAwesome Icon="Plus" Foreground="#666" Margin="0 0 10 0" Width="20" Height="14"/>
+                        <TextBlock Margin="0 0 10 0" FontSize="18" Text="Add" />
+                    </StackPanel>
+                </Button>
+                <Button Margin="10 0 10 0" Height="28" FontWeight="Bold" Background="WhiteSmoke" Foreground="#666">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:ImageAwesome Icon="Minus" Foreground="#666" Margin="0 0 10 0" Width="20" Height="5"/>
+                        <TextBlock Margin="0 0 10 0" FontSize="18" Text="Delete" />
+                    </StackPanel>
+                </Button>
+                <Button  Height="28" FontWeight="Bold" Background="WhiteSmoke" Foreground="#666">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:ImageAwesome Icon="ArrowUp" Foreground="#666" Margin="0 0 10 0" Width="20" Height="14"/>
+                        <TextBlock Margin="0 0 10 0" FontSize="18" Text="Update" />
+                    </StackPanel>
+                </Button>
+                </StackPanel>   
+            </StackPanel>
 
             <DataGrid VerticalAlignment="top" IsReadOnly="true" Grid.Row="1" GridLinesVisibility="None" AutoGenerateColumns="false"
                   ItemsSource="{Binding Clients, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding SelectedClient}" HorizontalScrollBarVisibility="Hidden"
-                  Height="300" HeadersVisibility="Column" Margin="0 30 0 0" BorderThickness="0" Background="Transparent">
+                  SelectedItem="{Binding SelectedClient}" HorizontalScrollBarVisibility="Hidden" AlternatingRowBackground="WhiteSmoke"
+                  Height="300" HeadersVisibility="Column" Margin="0 5 0 0" BorderThickness="0" Background="Transparent">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding CompanyName}" Header="Client" Width="*"/>
                     <DataGridTextColumn Binding="{Binding Street}" Width="*" Header="Street"/>
@@ -109,7 +156,6 @@
                 <TextBox Text="{Binding SelectedClient.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" FontSize="18"/>
                 <TextBox Text="{Binding SelectedClient.Active, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="3" FontSize="18"/>
 
-                <Button Content="Add" Height="50" Grid.Row="6" Margin="0 50 0 0" />
             </Grid>
         </StackPanel>
     </Grid>

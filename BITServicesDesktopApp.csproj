@@ -210,5 +210,8 @@
     <Resource Include="Images\bitlogo.png" />
     <Resource Include="Images\bitbanner.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bitglobe.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
