@@ -17,7 +17,7 @@ namespace BITServices.ViewModel
 
         private ObservableCollection<Contractor> _Contractors;
         private Contractor _selectedContractor;
-        //private ObservableCollection<Product> _products;
+        //private ObservableCollection<Skill> _skills;
 
 
         private RelayCommand _updateCommand;
@@ -60,8 +60,8 @@ namespace BITServices.ViewModel
             {
                 _selectedContractor = value;
                 OnPropertyChanged("SelectedContractor");
-                //Products allProducts = new Products(SelectedCoordinator.CategoryID);
-                //this.Products = new ObservableCollection<Product>(allProducts);
+                //Skills allSkills = new Skills(SelectedContractor.ContractorID);
+                //this.Skills = new ObservableCollection<Skill>(allSkills);
             }
         }
 
@@ -70,15 +70,13 @@ namespace BITServices.ViewModel
             get { return _Contractors; }
             set { _Contractors = value; }
         }
-
-
-        //public ObservableCollection<Product> Products
+        //public ObservableCollection<Skill> Skills
         //{
-        //    get { return _products; }
+        //    get { return _skills; }
         //    set
         //    {
-        //        _products = value;
-        //        OnPropertyChanged("Products");
+        //        _skills = value;
+        //        OnPropertyChanged("Skills");
         //    }
         //}
 

@@ -23,14 +23,6 @@ namespace BITServices
         {
             InitializeComponent();
             contentFrame.Navigate(new HomeView());
-            Coordinators coordinators = new Coordinators();
-            foreach(Coordinator coordinator in coordinators)
-            {
-               if(coordinator.UserName == user)
-                {
-                    lblUser.Content = "Logged in as " + user;
-                }
-            }
         }
 
 
@@ -44,9 +36,9 @@ namespace BITServices
             contentFrame.Navigate(new HomeView());
         }
 
-        private void btnCustomers_Click(object sender, RoutedEventArgs e)
+        private void btnClients_Click(object sender, RoutedEventArgs e)
         {
-            contentFrame.Navigate(new CustomerManagementView());
+            contentFrame.Navigate(new ClientManagementView());
         }
 
         private void btnContractors_Click(object sender, RoutedEventArgs e)
@@ -76,7 +68,7 @@ namespace BITServices
 
         private void btnAccounts_Click(object sender, RoutedEventArgs e)
         {
-            contentFrame.Navigate(new CoordinatorManagementView());
+            contentFrame.Navigate(new StaffManagementView());
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)

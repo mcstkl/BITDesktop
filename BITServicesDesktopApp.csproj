@@ -62,25 +62,27 @@
     <Compile Include="DAL\SQLHelper.cs" />
     <Compile Include="Model\Contractor.cs" />
     <Compile Include="Model\Contractors.cs" />
-    <Compile Include="Model\Coordinator.cs" />
-    <Compile Include="Model\Coordinators.cs" />
-    <Compile Include="Model\Customer.cs" />
-    <Compile Include="Model\Customers.cs" />
+    <Compile Include="Model\Staff.cs" />
+    <Compile Include="Model\StaffList.cs" />
+    <Compile Include="Model\Client.cs" />
+    <Compile Include="Model\Clients.cs" />
+    <Compile Include="Model\Skill.cs" />
+    <Compile Include="Model\Skills.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="ViewModel\ContractorManagementViewModel.cs" />
-    <Compile Include="ViewModel\CoordinatorManagementViewModel.cs" />
-    <Compile Include="ViewModel\CustomerManagementViewModel.cs" />
+    <Compile Include="ViewModel\StaffManagementViewModel.cs" />
+    <Compile Include="ViewModel\ClientManagementViewModel.cs" />
     <Compile Include="View\AvailabilityManagementView.xaml.cs">
       <DependentUpon>AvailabilityManagementView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ContractorManagementView.xaml.cs">
       <DependentUpon>ContractorManagementView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CoordinatorManagementView.xaml.cs">
-      <DependentUpon>CoordinatorManagementView.xaml</DependentUpon>
+    <Compile Include="View\StaffManagementView.xaml.cs">
+      <DependentUpon>StaffManagementView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CustomerManagementView.xaml.cs">
-      <DependentUpon>CustomerManagementView.xaml</DependentUpon>
+    <Compile Include="View\ClientManagementView.xaml.cs">
+      <DependentUpon>ClientManagementView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
@@ -105,11 +107,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CoordinatorManagementView.xaml">
+    <Page Include="View\StaffManagementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CustomerManagementView.xaml">
+    <Page Include="View\ClientManagementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

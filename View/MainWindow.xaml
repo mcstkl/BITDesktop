@@ -21,8 +21,10 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-           
-                
+
+
+       
+
             <Border Width="240" CornerRadius="10 0 0 10">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -50,11 +52,13 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+                
                 <!--MAIN MENU-->
                 <StackPanel Width="240">
-                    <StackPanel Orientation="Horizontal" Margin="0 30 0 60" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="0 50 0 40" HorizontalAlignment="Center">
                         <Image Source="../Images/bitlogo.png" Width="200"/>
                     </StackPanel>
+               
 
                     <Button Style="{StaticResource menuButton}" x:Name="btnHome" 
                             Click="btnHome_Click">
@@ -69,12 +73,12 @@
                         </Grid>
                     </Button>
 
-                    <Button Style="{StaticResource menuButton}" x:Name="btnCustomers" 
-                            Click="btnCustomers_Click">
+                    <Button Style="{StaticResource menuButton}" x:Name="btnClients" 
+                            Click="btnClients_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <fa:ImageAwesome Icon="AddressBook" Style="{StaticResource buttonIcon}"/>
-                                <TextBlock Text="Customers" Style="{StaticResource buttonText}"/>
+                                <TextBlock Text="Clients" Style="{StaticResource buttonText}"/>
                             </StackPanel>
 
                             <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
@@ -180,8 +184,18 @@
                 <StackPanel Grid.Row="0" Background="Transparent">
                     <Border CornerRadius="0 10 0 0" Background="#3D59AB" Height="30">
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                            <Label FontSize="16" x:Name="lblUser" VerticalAlignment="Stretch" Margin="0 0 440 0" FontWeight="Bold" Foreground="white"/>
+                            <Label FontSize="16" Content="Bit Services Desktop Application" VerticalAlignment="Stretch" Margin="0 0 440 0" FontWeight="Bold" Foreground="white"/>
+                                
                             <StackPanel x:Name="spTopbar" Orientation="Horizontal" Margin="0 0 8 0">
+                            <Button x:Name="btnUserProfile" Background="#3D59AB" Margin="0">
+                                <StackPanel Margin="5 0 5 0" Grid.Column="0" Grid.Row="0" Orientation="Horizontal" >
+                                    <Ellipse Width="25" Height="25" HorizontalAlignment="Right">
+                                        <Ellipse.Fill>
+                                            <ImageBrush ImageSource="../Images/placeholder-profile.png" />
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                </StackPanel>
+                            </Button>
                                 <Button x:Name="btnMinimizeMainWindow" Background="#3D59AB" Margin="0" Click="btnMinimizeMainWindow_Click">
                                     <fa:ImageAwesome  Margin="5 8 5 0" Icon="WindowMinimize" Style="{StaticResource buttonIcon}" Width="15" Height="15" Foreground="white" />
                                 </Button>

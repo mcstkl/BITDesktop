@@ -77,7 +77,7 @@ namespace BITServices
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                String query = "Select count(1) from coordinator where username=@username AND password=@password";
+                string query = "Select count(1) from staff where username=@username AND password=@password";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.CommandType = CommandType.Text;
                 command.Parameters.AddWithValue("@username", txtUsername.Text);

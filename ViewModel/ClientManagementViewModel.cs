@@ -10,27 +10,19 @@ using System.Windows;
 
 namespace BITServices.ViewModel
 {
-    public class CoordinatorManagementViewModel : INotifyPropertyChanged
+    public class ClientManagementViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<Coordinator> _coordinators;
-        private Coordinator _selectedCoordinator;
+        //list class in C# that listens to the events
+        //OverservableCollection<T>
+
+        private ObservableCollection<Client> _clients;
+        private Client _selectedClient;
+
+
         private RelayCommand _updateCommand;
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
-        public Coordinator SelectedCoordinator
-        {
-            get { return _selectedCoordinator; }
-            set
-            {
-                _selectedCoordinator = value;
-                OnPropertyChanged("SelectedCoordinator");
-            }
-        }
-        public ObservableCollection<Coordinator> Coordinators
-        {
-            get { return _coordinators; }
-            set { _coordinators = value; }
-        }
+
         public RelayCommand UpdateCommand
         {
             get
@@ -46,22 +38,12 @@ namespace BITServices.ViewModel
             set
             { _updateCommand = value; }
         }
-
-
-
-        public CoordinatorManagementViewModel()
-        {
-            Coordinators allCoordinators = new Coordinators();
-            this.Coordinators = new ObservableCollection<Coordinator>(allCoordinators);
-
-        }
-
-
         public void UpdateMethod()
         {
-            SelectedCoordinator.UpdateCoordinator();
-            MessageBox.Show("Category Updated");
+            SelectedClient.UpdateClient();
+            MessageBox.Show("Client Updated");
         }
+
 
         private void OnPropertyChanged(string prop)
         {
@@ -70,8 +52,29 @@ namespace BITServices.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
+        public Client SelectedClient
+        {
+            get { return _selectedClient; }
+            set
+            {
+                _selectedClient = value;
+                OnPropertyChanged("SelectedClient");
+            }
+        }
+
+        public ObservableCollection<Client> Clients
+        {
+            get { return _clients; }
+            set { _clients = value; }
+        }
 
 
 
+        public ClientManagementViewModel()
+        {
+            Clients allClients = new Clients();
+            this.Clients = new ObservableCollection<Client>(allClients);
+
+        }
     }
 }

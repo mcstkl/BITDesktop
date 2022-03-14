@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\App.xaml
-11-1075806097
+11806680042
 
-27539149049
+29-1269949267
 15-1014692353
-View\AvailabilityManagementView.xaml;View\ContractorManagementView.xaml;View\CoordinatorManagementView.xaml;View\CustomerManagementView.xaml;View\HomeView.xaml;View\JobManagementView.xaml;View\Login.xaml;View\MainWindow.xaml;View\RecordManagementView.xaml;View\SettingsManagementView.xaml;View\Splash.xaml;
+View\AvailabilityManagementView.xaml;View\ContractorManagementView.xaml;View\StaffManagementView.xaml;View\ClientManagementView.xaml;View\HomeView.xaml;View\JobManagementView.xaml;View\Login.xaml;View\MainWindow.xaml;View\RecordManagementView.xaml;View\SettingsManagementView.xaml;View\Splash.xaml;
 
 True
 

@@ -14,8 +14,9 @@ namespace BITServices.Model
         public Contractors()
         {
             _db = new SQLHelper();
-            string sql = "SELECT contractorID, FirstName, LastName, Street, Suburb, PostCode, State, " +
-                               " Email, ContractorRating, UserName, Password, Deleted " +
+            string sql = "SELECT contractorID, firstName, lastName, street, suburb, postCode, state, " +
+                               " phone, email, userName, password, " +
+                               " contractorRating, payRate, active " +
                          " FROM Contractor";
             DataTable dtContractors = _db.ExecuteSQL(sql);
             foreach (DataRow dataRow in dtContractors.Rows)

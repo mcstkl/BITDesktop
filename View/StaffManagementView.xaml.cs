@@ -17,14 +17,14 @@ using System.Windows.Shapes;
 namespace BITServices.View
 {
     /// <summary>
-    /// Interaction logic for CoordinatorManagementView.xaml
+    /// Interaction logic for StaffManagementView.xaml
     /// </summary>
-    public partial class CoordinatorManagementView : Page
+    public partial class StaffManagementView : Page
     {
-        public CoordinatorManagementView()
+        public StaffManagementView()
         {
             InitializeComponent();
-            this.DataContext = new CoordinatorManagementViewModel();
+            this.DataContext = new StaffManagementViewModel();
         }
     }
 }

@@ -33,8 +33,8 @@ C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\
 C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\SettingsManagementView.baml
 C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\HomeView.g.cs
 C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\HomeView.baml
-C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\CustomerManagementView.g.cs
-C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\CustomerManagementView.baml
+C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\StaffManagementView.g.cs
+C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\StaffManagementView.baml
 C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\BITServicesDesktopApp.csproj.AssemblyReference.cache
-C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\CoordinatorManagementView.g.cs
-C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\CoordinatorManagementView.baml
+C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\ClientManagementView.g.cs
+C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\ClientManagementView.baml
