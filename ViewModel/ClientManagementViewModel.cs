@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +21,35 @@ namespace BITServices.ViewModel
 
 
         private RelayCommand _updateCommand;
+        private RelayCommand _addCommand;
+        private RelayCommand _deleteCommand;
+        private RelayCommand _searchCommand;
+        private RelayCommand _saveCommand;
 
+        public Client SelectedClient
+        {
+            get { return _selectedClient; }
+            set
+            {
+                _selectedClient = value;
+                OnPropertyChanged("SelectedClient");
+            }
+        }
+        public ObservableCollection<Client> Clients
+        {
+            get { return _clients; }
+            set { _clients = value;
+                OnPropertyChanged("Clients");
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public ClientManagementViewModel()
+        {
+            Clients allClients = new Clients();
+            this.Clients = new ObservableCollection<Client>(allClients);
+            OnPropertyChanged("allClients");
+        }
 
         public RelayCommand UpdateCommand
         {
@@ -38,11 +66,68 @@ namespace BITServices.ViewModel
             set
             { _updateCommand = value; }
         }
-        public void UpdateMethod()
+        public RelayCommand AddCommand
         {
-            SelectedClient.UpdateClient();
-            MessageBox.Show("Client Updated");
+            get
+            {
+                if (_addCommand == null)
+                {
+                    //Remember RelayCommand is taking first parameter as Action
+                    //Action is nothing but a Method. Only use the Method name
+                    _addCommand = new RelayCommand(this.AddMethod, true);
+                }
+                return _addCommand;
+            }
+            set
+            { _addCommand = value; }
         }
+        public RelayCommand DeleteCommand
+        {
+            get
+            {
+                if (_deleteCommand == null)
+                {
+                    //Remember RelayCommand is taking first parameter as Action
+                    //Action is nothing but a Method. Only use the Method name
+                    _deleteCommand = new RelayCommand(this.DeleteMethod, true);
+                }
+                return _deleteCommand;
+            }
+            set
+            { _deleteCommand = value; }
+        }
+        public RelayCommand SearchCommand
+        {
+            get
+            {
+                if (_searchCommand == null)
+                {
+                    //Remember RelayCommand is taking first parameter as Action
+                    //Action is nothing but a Method. Only use the Method name
+                    _searchCommand = new RelayCommand(this.SearchMethod, true);
+                }
+                return _searchCommand;
+            }
+            set
+            { _searchCommand = value; }
+        }
+        public RelayCommand SaveCommand
+        {
+            get
+            {
+                if (_saveCommand == null)
+                {
+                    //Remember RelayCommand is taking first parameter as Action
+                    //Action is nothing but a Method. Only use the Method name
+                    _saveCommand = new RelayCommand(this.SaveMethod, true);
+                }
+                return _saveCommand;
+            }
+            set
+            { _saveCommand = value; }
+        }
+
+
 
 
         private void OnPropertyChanged(string prop)
@@ -52,29 +137,37 @@ namespace BITServices.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
-        public Client SelectedClient
+        public void UpdateMethod()
         {
-            get { return _selectedClient; }
-            set
+            SelectedClient.UpdateClient();
+            MessageBox.Show("Client Updated");
+        }
+        public void AddMethod()
+        {
+            SelectedClient = new Client();
+        }
+        public void DeleteMethod()
+        {
+            SelectedClient?.DeleteClient();
+            MessageBox.Show("Deleting client");
+        }
+        public void SearchMethod()
+        {
+            MessageBox.Show("Searching client");
+        }
+        public void SaveMethod()
+        {
+            try
             {
-                _selectedClient = value;
-                OnPropertyChanged("SelectedClient");
+            SelectedClient.InsertClient();
+            }catch (SqlException sqlEx)
+            {
+                MessageBox.Show("Couldn't save Client", "Unable to Save Client!" , MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
-        public ObservableCollection<Client> Clients
-        {
-            get { return _clients; }
-            set { _clients = value; }
-        }
-
-
-
-        public ClientManagementViewModel()
-        {
-            Clients allClients = new Clients();
-            this.Clients = new ObservableCollection<Client>(allClients);
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Couldn't save Client", "Unable to Save Client!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BITServices.ViewModel;
+﻿using BITServices.Model;
+using BITServices.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,28 @@ namespace BITServices.View
         {
             InitializeComponent();
             this.DataContext = new ClientManagementViewModel();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            dgClients.IsEnabled = true;
+            btnSave.Visibility = Visibility.Hidden;
+            btnCancel.Visibility = Visibility.Hidden;
+            dgClients.SelectedIndex = 0;
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            dgClients.IsEnabled = true;
+            btnSave.Visibility = Visibility.Hidden;
+            btnCancel.Visibility = Visibility.Hidden;
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            dgClients.IsEnabled = false;
+            btnSave.Visibility = Visibility.Visible;
+            btnCancel.Visibility = Visibility.Visible;
         }
     }
 }

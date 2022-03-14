@@ -1,6 +1,7 @@
 ﻿using BITServices.DAL;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BITServices.Model
 {
-    public class Client
+    public class Client : INotifyPropertyChanged
     {
         private int _clientID;
         private string _companyName;
@@ -24,6 +25,14 @@ namespace BITServices.Model
         private bool _active;
         private SQLHelper _db;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string prop)
+        {
+            if(PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
 
         public int ClientID
         {
@@ -33,52 +42,72 @@ namespace BITServices.Model
         public string CompanyName
         {
             get { return _companyName; }
-            set { _companyName = value; }
+            set { _companyName = value;
+                OnPropertyChanged("CompanyName");
+            }
         }
         public string Street
         {
             get { return _street; }
-            set { _street = value; }
+            set { _street = value;
+                OnPropertyChanged("Street");
+            }
         }
         public string Suburb
         {
             get { return _suburb; }
-            set { _suburb = value; }
+            set { _suburb = value;
+                OnPropertyChanged("Suburb");
+            }
         }
         public string PostCode
         {
             get { return _postCode; }
-            set { _postCode = value; }
+            set { _postCode = value;
+                OnPropertyChanged("PostCode");
+            }
         }
         public string State
         {
             get { return _state; }
-            set { _state = value; }
+            set { _state = value;
+                OnPropertyChanged("State");
+            }
         }
         public string Phone
         {
             get { return _phone; }
-            set { _phone = value; }
+            set { _phone = value;
+                OnPropertyChanged("Phone");
+            }
         }
         public string Email
         {
             get { return _email; }
-            set { _email = value; }
+            set { _email = value;
+                OnPropertyChanged("Email");
+            }
         }
         public string UserName
         {
             get { return _userName; }
-            set { _userName = value; }
+            set { _userName = value;
+                OnPropertyChanged("UserName");
+            }
         }
         public string Password
         {
             get { return _password; }
-            set { _password = value; }
+            set { _password = value;
+                OnPropertyChanged("Password");
+            }
         }
         public bool Active
         {
             get { return _active; }
-            set { _active = value; }
+            set { _active = value;
+                OnPropertyChanged("Active");
+            }
         }
 
 
@@ -106,10 +135,10 @@ namespace BITServices.Model
 
         public int InsertClient()
         {
-            string sql = "insert into client(companyName, street, suburb, postcode, state, phone, email, @userName, @password, active) " +
+            string sql = "insert into client(companyName, street, suburb, postcode, state, phone, email, userName, password, active) " +
                 " values(@CompanyName, @Street, @Suburb, @PostCode, @State, @Phone, @Email,@UserName, @Password, @Active)";
             SqlParameter[] objParams;
-            objParams = new SqlParameter[9];
+            objParams = new SqlParameter[11];
             objParams[0] = new SqlParameter("@ClientID", DbType.String);
             objParams[0].Value = this.ClientID;
             objParams[1] = new SqlParameter("@CompanyName", DbType.String);
@@ -148,10 +177,10 @@ namespace BITServices.Model
                 "email = @Email, " +
                 "userName = @UserName, " +
                 "password = @Password, " +
-                "active = @Active, " +
+                "active = @Active " +
                 " WHERE clientID = @ClientID";
             SqlParameter[] objParams;
-            objParams = new SqlParameter[9];
+            objParams = new SqlParameter[11];
             objParams[0] = new SqlParameter("@clientID", DbType.String);
             objParams[0].Value = this.ClientID;
             objParams[1] = new SqlParameter("@CompanyName", DbType.String);
