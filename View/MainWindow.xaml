@@ -60,7 +60,7 @@
                     </StackPanel>
                
 
-                    <Button Style="{StaticResource menuButton}" x:Name="btnHome" 
+                    <ToggleButton Style="{StaticResource menuButton}" x:Name="btnHome" 
                             Click="btnHome_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
@@ -71,9 +71,9 @@
                             <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
                                      Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                         </Grid>
-                    </Button>
+                    </ToggleButton>
 
-                    <Button Style="{StaticResource menuButton}" x:Name="btnClients" 
+                    <ToggleButton Style="{StaticResource menuButton}" x:Name="btnClients" 
                             Click="btnClients_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
@@ -84,9 +84,9 @@
                             <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
                                      Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                         </Grid>
-                    </Button>
+                    </ToggleButton>
 
-                    <Button Style="{StaticResource menuButton}" x:Name="btnContractors" Click="btnContractors_Click">
+                    <ToggleButton Style="{StaticResource menuButton}" x:Name="btnContractors" Click="btnContractors_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <fa:ImageAwesome Icon="Users" Style="{StaticResource buttonIcon}"/>
@@ -96,10 +96,10 @@
                             <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
                                      Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                         </Grid>
-                    </Button>
+                    </ToggleButton>
 
 
-                    <Button Style="{StaticResource menuButton}" x:Name="btnJobs" Click="btnJobs_Click">
+                    <ToggleButton Style="{StaticResource menuButton}" x:Name="btnJobs" Click="btnJobs_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <fa:ImageAwesome Icon="Wrench" Style="{StaticResource buttonIcon}"/>
@@ -109,9 +109,9 @@
                             <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
                                      Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                         </Grid>
-                    </Button>
+                    </ToggleButton>
 
-                    <Button Style="{StaticResource menuButton}" x:Name="btnAvailabilities" Click="btnAvailabilities_Click">
+                    <ToggleButton Style="{StaticResource menuButton}" x:Name="btnAvailabilities" Click="btnAvailabilities_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <fa:ImageAwesome Icon="ClockOutline" Style="{StaticResource buttonIcon}"/>
@@ -121,9 +121,9 @@
                             <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
                                      Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                         </Grid>
-                    </Button>
+                    </ToggleButton>
 
-                    <Button Style="{StaticResource menuButton}" x:Name="btnRecords" Click="btnRecords_Click">
+                    <ToggleButton Style="{StaticResource menuButton}" x:Name="btnRecords" Click="btnRecords_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <fa:ImageAwesome Icon="PaperPlane" Style="{StaticResource buttonIcon}"/>
@@ -133,9 +133,9 @@
                             <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
                                      Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                         </Grid>
-                    </Button>
+                    </ToggleButton>
 
-                    <Button Style="{StaticResource menuButton}" x:Name="btnSettings" Click="btnSettings_Click">
+                    <ToggleButton Style="{StaticResource menuButton}" x:Name="btnSettings" Click="btnSettings_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <fa:ImageAwesome Icon="Cogs" Style="{StaticResource buttonIcon}"/>
@@ -145,12 +145,12 @@
                             <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
                                      Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                         </Grid>
-                    </Button>
+                    </ToggleButton>
 
 
                     <Separator Background="#555555" Opacity="0.5" Margin="40 15 40 15"/>
 
-                    <Button Style="{StaticResource menuButton}" x:Name="btnAccounts" Click="btnAccounts_Click">
+                    <ToggleButton Style="{StaticResource menuButton}" x:Name="btnAccounts" Click="btnAccounts_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <fa:ImageAwesome Icon="FolderOutline" Style="{StaticResource buttonIcon}"/>
@@ -160,9 +160,9 @@
                             <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
                                      Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                         </Grid>
-                    </Button>
+                    </ToggleButton>
 
-                    <Button Style="{StaticResource menuButton}" x:Name="btnLogout" Click="btnLogout_Click">
+                    <ToggleButton Style="{StaticResource menuButton}" x:Name="btnLogout" Click="btnLogout_Click">
                         <Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <fa:ImageAwesome Icon="PowerOff" Style="{StaticResource buttonIcon}"/>
@@ -172,7 +172,7 @@
                             <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" 
                                      Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                         </Grid>
-                    </Button>
+                    </ToggleButton>
                     <Label FontSize="8.5" Margin="40 25 0 0">Copyright © 2022 BIT Services</Label>
                 </StackPanel>
             </Grid>

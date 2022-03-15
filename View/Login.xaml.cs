@@ -2,6 +2,8 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -71,6 +73,19 @@ namespace BITServices
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            string pw = txtPassword.Password;
+
+            using (var sha256 = new SHA256Managed())
+            {
+                // Send a sample text to hash.  
+                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(pw));
+                // Get the hashed string.  
+                var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+                // Print the string.   
+                Debug.WriteLine(hash);
+            }
+
+
             string connectionString = ConfigurationManager.ConnectionStrings["BitServices"].ConnectionString;
             SqlConnection connection = new SqlConnection(connectionString);
             try
