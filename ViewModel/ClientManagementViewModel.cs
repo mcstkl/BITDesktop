@@ -25,6 +25,7 @@ namespace BITServices.ViewModel
         private RelayCommand _deleteCommand;
         private RelayCommand _searchCommand;
         private RelayCommand _saveCommand;
+        private RelayCommand _cancelCommand;
 
         public Client SelectedClient
         {
@@ -48,7 +49,7 @@ namespace BITServices.ViewModel
         {
             Clients allClients = new Clients();
             this.Clients = new ObservableCollection<Client>(allClients);
-            OnPropertyChanged("allClients");
+            OnPropertyChanged("Clients");
         }
 
         public RelayCommand UpdateCommand
@@ -126,7 +127,21 @@ namespace BITServices.ViewModel
             set
             { _saveCommand = value; }
         }
-
+        public RelayCommand CancelCommand
+        {
+            get
+            {
+                if (_cancelCommand == null)
+                {
+                    //Remember RelayCommand is taking first parameter as Action
+                    //Action is nothing but a Method. Only use the Method name
+                    _cancelCommand = new RelayCommand(this.CancelMethod, true);
+                }
+                return _cancelCommand;
+            }
+            set
+            { _cancelCommand = value; }
+        }
 
 
 
@@ -140,16 +155,16 @@ namespace BITServices.ViewModel
         public void UpdateMethod()
         {
             SelectedClient.UpdateClient();
-            MessageBox.Show("Client Updated");
         }
         public void AddMethod()
         {
             SelectedClient = new Client();
+            this.Clients.Add(SelectedClient);
         }
         public void DeleteMethod()
         {
             SelectedClient?.DeleteClient();
-            MessageBox.Show("Deleting client");
+            this.Clients.Remove(SelectedClient);
         }
         public void SearchMethod()
         {
@@ -159,15 +174,18 @@ namespace BITServices.ViewModel
         {
             try
             {
-            SelectedClient.InsertClient();
-            }catch (SqlException sqlEx)
-            {
-                MessageBox.Show("Couldn't save Client", "Unable to Save Client!" , MessageBoxButton.OK, MessageBoxImage.Error);
+                SelectedClient.InsertClient();
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Couldn't save Client", "Unable to Save Client!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Couldn't save Client. Please fill in complete client details.", "Unable to Save Client", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+        public void CancelMethod()
+        {
+            Clients allClients = new Clients();
+            this.Clients = new ObservableCollection<Client>(allClients);
         }
     }
 }

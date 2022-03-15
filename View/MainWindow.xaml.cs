@@ -13,6 +13,7 @@ namespace BITServices
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Staff _currentUser;
 
         public MainWindow()
         {
@@ -23,6 +24,14 @@ namespace BITServices
         {
             InitializeComponent();
             contentFrame.Navigate(new HomeView());
+            StaffList staffs = new StaffList();
+            foreach(Staff staff in staffs)
+            {
+                if(staff.UserName == user)
+                {
+                    _currentUser = staff;
+                }
+            }
         }
 
 
@@ -87,5 +96,11 @@ namespace BITServices
             Environment.Exit(0);
         }
 
+        private void btnUserProfile_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("" + _currentUser.FirstName + " " + _currentUser.LastName + " is signed in",
+                            "Currently logged in as " + _currentUser.UserName, 
+                            MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }

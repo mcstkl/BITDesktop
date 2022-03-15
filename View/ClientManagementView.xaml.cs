@@ -31,23 +31,89 @@ namespace BITServices.View
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             dgClients.IsEnabled = true;
-            btnSave.Visibility = Visibility.Hidden;
-            btnCancel.Visibility = Visibility.Hidden;
+            btnSaveUpdate.IsEnabled = false;
+            btnSave.IsEnabled = false;
+            btnCancel.IsEnabled = false;
             dgClients.SelectedIndex = 0;
+            tbName.IsEnabled = false;
+            tbStreet.IsEnabled = false;
+            tbSuburb.IsEnabled = false;
+            tbPostCode.IsEnabled = false;
+            tbState.IsEnabled = false;
+            tbPhone.IsEnabled = false;
+            tbEmail.IsEnabled = false;
+            tbUser.IsEnabled = false;
+            tbPassword.IsEnabled = false;
+            MessageBox.Show("Changes were not saved", "Changes discarded", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             dgClients.IsEnabled = true;
-            btnSave.Visibility = Visibility.Hidden;
-            btnCancel.Visibility = Visibility.Hidden;
-        }
+            btnSave.IsEnabled = false;
+            btnCancel.IsEnabled = false;
+            tbName.IsEnabled = false;
+            tbStreet.IsEnabled = false;
+            tbSuburb.IsEnabled = false;
+            tbPostCode.IsEnabled = false;
+            tbState.IsEnabled = false;
+            tbPhone.IsEnabled = false;
+            tbEmail.IsEnabled = false;
+            tbUser.IsEnabled = false;
+            tbPassword.IsEnabled = false;
+            MessageBox.Show("Client details saved", "Changes Saved", MessageBoxButton.OK, MessageBoxImage.Information);
 
+        }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             dgClients.IsEnabled = false;
-            btnSave.Visibility = Visibility.Visible;
-            btnCancel.Visibility = Visibility.Visible;
+            btnSave.IsEnabled = true;
+            btnCancel.IsEnabled = true;
+            tbName.IsEnabled = true;
+            tbStreet.IsEnabled = true;
+            tbSuburb.IsEnabled = true;
+            tbPostCode.IsEnabled = true;
+            tbState.IsEnabled = true;
+            tbPhone.IsEnabled = true;
+            tbEmail.IsEnabled = true;
+            tbUser.IsEnabled = true;
+            tbPassword.IsEnabled = true;
+        }
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            dgClients.IsEnabled = false;
+            btnSaveUpdate.IsEnabled = true;
+            btnCancel.IsEnabled = true;
+            tbName.IsEnabled = true;
+            tbStreet.IsEnabled = true;
+            tbSuburb.IsEnabled = true;
+            tbPostCode.IsEnabled = true;
+            tbState.IsEnabled = true;
+            tbPhone.IsEnabled = true;
+            tbEmail.IsEnabled = true;
+            tbUser.IsEnabled = true;
+            tbPassword.IsEnabled = true;
+        }
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Client deleted", "Deleted Record", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        }
+        private void btnSaveUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            dgClients.IsEnabled = true;
+            btnSaveUpdate.IsEnabled = false;
+            btnCancel.IsEnabled = false;
+            dgClients.SelectedIndex = 0;
+            tbName.IsEnabled = false;
+            tbStreet.IsEnabled = false;
+            tbSuburb.IsEnabled = false;
+            tbPostCode.IsEnabled = false;
+            tbState.IsEnabled = false;
+            tbPhone.IsEnabled = false;
+            tbEmail.IsEnabled = false;
+            tbUser.IsEnabled = false;
+            tbPassword.IsEnabled = false;
+            MessageBox.Show("Client updated", "Record Updated", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

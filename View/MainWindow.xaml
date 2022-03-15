@@ -187,7 +187,7 @@
                             <Label FontSize="16" Content="Bit Services Desktop Application" VerticalAlignment="Stretch" Margin="0 0 400 0" FontWeight="Bold" Foreground="white"/>
                                 
                             <StackPanel x:Name="spTopbar" Orientation="Horizontal" Margin="0 0 8 0">
-                            <Button x:Name="btnUserProfile" Background="#3D59AB" Margin="0">
+                            <Button x:Name="btnUserProfile" Click="btnUserProfile_Click" Background="#3D59AB" Margin="0">
                                 <StackPanel Margin="5 0 5 0" Grid.Column="0" Grid.Row="0" Orientation="Horizontal" >
                                     <Ellipse Width="25" Height="25" HorizontalAlignment="Right">
                                         <Ellipse.Fill>

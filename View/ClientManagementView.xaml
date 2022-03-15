@@ -15,18 +15,24 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Height="40" Margin="0 5 0 0">
                 <fa:ImageAwesome Foreground="#666" Icon="ChevronCircleRight" HorizontalAlignment="Right" 
                                      Visibility="Visible" Height="20"  Margin="10 0 0 0"/>
                 <Label Foreground="#666" FontSize="20" FontWeight="Bold" Margin="10 0 0 0">Clients</Label>
                 <Label Height="35" FontSize="18" Margin="50 0 0 0">Search By:</Label>
-                <ComboBox  Margin="10 0 0 0" FontSize="16" Height="28">
+
+                <Border BorderThickness="1 1 0 0" CornerRadius="3.2" BorderBrush="Black" Background="Transparent" Height="28" Margin="6">
+                    <Border BorderThickness="0 0 1 1" CornerRadius="3.2" BorderBrush="#444" Padding="1">
+                <ComboBox Margin="-1 -1 -1 -1" FontSize="16" Height="29">
                     <ComboBoxItem  IsSelected="True">Name</ComboBoxItem>
                     <ComboBoxItem>Username</ComboBoxItem>
                     <ComboBoxItem>Suburb</ComboBoxItem>
                     <ComboBoxItem>Phone</ComboBoxItem>
                 </ComboBox>
+                    </Border>
+                </Border>
                 <TextBox FontSize="18" Margin="5 0 0 0" Width="220" Height="28"></TextBox>
                 <StackPanel Margin="0 0 0 0" Orientation="Horizontal" >
                     <Button Command="{Binding SearchCommand}" x:Name="btnSearch" Margin="5 0 60 0" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
@@ -52,7 +58,7 @@
                             <TextBlock Margin="0 0 10 0" FontSize="18" Text="Add" />
                         </StackPanel>
                     </Button>
-                    <Button Command="{Binding DeleteCommand}" x:Name="btnDelete" Margin="10 0 10 0" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                    <Button Command="{Binding DeleteCommand}" Click="btnDelete_Click" x:Name="btnDelete" Margin="10 0 10 0" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>
@@ -63,7 +69,7 @@
                             <TextBlock Margin="0 0 10 0" FontSize="18" Text="Delete" />
                         </StackPanel>
                     </Button>
-                    <Button Command="{Binding UpdateCommand}" x:Name="btnUpdate" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                    <Button Command="{Binding UpdateCommand}" Click="btnUpdate_Click" x:Name="btnUpdate" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>
@@ -79,8 +85,9 @@
 
             <DataGrid x:Name="dgClients" VerticalAlignment="top" IsReadOnly="true" Grid.Row="1" GridLinesVisibility="None" AutoGenerateColumns="false"
                   ItemsSource="{Binding Clients, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding SelectedClient, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalScrollBarVisibility="Hidden" AlternatingRowBackground="WhiteSmoke"
-                  Height="300" HeadersVisibility="Column" Margin="0 5 0 0" BorderThickness="0.2" Background="Transparent">
+                  SelectedItem="{Binding SelectedClient, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalScrollBarVisibility="Hidden" 
+                  AlternatingRowBackground="WhiteSmoke"
+                  Height="280" HeadersVisibility="Column" Margin="0 5 0 0" BorderThickness="0.2" Background="Transparent">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Client" Width="*"/>
                     <DataGridTextColumn Binding="{Binding Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Street"/>
@@ -127,12 +134,11 @@
                 </DataGrid.CellStyle>
             </DataGrid>
             <StackPanel Grid.Row="2">
-                <Grid  Margin="20">
+                <Grid  Margin="15 10 20 10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -143,66 +149,80 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    <!--<Label FontSize="16" FontWeight="Bold" Grid.Row="1" Grid.Column="1" ContentStringFormat="Company Details {0}" Content="{Binding SelectedClient.CompanyName}"/>-->
+                    <Label FontSize="16" Grid.Row="1" Margin="-4 0 0 0" Grid.Column="1" FontWeight="Bold">Company Details</Label>
+                    <Label Grid.Row="2" Grid.Column="0" FontSize="16">Company Name</Label>
+                    <Label Grid.Row="3" Grid.Column="0" FontSize="16">Street</Label>
+                    <Label Grid.Row="4" Grid.Column="0" FontSize="16">Suburb</Label>
+                    <Label Grid.Row="5" Grid.Column="0" FontSize="16">PostCode</Label>
+                    <Label Grid.Row="6" Grid.Column="0" FontSize="16">State</Label>
+                    <Label Grid.Row="7" Grid.Column="0" FontSize="16">Phone</Label>
+                    <Label Grid.Row="8" Grid.Column="0" FontSize="16">Email</Label>
+                    <Label Grid.Row="9" Grid.Column="0" FontSize="16">UserName</Label>
+                    <Label Grid.Row="10" Grid.Column="0" FontSize="16">Password</Label>
 
-                    <Label Grid.Row="0" Grid.Column="0" FontSize="16">Company Name</Label>
-                    <Label Grid.Row="0" Grid.Column="2" FontSize="16">Street</Label>
-                    <Label Grid.Row="1" Grid.Column="0" FontSize="16">Suburb</Label>
-                    <Label Grid.Row="1" Grid.Column="2" FontSize="16">PostCode</Label>
-                    <Label Grid.Row="2" Grid.Column="0" FontSize="16">State</Label>
-                    <Label Grid.Row="2" Grid.Column="2" FontSize="16">Phone</Label>
-                    <Label Grid.Row="3" Grid.Column="0" FontSize="16">Email</Label>
-                    <Label Grid.Row="3" Grid.Column="2" FontSize="16">UserName</Label>
-                    <Label Grid.Row="4" Grid.Column="0" FontSize="16">Password</Label>
-                    <Label Grid.Row="4" Grid.Column="2" FontSize="16">Active</Label>
 
+                    <TextBox x:Name="tbName" IsEnabled="False" Grid.Row="2" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="tbStreet" IsEnabled="False" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox x:Name="tbSuburb" IsEnabled="False" Grid.Row="4" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Suburb, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="tbPostCode" IsEnabled="False" Grid.Row="5" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.PostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox x:Name="tbState" IsEnabled="False" Grid.Row="6" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox x:Name="tbPhone" IsEnabled="False" Grid.Row="7" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="tbEmail" IsEnabled="False" Grid.Row="8" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="tbUser" IsEnabled="False" Grid.Row="9" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox x:Name="tbPassword" IsEnabled="False" Grid.Row="10" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <TextBox Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="txtFirstName" Grid.Row="0" Grid.Column="1" FontSize="16"/>
-                    <TextBox Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="3" FontSize="16"/>
-                    <TextBox Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Suburb, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" FontSize="16"/>
-                    <TextBox Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.PostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="3" FontSize="16"/>
-                    <TextBox Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" FontSize="16"/>
-                    <TextBox Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="3" FontSize="16"/>
-                    <TextBox Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" FontSize="16"/>
-                    <TextBox Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="3" FontSize="16"/>
-                    <TextBox Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" FontSize="16"/>
-                    <TextBox Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Active, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="3" FontSize="16"/>
-
+                    <Label FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="3" ContentStringFormat="Current Job Requests {0}" Content="{Binding SelectedClient.CompanyName}"/>
+                    <DataGrid Grid.Column="3" Grid.Row="2" Grid.RowSpan="9" Margin="20 0 0 10"/>
                 </Grid>
-                    <StackPanel Margin="0 10 0 0" Grid.Row="5" Orientation="Horizontal" >
+                    <StackPanel  Margin="0 10 0 0" Grid.Row="11" Orientation="Horizontal" >
 
-                    <Button x:Name="btnSave" Click="btnSave_Click" Margin="15 30 40 0" Command="{Binding SaveCommand}" 
-                            Width="120"  Height="45" FontWeight="Bold" Background="white" Foreground="#444" Visibility="Hidden">
+                    <Button x:Name="btnSave" Click="btnSave_Click" Margin="160 0 40 0" Command="{Binding SaveCommand}" 
+                            Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white" IsEnabled="False">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>
                                 </Style>
                             </Button.Resources>
                             <StackPanel Orientation="Horizontal">
-                                <fa:ImageAwesome Icon="Save" Foreground="#444" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <fa:ImageAwesome Icon="Save" Foreground="#80fc39" Margin="0 0 5 0" Width="30" Height="18"/>
                                 <TextBlock Margin="0 0 10 0" FontSize="18" Text="Save" />
                             </StackPanel>
                         </Button>
 
-                    <Button x:Name="btnCancel" Click="btnCancel_Click" Margin="10 30 0 0"  Command="{Binding CancelCommand}" 
-                            Width="120"  Height="45" FontWeight="Bold" Background="#444" Foreground="white" Visibility="Hidden">
+                    <Button x:Name="btnSaveUpdate" Click="btnSaveUpdate_Click" Margin="10 0 40 0" Command="{Binding UpdateCommand}" 
+                            Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white" IsEnabled="False">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="ArrowUp" Foreground="Yellow" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Update" />
+                        </StackPanel>
+                    </Button>
+
+
+                    <Button x:Name="btnCancel" Click="btnCancel_Click" Margin="0 0 0 0"  Command="{Binding CancelCommand}" 
+                            Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white" IsEnabled="False">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>
                                 </Style>
                             </Button.Resources>
                             <StackPanel Orientation="Horizontal">
-                                <fa:ImageAwesome Icon="Ban" Foreground="white" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <fa:ImageAwesome Icon="Ban" Foreground="OrangeRed" Margin="0 0 5 0" Width="30" Height="18"/>
                                 <TextBlock Margin="0 0 10 0" FontSize="18" Text="Cancel" />
                             </StackPanel>
                         </Button>
-
-
                     </StackPanel>
-
-
             </StackPanel>
         </Grid>
     </Grid>
-
 </Page>
