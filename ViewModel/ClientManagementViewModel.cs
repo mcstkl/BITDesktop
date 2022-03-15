@@ -177,7 +177,7 @@ namespace BITServices.ViewModel
                 SelectedClient.InsertClient();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Couldn't save Client. Please fill in complete client details.", "Unable to Save Client", MessageBoxButton.OK, MessageBoxImage.Error);
             }

@@ -22,8 +22,8 @@ namespace BITServices.Model
         private string _email;
         private string _userName;
         private string _password;
-        private string _contractorRating;
-        private string _payRate;
+        private Decimal _contractorRating;
+        private Decimal _payRate;
         private bool _active;
         private SQLHelper _db;
 
@@ -83,12 +83,12 @@ namespace BITServices.Model
             get { return _password; }
             set { _password = value; }
         }
-        public string ContractorRating
+        public Decimal ContractorRating
         {
             get { return _contractorRating; }
             set { _contractorRating = value; }
         }
-        public string PayRate
+        public Decimal PayRate
         {
             get { return _payRate; }
             set { _payRate = value; }
@@ -119,17 +119,17 @@ namespace BITServices.Model
             this.Email = dr["Email"].ToString();
             this.UserName = dr["UserName"].ToString();
             this.Password = dr["Password"].ToString();
-            this.ContractorRating = dr["ContractorRating"].ToString();
-            this.PayRate = dr["PayRate"].ToString();
+            this.ContractorRating = Convert.ToDecimal(dr["ContractorRating"].ToString());
+            this.PayRate = Convert.ToDecimal(dr["PayRate"].ToString());
             this.Active = Convert.ToBoolean(dr["Active"].ToString());
             _db = new SQLHelper();
         }
 
         public int InsertContractor()
         {
-            string sql = "insert into contractor(firstName, lastName, street, suburb, postcode, state, phone, email," +
-                " contractorRating, userName, password, contractorRating, payRate, active) " +
-                " values(@FirstName, @LastName,@Street, @Suburb, @PostCode, @State, @Phone, @Email, @ContractorRating," +
+            string sql = "insert into contractor(firstName, lastName, street, suburb, postcode, state, phone, email, " +
+                " userName, password, contractorRating, payRate, active) " +
+                " values(@FirstName, @LastName,@Street, @Suburb, @PostCode, @State, @Phone, @Email, " +
                 " @UserName, @Password, @ContractorRating, @PayRate, @Active)";
             SqlParameter[] objParams;
             objParams = new SqlParameter[14];
@@ -155,9 +155,9 @@ namespace BITServices.Model
             objParams[9].Value = this.UserName;
             objParams[10] = new SqlParameter("@Password", DbType.String);
             objParams[10].Value = this.Password;
-            objParams[11] = new SqlParameter("@ContractorRating", DbType.String);
+            objParams[11] = new SqlParameter("@ContractorRating", DbType.Decimal);
             objParams[11].Value = this.ContractorRating;
-            objParams[12] = new SqlParameter("@PayRate", DbType.String);
+            objParams[12] = new SqlParameter("@PayRate", DbType.Decimal);
             objParams[12].Value = this.PayRate;
             objParams[13] = new SqlParameter("@Active", DbType.String);
             objParams[13].Value = this.Active;
@@ -180,10 +180,10 @@ namespace BITServices.Model
                 "password =  @Password, " +
                 "contractorRating =  @ContractorRating, " +
                 "payRate =  @PayRate, " +
-                "active = @Active, " +
+                "active = @Active " +
                 " WHERE contractorID = @ContractorID";
             SqlParameter[] objParams;
-            objParams = new SqlParameter[12];
+            objParams = new SqlParameter[14];
             objParams[0] = new SqlParameter("@ContractorID", DbType.String);
             objParams[0].Value = this.ContractorID;
             objParams[1] = new SqlParameter("@FirstName", DbType.String);
@@ -206,9 +206,9 @@ namespace BITServices.Model
             objParams[9].Value = this.UserName;
             objParams[10] = new SqlParameter("@Password", DbType.String);
             objParams[10].Value = this.Password;
-            objParams[11] = new SqlParameter("@ContractorRating", DbType.String);
+            objParams[11] = new SqlParameter("@ContractorRating", DbType.Decimal);
             objParams[11].Value = this.ContractorRating;
-            objParams[12] = new SqlParameter("@PayRate", DbType.String);
+            objParams[12] = new SqlParameter("@PayRate", DbType.Decimal);
             objParams[12].Value = this.PayRate;
             objParams[13] = new SqlParameter("@Active", DbType.String);
             objParams[13].Value = this.Active;

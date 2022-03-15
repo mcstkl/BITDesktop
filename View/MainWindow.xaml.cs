@@ -32,6 +32,7 @@ namespace BITServices
                     _currentUser = staff;
                 }
             }
+            tbUser.Text = $"{_currentUser.FirstName} {_currentUser.LastName} is signed in.";
         }
 
 

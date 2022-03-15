@@ -11,47 +11,47 @@ namespace BITServices.Model
 {
     public class Skills : List<Skill>
     {
-        //private SQLHelper _db;
-        //public Skills()
-        //{
-        //    _db = new SQLHelper();
-        //    string sql = "SELECT SkillID, SkillName " +
-        //                 " FROM Skills";
-        //    DataTable dtSkills = _db.ExecuteSQL(sql);
-        //    foreach (DataRow dataRow in dtSkills.Rows)
-        //    {
-        //        Skill newSkill = new Skill(dataRow);
-        //        this.Add(newSkill);
-        //    }
-        //}
+        private SQLHelper _db;
+        public Skills()
+        {
+            _db = new SQLHelper();
+            string sql = "SELECT ContractorID " +
+                         " FROM ContractorSkills";
+            DataTable dtSkills = _db.ExecuteSQL(sql);
+            foreach (DataRow dataRow in dtSkills.Rows)
+            {
+                Skill newSkill = new Skill(dataRow);
+                this.Add(newSkill);
+            }
+        }
 
 
 
-        //public Skills(int contractorID)
-        //{
-        //    _db = new SQLHelper();
-        //    string sql = "SELECT SkillID, SkillName " +
-        //                    " FROM Skills " +
-        //                    " WHERE contractorID = @ContractorID";
-        //    SqlParameter[] parameters = new SqlParameter[1];
-        //    parameters[0] = new SqlParameter("ContractorID", DbType.Int32);
-        //    parameters[0].Value = contractorID;
-        //    DataTable dtSkills = _db.ExecuteSQL(sql, parameters);
+        public Skills(string skillName)
+        {
+            _db = new SQLHelper();
+            string sql = "SELECT SkillName " +
+                            " FROM ContractorSkills " +
+                            " WHERE contractorID = @ContractorID";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("ContractorID", DbType.Int32);
+            parameters[0].Value = skillName;
+            DataTable dtSkills = _db.ExecuteSQL(sql, parameters);
 
-        //    foreach (DataRow dataRow in dtSkills.Rows)
-        //    {
-        //        Skill newSkill = new Skill(dataRow);
-        //        this.Add(newSkill);
-        //    }
-        //}
+            foreach (DataRow dataRow in dtSkills.Rows)
+            {
+                Skill newSkill = new Skill(dataRow);
+                this.Add(newSkill);
+            }
+        }
 
 
-        //public int GetNumberOfSkills()
-        //{
-        //    string sql = "select count(*) from Skills";
-        //    int rows = (int)_db.ExecuteSQLScalar(sql, null);
-        //    return rows;
+        public int GetNumberOfSkills()
+        {
+            string sql = "select count(*) from ContractorSkills";
+            int rows = (int)_db.ExecuteSQLScalar(sql, null);
+            return rows;
 
-        //}
+        }
     }
 }
