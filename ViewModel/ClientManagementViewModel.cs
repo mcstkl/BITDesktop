@@ -1,8 +1,10 @@
-﻿using BITServices.Model;
+﻿using BITServices.DAL;
+using BITServices.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -13,20 +15,18 @@ namespace BITServices.ViewModel
 {
     public class ClientManagementViewModel : INotifyPropertyChanged
     {
-        //list class in C# that listens to the events
-        //OverservableCollection<T>
 
+        // --------------------- FIELDS -------------------------
+        // ------------------------------------------------------
         private ObservableCollection<Client> _clients;
         private Client _selectedClient;
+        public string _selectedItemInFilter = String.Empty;
+        public string _searchValue = String.Empty;
+        // ------------------------------------------------------
 
 
-        private RelayCommand _updateCommand;
-        private RelayCommand _addCommand;
-        private RelayCommand _deleteCommand;
-        private RelayCommand _searchCommand;
-        private RelayCommand _saveCommand;
-        private RelayCommand _cancelCommand;
-
+        // ---------------------- PROPS -------------------------
+        // ------------------------------------------------------
         public Client SelectedClient
         {
             get { return _selectedClient; }
@@ -36,21 +36,78 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("SelectedClient");
             }
         }
+        public string SelectedItemInFilter
+        {
+            get { return _selectedItemInFilter; }
+            set
+            {
+                    _selectedItemInFilter = value;
+                    OnPropertyChanged("SelectedItemInFilter");
+            }
+        }
+        public string SearchValue
+        {
+            get { return _searchValue; }
+            set
+            {
+                if (_searchValue != value)
+                {
+                    _searchValue = value;
+                }
+                OnPropertyChanged("SearchValue");
+            }
+        }
         public ObservableCollection<Client> Clients
         {
             get { return _clients; }
-            set { _clients = value;
+            set
+            {
+                if(_clients != value)
+                {
+                    _clients = value;
+                }
                 OnPropertyChanged("Clients");
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
+        // ------------------------------------------------------
 
+
+        // ------------------- CONSTRUCTOR -----------------------
+        // -------------------------------------------------------
         public ClientManagementViewModel()
         {
             Clients allClients = new Clients();
             this.Clients = new ObservableCollection<Client>(allClients);
             OnPropertyChanged("Clients");
         }
+        // -------------------------------------------------------
+
+
+
+
+
+        // ----------------- PROPCHANGED BP ---------------------
+        // ------------------------------------------------------
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string prop)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
+        // ------------------------------------------------------
+
+
+        // ------------------- RELAY BOILERPLATE -------------------
+        // ---------------------------------------------------------
+
+        private RelayCommand _updateCommand;
+        private RelayCommand _addCommand;
+        private RelayCommand _deleteCommand;
+        private RelayCommand _searchCommand;
+        private RelayCommand _saveCommand;
+        private RelayCommand _cancelCommand;
 
         public RelayCommand UpdateCommand
         {
@@ -142,50 +199,97 @@ namespace BITServices.ViewModel
             set
             { _cancelCommand = value; }
         }
+        // ----------------------------------------------------------
 
 
-
-        private void OnPropertyChanged(string prop)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-            }
-        }
+        // --------------------- METHODS --------------------------
+        // --------------------------------------------------------
         public void UpdateMethod()
         {
             SelectedClient.UpdateClient();
+            LoadGrid();
         }
         public void AddMethod()
         {
             SelectedClient = new Client();
-            this.Clients.Add(SelectedClient);
+            LoadGrid();
         }
         public void DeleteMethod()
         {
-            SelectedClient?.DeleteClient();
-            this.Clients.Remove(SelectedClient);
+            if (SelectedClient?.DeleteClient() <= 0)
+            {
+                MessageBox.Show("Could not delete Client", "Client not Deleted", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            LoadGrid();
+            MessageBox.Show("Client deleted", "Deleted Record", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         public void SearchMethod()
         {
-            MessageBox.Show("Searching client");
+            string selectedSearch = SelectedItemInFilter.ToString();
+
+            Clients allClients = new Clients();
+            Clients searchedClients = new Clients();
+            searchedClients.Clear();
+            foreach (Client client in allClients)
+            {
+                switch (selectedSearch)
+                {
+                    case "Company":
+                        if (client.CompanyName.StartsWith(SearchValue))
+                        {
+                            searchedClients.Add(client);
+                        }
+                        break;
+                    case "Phone":
+                        break;
+                    default:
+                        return;
+                }
+            }
+            if(SearchValue.ToString() == "")
+            {
+                LoadGrid();
+            }
+            else if (searchedClients.Count == 0)
+            {
+                this.Clients.Clear();
+                MessageBox.Show("No results found.");
+            }
+
+            else if(searchedClients.Count > 0)
+            {
+                this.Clients = new ObservableCollection<Client>(searchedClients);
+            }
         }
         public void SaveMethod()
         {
             try
             {
                 SelectedClient.InsertClient();
-
+            
             }
             catch (Exception)
             {
                 MessageBox.Show("Couldn't save Client. Please fill in complete client details.", "Unable to Save Client", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            LoadGrid();
         }
         public void CancelMethod()
+        {
+            LoadGrid();
+        }
+        // ---------------------------------------------------------
+
+
+        // ------------------------ HELPERS -------------------------
+        // ----------------------------------------------------------
+        private void LoadGrid()
         {
             Clients allClients = new Clients();
             this.Clients = new ObservableCollection<Client>(allClients);
         }
+        // ----------------------------------------------------------
+
     }
 }
+

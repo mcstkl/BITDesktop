@@ -59,11 +59,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppLogs\DbLogger.cs" />
+    <Compile Include="AppLogs\EventLogger.cs" />
+    <Compile Include="AppLogs\FileLogger.cs" />
+    <Compile Include="AppLogs\LogBase.cs" />
+    <Compile Include="AppLogs\LogHelper.cs" />
     <Compile Include="DAL\SQLHelper.cs" />
     <Compile Include="Model\Contractor.cs" />
     <Compile Include="Model\Contractors.cs" />
     <Compile Include="Model\Staff.cs" />
-    <Compile Include="Model\StaffList.cs" />
+    <Compile Include="Model\Staffs.cs" />
     <Compile Include="Model\Client.cs" />
     <Compile Include="Model\Clients.cs" />
     <Compile Include="Model\Skill.cs" />

@@ -90,7 +90,7 @@ namespace BITServices.ViewModel
 
 
 
-        private ObservableCollection<Contractor> _Contractors;
+        private ObservableCollection<Contractor> _contractors;
         private Contractor _selectedContractor;
 
 
@@ -113,10 +113,10 @@ namespace BITServices.ViewModel
      
         public ObservableCollection<Contractor> Contractors
         {
-            get { return _Contractors; }
+            get { return _contractors; }
             set
             {
-                _Contractors = value;
+                _contractors = value;
                 OnPropertyChanged("Contractors");
             }
         }

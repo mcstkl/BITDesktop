@@ -7,6 +7,7 @@ using BITServices.Model;
 using System.Windows.Media;
 using System.Security.Cryptography;
 using System.Text;
+using BITServices.AppLogs;
 
 namespace BITServices
 {
@@ -27,7 +28,7 @@ namespace BITServices
         {
             InitializeComponent();
             contentFrame.Navigate(new HomeView());
-            StaffList staffs = new StaffList();
+            Staffs staffs = new Staffs();
             foreach(Staff staff in staffs)
             {
                 if(staff.UserName == user)
@@ -35,11 +36,9 @@ namespace BITServices
                     _currentUser = staff;
                 }
             }
+            LogHelper.Log(LogTarget.File, $"[Login]: {_currentUser.UserName}");
             tbUser.Text = $"{_currentUser.FirstName} {_currentUser.LastName} is signed in.";
             btnHome.IsChecked = true;
-
-
-        
         }
 
 

@@ -39,7 +39,7 @@ namespace BITServices.View
             tbStreet.IsEnabled = false;
             tbSuburb.IsEnabled = false;
             tbPostCode.IsEnabled = false;
-            tbState.IsEnabled = false;
+            cboState.IsEnabled = false;
             tbPhone.IsEnabled = false;
             tbEmail.IsEnabled = false;
             tbUser.IsEnabled = false;
@@ -55,7 +55,7 @@ namespace BITServices.View
             tbStreet.IsEnabled = false;
             tbSuburb.IsEnabled = false;
             tbPostCode.IsEnabled = false;
-            tbState.IsEnabled = false;
+            cboState.IsEnabled = false;
             tbPhone.IsEnabled = false;
             tbEmail.IsEnabled = false;
             tbUser.IsEnabled = false;
@@ -72,7 +72,7 @@ namespace BITServices.View
             tbStreet.IsEnabled = true;
             tbSuburb.IsEnabled = true;
             tbPostCode.IsEnabled = true;
-            tbState.IsEnabled = true;
+            cboState.IsEnabled = true;
             tbPhone.IsEnabled = true;
             tbEmail.IsEnabled = true;
             tbUser.IsEnabled = true;
@@ -87,7 +87,7 @@ namespace BITServices.View
             tbStreet.IsEnabled = true;
             tbSuburb.IsEnabled = true;
             tbPostCode.IsEnabled = true;
-            tbState.IsEnabled = true;
+            cboState.IsEnabled = true;
             tbPhone.IsEnabled = true;
             tbEmail.IsEnabled = true;
             tbUser.IsEnabled = true;
@@ -95,7 +95,7 @@ namespace BITServices.View
         }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Client deleted", "Deleted Record", MessageBoxButton.OK, MessageBoxImage.Information);
+           
 
         }
         private void btnSaveUpdate_Click(object sender, RoutedEventArgs e)
@@ -108,7 +108,7 @@ namespace BITServices.View
             tbStreet.IsEnabled = false;
             tbSuburb.IsEnabled = false;
             tbPostCode.IsEnabled = false;
-            tbState.IsEnabled = false;
+            cboState.IsEnabled = false;
             tbPhone.IsEnabled = false;
             tbEmail.IsEnabled = false;
             tbUser.IsEnabled = false;

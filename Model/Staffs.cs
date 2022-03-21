@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace BITServices.Model
 {
-    public class StaffList : List<Staff>
+    public class Staffs : List<Staff>
     {
         private SQLHelper _db;
-        public StaffList()
+        public Staffs()
         {
             _db = new SQLHelper();
             string sql = "SELECT staffID, FirstName, LastName, Street, Suburb, PostCode, State, " +

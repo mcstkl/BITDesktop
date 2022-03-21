@@ -73,17 +73,13 @@ namespace BITServices
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            string pw = txtPassword.Password;
-
-            using (var sha256 = new SHA256Managed())
-            {
-                // Send a sample text to hash.  
-                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(pw));
-                // Get the hashed string.  
-                var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
-                // Print the string.   
-                Debug.WriteLine(hash);
-            }
+            //string pw = txtPassword.Password;
+            //using (var sha256 = new SHA256Managed())
+            //{
+            //    var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(pw));
+            //    var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+            //    MessageBox.Show(hash);
+            //}
 
 
             string connectionString = ConfigurationManager.ConnectionStrings["BitServices"].ConnectionString;

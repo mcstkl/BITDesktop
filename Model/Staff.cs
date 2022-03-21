@@ -168,7 +168,7 @@ namespace BITServices.Model
                 "userName = @UserName, " +
                 "password =  @Password, " +
                 "staffType = @StaffType, " +
-                "active = @Active, " +
+                "active = @Active " +
                 " WHERE staffID = @StaffID";
             SqlParameter[] objParams;
             objParams = new SqlParameter[13];
@@ -187,7 +187,7 @@ namespace BITServices.Model
             objParams[6] = new SqlParameter("@State", DbType.String);
             objParams[6].Value = this.State;
             objParams[7] = new SqlParameter("@Phone", DbType.String);
-            objParams[7].Value = this.Password;
+            objParams[7].Value = this.Phone;
             objParams[8] = new SqlParameter("@Email", DbType.String);
             objParams[8].Value = this.Email;
             objParams[9] = new SqlParameter("@UserName", DbType.String);

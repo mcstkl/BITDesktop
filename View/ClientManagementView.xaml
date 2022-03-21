@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:fa="http://schemas.fontawesome.io/icons/"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:BITServices.View"
       mc:Ignorable="d" 
       d:DesignHeight="770" d:DesignWidth="1040"
@@ -25,15 +26,14 @@
 
                 <Border BorderThickness="1 1 0 0" CornerRadius="3.2" BorderBrush="Black" Background="Transparent" Height="28" Margin="6">
                     <Border BorderThickness="0 0 1 1" CornerRadius="3.2" BorderBrush="#444" Padding="1">
-                <ComboBox Margin="-1 -1 -1 -1" FontSize="16" Height="29">
-                    <ComboBoxItem  IsSelected="True">Name</ComboBoxItem>
-                    <ComboBoxItem>Username</ComboBoxItem>
-                    <ComboBoxItem>Suburb</ComboBoxItem>
-                    <ComboBoxItem>Phone</ComboBoxItem>
-                </ComboBox>
+                        <ComboBox SelectedIndex="0" SelectedValue="{Binding SelectedItemInFilter, Mode=OneWayToSource}" SelectedValuePath="Content" x:Name="cboSearch" Margin="-1 -1 -1 -1" FontSize="16" Height="29" >
+                            <ComboBoxItem>-- Select --</ComboBoxItem>
+                            <ComboBoxItem>Company</ComboBoxItem>
+                            <ComboBoxItem>Phone</ComboBoxItem>
+                        </ComboBox>
                     </Border>
                 </Border>
-                <TextBox FontSize="18" Margin="5 0 0 0" Width="220" Height="28"></TextBox>
+                <TextBox Text="{Binding SearchValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="txtSearch" FontSize="18" Margin="5 0 0 0" Width="220" Height="28"/>
                 <StackPanel Margin="0 0 0 0" Orientation="Horizontal" >
                     <Button Command="{Binding SearchCommand}" x:Name="btnSearch" Margin="5 0 60 0" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
                         <Button.Resources>
@@ -69,7 +69,7 @@
                             <TextBlock Margin="0 0 10 0" FontSize="18" Text="Delete" />
                         </StackPanel>
                     </Button>
-                    <Button Command="{Binding UpdateCommand}" Click="btnUpdate_Click" x:Name="btnUpdate" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                    <Button Click="btnUpdate_Click" x:Name="btnUpdate" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>
@@ -171,7 +171,15 @@
                     <TextBox x:Name="tbStreet" IsEnabled="False" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBox x:Name="tbSuburb" IsEnabled="False" Grid.Row="4" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Suburb, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox x:Name="tbPostCode" IsEnabled="False" Grid.Row="5" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.PostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                    <TextBox x:Name="tbState" IsEnabled="False" Grid.Row="6" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <ComboBox x:Name="cboState" IsEnabled="False" Grid.Row="6" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" SelectedValuePath="Content" SelectedValue="{Binding SelectedClient.State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                        <ComboBoxItem>NSW</ComboBoxItem>
+                        <ComboBoxItem>ACT</ComboBoxItem>
+                        <ComboBoxItem>QLD</ComboBoxItem>
+                        <ComboBoxItem>VIC</ComboBoxItem>
+                        <ComboBoxItem>NT</ComboBoxItem>
+                        <ComboBoxItem>TAS</ComboBoxItem>
+                        <ComboBoxItem>WA</ComboBoxItem>
+                    </ComboBox>
                     <TextBox x:Name="tbPhone" IsEnabled="False" Grid.Row="7" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox x:Name="tbEmail" IsEnabled="False" Grid.Row="8" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox x:Name="tbUser" IsEnabled="False" Grid.Row="9" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
