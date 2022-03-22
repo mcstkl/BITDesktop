@@ -44,7 +44,6 @@ namespace BITServices.View
             tbEmail.IsEnabled = false;
             tbUser.IsEnabled = false;
             tbPassword.IsEnabled = false;
-            MessageBox.Show("Changes were not saved", "Changes discarded", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +59,6 @@ namespace BITServices.View
             tbEmail.IsEnabled = false;
             tbUser.IsEnabled = false;
             tbPassword.IsEnabled = false;
-            MessageBox.Show("Client details saved", "Changes Saved", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -103,7 +101,6 @@ namespace BITServices.View
             dgClients.IsEnabled = true;
             btnSaveUpdate.IsEnabled = false;
             btnCancel.IsEnabled = false;
-            dgClients.SelectedIndex = 0;
             tbName.IsEnabled = false;
             tbStreet.IsEnabled = false;
             tbSuburb.IsEnabled = false;
@@ -113,7 +110,6 @@ namespace BITServices.View
             tbEmail.IsEnabled = false;
             tbUser.IsEnabled = false;
             tbPassword.IsEnabled = false;
-            MessageBox.Show("Client updated", "Record Updated", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

@@ -30,6 +30,7 @@
                             <ComboBoxItem>-- Select --</ComboBoxItem>
                             <ComboBoxItem>Company</ComboBoxItem>
                             <ComboBoxItem>Phone</ComboBoxItem>
+                            <ComboBoxItem>Postcode</ComboBoxItem>
                         </ComboBox>
                     </Border>
                 </Border>

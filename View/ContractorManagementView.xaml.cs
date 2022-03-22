@@ -97,7 +97,6 @@ namespace BITServices.View
             tbPassword.IsEnabled = false;
             tbRating.IsEnabled = false;
             tbPayrate.IsEnabled = false;
-            MessageBox.Show("Changes were not saved", "Changes discarded", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -121,7 +120,6 @@ namespace BITServices.View
             tbPassword.IsEnabled = false;
             tbRating.IsEnabled = false;
             tbPayrate.IsEnabled = false;
-            MessageBox.Show("Contractor details saved", "Changes Saved", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -162,7 +160,6 @@ namespace BITServices.View
         }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Contractor deleted", "Deleted Record", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
         private void btnSaveUpdate_Click(object sender, RoutedEventArgs e)
@@ -182,7 +179,6 @@ namespace BITServices.View
             tbPassword.IsEnabled = false;
             tbRating.IsEnabled = false;
             tbPayrate.IsEnabled = false;
-            MessageBox.Show("Contractor updated", "Record Updated", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

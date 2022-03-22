@@ -20,8 +20,15 @@ namespace BITServices.ViewModel
         // ------------------------------------------------------
         private ObservableCollection<Client> _clients;
         private Client _selectedClient;
-        public string _selectedItemInFilter = String.Empty;
-        public string _searchValue = String.Empty;
+        public string _selectedItemInFilter = string.Empty;
+        public string _searchValue = string.Empty;
+
+        private RelayCommand _updateCommand;
+        private RelayCommand _addCommand;
+        private RelayCommand _deleteCommand;
+        private RelayCommand _searchCommand;
+        private RelayCommand _saveCommand;
+        private RelayCommand _cancelCommand;
         // ------------------------------------------------------
 
 
@@ -50,22 +57,18 @@ namespace BITServices.ViewModel
             get { return _searchValue; }
             set
             {
-                if (_searchValue != value)
-                {
-                    _searchValue = value;
-                }
+               
+                _searchValue = value;
                 OnPropertyChanged("SearchValue");
             }
         }
+
         public ObservableCollection<Client> Clients
         {
             get { return _clients; }
             set
             {
-                if(_clients != value)
-                {
-                    _clients = value;
-                }
+                _clients = value;
                 OnPropertyChanged("Clients");
             }
         }
@@ -76,6 +79,7 @@ namespace BITServices.ViewModel
         // -------------------------------------------------------
         public ClientManagementViewModel()
         {
+            SelectedClient = new Client();
             Clients allClients = new Clients();
             this.Clients = new ObservableCollection<Client>(allClients);
             OnPropertyChanged("Clients");
@@ -102,21 +106,12 @@ namespace BITServices.ViewModel
         // ------------------- RELAY BOILERPLATE -------------------
         // ---------------------------------------------------------
 
-        private RelayCommand _updateCommand;
-        private RelayCommand _addCommand;
-        private RelayCommand _deleteCommand;
-        private RelayCommand _searchCommand;
-        private RelayCommand _saveCommand;
-        private RelayCommand _cancelCommand;
-
         public RelayCommand UpdateCommand
         {
             get
             {
                 if (_updateCommand == null)
                 {
-                    //Remember RelayCommand is taking first parameter as Action
-                    //Action is nothing but a Method. Only use the Method name
                     _updateCommand = new RelayCommand(this.UpdateMethod, true);
                 }
                 return _updateCommand;
@@ -202,11 +197,14 @@ namespace BITServices.ViewModel
         // ----------------------------------------------------------
 
 
+
+
         // --------------------- METHODS --------------------------
         // --------------------------------------------------------
         public void UpdateMethod()
         {
-            SelectedClient.UpdateClient();
+            
+            SelectedClient?.UpdateClient();
             LoadGrid();
         }
         public void AddMethod()
@@ -216,12 +214,15 @@ namespace BITServices.ViewModel
         }
         public void DeleteMethod()
         {
-            if (SelectedClient?.DeleteClient() <= 0)
+            if(SelectedClient != null)
             {
-                MessageBox.Show("Could not delete Client", "Client not Deleted", MessageBoxButton.OK, MessageBoxImage.Error);
+                SelectedClient?.DeleteClient();
+            }
+            else
+            {
+                MessageBox.Show("Please select a client");
             }
             LoadGrid();
-            MessageBox.Show("Client deleted", "Deleted Record", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         public void SearchMethod()
         {
@@ -241,6 +242,16 @@ namespace BITServices.ViewModel
                         }
                         break;
                     case "Phone":
+                        if (client.Phone.StartsWith(SearchValue))
+                        {
+                            searchedClients.Add(client);
+                        }
+                        break;
+                    case "Postcode":
+                        if (client.PostCode.StartsWith(SearchValue))
+                        {
+                            searchedClients.Add(client);
+                        }
                         break;
                     default:
                         return;
@@ -263,6 +274,7 @@ namespace BITServices.ViewModel
         }
         public void SaveMethod()
         {
+
             try
             {
                 SelectedClient.InsertClient();
@@ -279,6 +291,9 @@ namespace BITServices.ViewModel
             LoadGrid();
         }
         // ---------------------------------------------------------
+
+
+
 
 
         // ------------------------ HELPERS -------------------------
