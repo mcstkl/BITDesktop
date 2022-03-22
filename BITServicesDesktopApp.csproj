@@ -65,6 +65,8 @@
     <Compile Include="AppLogs\LogBase.cs" />
     <Compile Include="AppLogs\LogHelper.cs" />
     <Compile Include="DAL\SQLHelper.cs" />
+    <Compile Include="Model\Availabilities.cs" />
+    <Compile Include="Model\Availability.cs" />
     <Compile Include="Model\Contractor.cs" />
     <Compile Include="Model\Contractors.cs" />
     <Compile Include="Model\Staff.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Model\Skill.cs" />
     <Compile Include="Model\Skills.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="ViewModel\AvailabilityManagementViewModel.cs" />
     <Compile Include="ViewModel\ContractorManagementViewModel.cs" />
     <Compile Include="ViewModel\StaffManagementViewModel.cs" />
     <Compile Include="ViewModel\ClientManagementViewModel.cs" />

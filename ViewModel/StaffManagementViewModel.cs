@@ -90,8 +90,10 @@ namespace BITServices.ViewModel
 
 
 
-        private ObservableCollection<Staff> _Staffs;
+        private ObservableCollection<Staff> _staffs;
         private Staff _selectedStaff;
+        public string _selectedItemInFilter = string.Empty;
+        public string _searchValue = string.Empty;
 
 
         private RelayCommand _updateCommand;
@@ -110,13 +112,31 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("SelectedStaff");
             }
         }
-
-        public ObservableCollection<Staff> Staffs
+        public string SelectedItemInFilter
         {
-            get { return _Staffs; }
+            get { return _selectedItemInFilter; }
             set
             {
-                _Staffs = value;
+                _selectedItemInFilter = value;
+                OnPropertyChanged("SelectedItemInFilter");
+            }
+        }
+        public string SearchValue
+        {
+            get { return _searchValue; }
+            set
+            {
+
+                _searchValue = value;
+                OnPropertyChanged("SearchValue");
+            }
+        }
+        public ObservableCollection<Staff> Staffs
+        {
+            get { return _staffs; }
+            set
+            {
+                _staffs = value;
                 OnPropertyChanged("Staffs");
             }
         }
@@ -233,7 +253,63 @@ namespace BITServices.ViewModel
         }
         public void SearchMethod()
         {
-            MessageBox.Show("Searching Staff");
+            string selectedSearch = SelectedItemInFilter.ToString();
+
+            Staffs allStaffs = new Staffs();
+            Staffs searchedStaffs = new Staffs();
+            searchedStaffs.Clear();
+            foreach (Staff Staff in allStaffs)
+            {
+                switch (selectedSearch)
+                {
+                    case "Firstname":
+                        if (Staff.FirstName.StartsWith(SearchValue))
+                        {
+                            searchedStaffs.Add(Staff);
+                        }
+                        break;
+                    case "Lastname":
+                        if (Staff.LastName.StartsWith(SearchValue))
+                        {
+                            searchedStaffs.Add(Staff);
+                        }
+                        break;
+                    case "Staff Type":
+                        if (Staff.StaffType.StartsWith(SearchValue))
+                        {
+                            searchedStaffs.Add(Staff);
+                        }
+                        break;
+                    case "Phone":
+                        if (Staff.Phone.StartsWith(SearchValue))
+                        {
+                            searchedStaffs.Add(Staff);
+                        }
+                        break;
+                    case "Email":
+                        if (Staff.Email.StartsWith(SearchValue))
+                        {
+                            searchedStaffs.Add(Staff);
+                        }
+                        break;
+                    default:
+                        return;
+                }
+            }
+            if (SearchValue.ToString() == "")
+            {
+                LoadGrid();
+            }
+            else if (searchedStaffs.Count == 0)
+            {
+                this.Staffs.Clear();
+                MessageBox.Show("No results found.");
+            }
+
+            else if (searchedStaffs.Count > 0)
+            {
+                this.Staffs = new ObservableCollection<Staff>(searchedStaffs);
+            }
         }
         public void SaveMethod()
         {
@@ -252,6 +328,17 @@ namespace BITServices.ViewModel
             Staffs allStaffs = new Staffs();
             this.Staffs = new ObservableCollection<Staff>(allStaffs);
         }
+
+
+        // ------------------------ HELPERS -------------------------
+        // ----------------------------------------------------------
+        private void LoadGrid()
+        {
+            Staffs allStaffs = new Staffs();
+            this.Staffs = new ObservableCollection<Staff>(allStaffs);
+        }
+        // ----------------------------------------------------------
+
     }
 }
 

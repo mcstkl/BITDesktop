@@ -62,7 +62,6 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("SearchValue");
             }
         }
-
         public ObservableCollection<Client> Clients
         {
             get { return _clients; }
@@ -72,7 +71,7 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("Clients");
             }
         }
-        // ------------------------------------------------------
+        // -------------------------------------------------------
 
 
         // ------------------- CONSTRUCTOR -----------------------

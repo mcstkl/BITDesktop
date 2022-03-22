@@ -26,16 +26,16 @@
 
                 <Border BorderThickness="1 1 0 0" CornerRadius="3.2" BorderBrush="Black" Background="Transparent" Height="28" Margin="6">
                     <Border BorderThickness="0 0 1 1" CornerRadius="3.2" BorderBrush="#444" Padding="1">
-                        <ComboBox Margin="-1 -1 -1 -1" FontSize="16" Height="29">
-                            <ComboBoxItem >Firstname</ComboBoxItem>
+                        <ComboBox SelectedIndex="0" SelectedValue="{Binding SelectedItemInFilter, Mode=OneWayToSource}" SelectedValuePath="Content" Margin="-1 -1 -1 -1" FontSize="16" Height="29">
+                            <ComboBoxItem>Firstname</ComboBoxItem>
                             <ComboBoxItem>Lastname</ComboBoxItem>
-                            <ComboBoxItem  IsSelected="True">Type</ComboBoxItem>
+                            <ComboBoxItem>Staff Type</ComboBoxItem>
                             <ComboBoxItem>Phone</ComboBoxItem>
                             <ComboBoxItem>Email</ComboBoxItem>
                         </ComboBox>
                     </Border>
                 </Border>
-                <TextBox FontSize="18" Margin="5 0 0 0" Width="220" Height="28"></TextBox>
+                <TextBox Text="{Binding SearchValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Margin="5 0 0 0" Width="220" Height="28"></TextBox>
                 <StackPanel Margin="0 0 0 0" Orientation="Horizontal" >
                     <Button Command="{Binding SearchCommand}" x:Name="btnSearch" Margin="5 0 60 0" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
                         <Button.Resources>

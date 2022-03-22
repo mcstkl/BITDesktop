@@ -92,6 +92,8 @@ namespace BITServices.ViewModel
 
         private ObservableCollection<Contractor> _contractors;
         private Contractor _selectedContractor;
+        public string _selectedItemInFilter = string.Empty;
+        public string _searchValue = string.Empty;
 
 
         private RelayCommand _updateCommand;
@@ -110,7 +112,7 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("SelectedContractor");
             }
         }
-     
+
         public ObservableCollection<Contractor> Contractors
         {
             get { return _contractors; }
@@ -120,8 +122,27 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("Contractors");
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
+        public string SelectedItemInFilter
+        {
+            get { return _selectedItemInFilter; }
+            set
+            {
+                _selectedItemInFilter = value;
+                OnPropertyChanged("SelectedItemInFilter");
+            }
+        }
+        public string SearchValue
+        {
+            get { return _searchValue; }
+            set
+            {
 
+                _searchValue = value;
+                OnPropertyChanged("SearchValue");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
         public ContractorManagementViewModel()
         {
             Contractors allContractors = new Contractors();
@@ -233,7 +254,69 @@ namespace BITServices.ViewModel
         }
         public void SearchMethod()
         {
-            MessageBox.Show("Searching Contractor");
+            string selectedSearch = SelectedItemInFilter.ToString();
+
+            Contractors allContractors = new Contractors();
+            Contractors searchedContractors = new Contractors();
+            searchedContractors.Clear();
+            foreach (Contractor contractor in allContractors)
+            {
+                switch (selectedSearch)
+                {
+                    case "Firstname":
+                        if (contractor.FirstName.StartsWith(SearchValue))
+                        {
+                            searchedContractors.Add(contractor);
+                        }
+                        break;
+                    case "Lastname":
+                        if (contractor.LastName.StartsWith(SearchValue))
+                        {
+                            searchedContractors.Add(contractor);
+                        }
+                        break;
+                    case "Payrate":
+                        if (contractor.PayRate <= Convert.ToDecimal(SearchValue.ToString()))
+                        {
+                            searchedContractors.Add(contractor);
+                        }
+                        break;
+                    case "Rating":
+                        if (contractor.ContractorRating >= Convert.ToDecimal(SearchValue.ToString()))
+                        {
+                            searchedContractors.Add(contractor);
+                        }
+                        break;
+                    case "Phone":
+                        if (contractor.Phone.StartsWith(SearchValue))
+                        {
+                            searchedContractors.Add(contractor);
+                        }
+                        break;
+                    case "Email":
+                        if (contractor.Email.StartsWith(SearchValue))
+                        {
+                            searchedContractors.Add(contractor);
+                        }
+                        break;
+                    default:
+                        return;
+                }
+            }
+            if (string.IsNullOrEmpty(SearchValue))
+            {
+                LoadGrid();
+            }
+            else if (searchedContractors.Count == 0)
+            {
+                this.Contractors.Clear();
+                MessageBox.Show("No results found.");
+            }
+
+            else if (searchedContractors.Count > 0)
+            {
+                this.Contractors = new ObservableCollection<Contractor>(searchedContractors);
+            }
         }
         public void SaveMethod()
         {
@@ -252,6 +335,18 @@ namespace BITServices.ViewModel
             Contractors allContractors = new Contractors();
             this.Contractors = new ObservableCollection<Contractor>(allContractors);
         }
+
+
+
+        // ------------------------ HELPERS -------------------------
+        // ----------------------------------------------------------
+        private void LoadGrid()
+        {
+            Contractors allContractors = new Contractors();
+            this.Contractors = new ObservableCollection<Contractor>(allContractors);
+        }
+        // ----------------------------------------------------------
+
     }
 }
 

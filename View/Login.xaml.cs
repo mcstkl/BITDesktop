@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using BITServices.AppLogs;
 using BITServices.Model;
 using BITServices.View;
 
@@ -100,6 +101,7 @@ namespace BITServices
                     MainWindow mainWindow = new MainWindow(userName);
                     mainWindow.Show();
                     this.Close();
+                LogHelper.Log(LogTarget.File, $"[Login]: {userName}");
                 }
                 else
                 {

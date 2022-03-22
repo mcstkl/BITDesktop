@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Security.Cryptography;
 using System.Text;
 using BITServices.AppLogs;
+using System.Data;
 
 namespace BITServices
 {
@@ -23,6 +24,18 @@ namespace BITServices
             InitializeComponent();
             contentFrame.Navigate(new HomeView());
             btnHome.IsChecked = true;
+
+
+
+            //Availabilities availabilities = new Availabilities();
+            //DataTable dtAvails = availabilities.GetContractorAvailabilities();
+            //string contractorAvail = string.Empty;
+            //foreach(DataRow dataRow in dtAvails.Rows)
+            //{
+            //    contractorAvail += $"{dataRow["FirstName"]} {dataRow["LastName"]} {dataRow["AvailableDate"]} {dataRow["StartTime"]} {dataRow["FinishTime"]} \n";
+            //}
+            //MessageBox.Show(contractorAvail);
+
         }
         public MainWindow(string user)
         {
@@ -39,6 +52,10 @@ namespace BITServices
             LogHelper.Log(LogTarget.File, $"[Login]: {_currentUser.UserName}");
             tbUser.Text = $"{_currentUser.FirstName} {_currentUser.LastName} is signed in.";
             btnHome.IsChecked = true;
+            if(_currentUser.StaffType != "Admin")
+            {
+                btnAccounts.IsEnabled = false;
+            }
         }
 
 

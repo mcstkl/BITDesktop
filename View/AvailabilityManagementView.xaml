@@ -4,11 +4,252 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BITServices.View"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="770" d:DesignWidth="1040"
       Title="AvailabilityManagementView">
 
-    <Grid>
-        <Label>AVAILABILITIES</Label>
+    <Grid Margin="5 0 5 0">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Height="40" Margin="0 5 0 0">
+                <fa:ImageAwesome Foreground="#666" Icon="ChevronCircleRight" HorizontalAlignment="Right" 
+                                     Visibility="Visible" Height="20"  Margin="10 0 0 0"/>
+                <Label Foreground="#666" FontSize="20" FontWeight="Bold" Margin="10 0 0 0">Availabilities</Label>
+                <Label Height="35" FontSize="18" Margin="20 0 0 0">Search By:</Label>
+
+                <Border BorderThickness="1 1 0 0" CornerRadius="3.2" BorderBrush="Black" Background="Transparent" Height="28" Margin="6">
+                    <Border BorderThickness="0 0 1 1" CornerRadius="3.2" BorderBrush="#444" Padding="1">
+                        <ComboBox SelectedIndex="0" SelectedValue="{Binding SelectedItemInFilter, Mode=OneWayToSource}" SelectedValuePath="Content" Margin="-1 -1 -1 -1" FontSize="16" Height="29">
+                            <ComboBoxItem>-- Select --</ComboBoxItem>
+                            <ComboBoxItem>Date</ComboBoxItem>
+                            <ComboBoxItem>Contractor</ComboBoxItem>
+
+                        </ComboBox>
+                    </Border>
+                </Border>
+                <TextBox Text="{Binding SearchValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Margin="5 0 0 0" Width="220" Height="28"></TextBox>
+                <StackPanel Margin="0 0 0 0" Orientation="Horizontal" >
+                    <Button Command="{Binding SearchCommand}" x:Name="btnSearch" Margin="5 0 60 0" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="Refresh" Foreground="#3D59AB"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding AddCommand}"  x:Name="btnAdd" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="Plus" Foreground="#666" Margin="0 0 10 0" Width="20" Height="14"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Add" />
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding DeleteCommand}" x:Name="btnDelete" Margin="10 0 10 0" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="Minus" Foreground="#666" Margin="0 0 10 0" Width="20" Height="4"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Delete" />
+                        </StackPanel>
+                    </Button>
+                    <Button  x:Name="btnUpdate" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="ArrowUp" Foreground="#666" Margin="0 0 10 0" Width="20" Height="14"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Update" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+
+            <DataGrid x:Name="dgAvailabilities" VerticalAlignment="top" IsReadOnly="true" Grid.Row="1" GridLinesVisibility="None" AutoGenerateColumns="false"
+                  ItemsSource="{Binding Availabilities, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedAvailability, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalScrollBarVisibility="Hidden" 
+                  AlternatingRowBackground="WhiteSmoke"
+                  Height="280" HeadersVisibility="Column" Margin="0 5 0 0" BorderThickness="0.2" Background="Transparent">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Fullname" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding AvailableDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Available Date"/>
+                    <DataGridTextColumn Binding="{Binding StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Start Time"/>
+                    <DataGridTextColumn Binding="{Binding FinishTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Finish Time"/>
+                    <DataGridTextColumn Binding="{Binding ContractorRating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Rating"/>
+                    <DataGridTextColumn Binding="{Binding PayRate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Pay Rate"/>
+
+                </DataGrid.Columns>
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                        <Setter Property="Background" Value="#be6716" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="BorderThickness" Value="0 0 0 0"/>
+                        <Setter Property="Margin" Value="1, 1, 0 , 0" />
+                        <Setter Property="Height" Value="38" />
+                        <Setter Property="Width" Value="auto"/>
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="BorderThickness" Value="1 2 1 2"/>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell" >
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#3D59AB"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Trigger>
+                        </Style.Triggers>
+
+                    </Style>
+                </DataGrid.CellStyle>
+            </DataGrid>
+            <StackPanel Grid.Row="2">
+                <Grid  Margin="15 -20 20 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!--<Label FontSize="16" FontWeight="Bold" Grid.Row="1" Grid.Column="1" ContentStringFormat="Company Details {0}" Content="{Binding SelectedStaff.CompanyName}"/>-->
+                    <Label FontSize="16" Grid.Row="1" Margin="-4 0 0 20" Grid.Column="1" FontWeight="Bold">Staff Details</Label>
+                    <Label Grid.Row="2" Grid.Column="0" FontSize="16">Fullname</Label>
+                    <Label Grid.Row="2" Grid.Column="3" FontSize="16">Available Date</Label>
+                    <Label Grid.Row="3" Grid.Column="0" FontSize="16">StartTime</Label>
+                    <Label Grid.Row="3" Grid.Column="3" FontSize="16">Finish Time</Label>
+                    <Label Grid.Row="4" Grid.Column="0" FontSize="16">Rating</Label>
+                    <Label Grid.Row="4" Grid.Column="3" FontSize="16">Pay Rate</Label>
+
+
+                    <TextBox x:Name="tbFullName" IsEnabled="False" Grid.Row="2" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedAvailability.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="tbAvailableDate" IsEnabled="False" Grid.Row="2" Grid.Column="4" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedAvailability.AvailableDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox x:Name="tbStartTime" IsEnabled="False" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedAvailability.StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="tbFinishTime" IsEnabled="False" Grid.Row="3" Grid.Column="4" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedAvailability.FinishTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox x:Name="tbRating" IsEnabled="False" Grid.Row="4" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedAvailability.ContractorRating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox x:Name="tbPayRate" IsEnabled="False" Grid.Row="4" Grid.Column="4" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedAvailability.PayRate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                </Grid>
+                <StackPanel  Margin="0 10 0 0" Grid.Row="11" Orientation="Horizontal" >
+                    <Button  x:Name="btnSave" Margin="130 0 40 0" Command="{Binding SaveCommand}" 
+                            Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white" IsEnabled="False">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="Save" Foreground="#80fc39" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Save" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnSaveUpdate"  Margin="-27 0 40 0" Command="{Binding UpdateCommand}" 
+                            Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white" IsEnabled="False">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="ArrowUp" Foreground="Yellow" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Update" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnCancel"  Margin="-27 0 0 0"  Command="{Binding CancelCommand}" 
+                            Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white" IsEnabled="False">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="Ban" Foreground="OrangeRed" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Cancel" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Margin="175 0 0 0"  Command="{Binding CancelCommand}" 
+                            Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="Tasks" Foreground="#ffcc00" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Skills" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Margin="10 0 0 0"  Command="{Binding CancelCommand}" 
+                            Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="Book" Foreground="#ffcc00" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="History" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button  Margin="10 0 0 0"  Command="{Binding CancelCommand}" 
+                            Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="Star" Foreground="#ffcc00" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Rating" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
