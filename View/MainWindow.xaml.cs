@@ -25,17 +25,6 @@ namespace BITServices
             contentFrame.Navigate(new HomeView());
             btnHome.IsChecked = true;
 
-
-
-            //Availabilities availabilities = new Availabilities();
-            //DataTable dtAvails = availabilities.GetContractorAvailabilities();
-            //string contractorAvail = string.Empty;
-            //foreach(DataRow dataRow in dtAvails.Rows)
-            //{
-            //    contractorAvail += $"{dataRow["FirstName"]} {dataRow["LastName"]} {dataRow["AvailableDate"]} {dataRow["StartTime"]} {dataRow["FinishTime"]} \n";
-            //}
-            //MessageBox.Show(contractorAvail);
-
         }
         public MainWindow(string user)
         {
