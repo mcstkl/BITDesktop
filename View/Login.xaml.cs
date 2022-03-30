@@ -20,6 +20,7 @@ namespace BITServices
     /// </summary>
     public partial class Login : Window
     {
+        public static readonly NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         public Login()
         {
             InitializeComponent();
@@ -101,7 +102,9 @@ namespace BITServices
                     MainWindow mainWindow = new MainWindow(userName);
                     mainWindow.Show();
                     this.Close();
-                LogHelper.Log(LogTarget.File, $"[Login]: {userName}");
+                    LogHelper.Log(LogTarget.File, $"[Login]: {userName}");
+                    logger.Info($"[Login]: {userName}");
+                    logger.Debug("Test Debug");
                 }
                 else
                 {
