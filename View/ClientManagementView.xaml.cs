@@ -2,6 +2,7 @@
 using BITServices.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,7 @@ namespace BITServices.View
             InitializeComponent();
             this.DataContext = new ClientManagementViewModel();
         }
+
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -61,20 +63,24 @@ namespace BITServices.View
             tbPassword.IsEnabled = false;
 
         }
+
+
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            dgClients.IsEnabled = false;
-            btnSave.IsEnabled = true;
-            btnCancel.IsEnabled = true;
-            tbName.IsEnabled = true;
-            tbStreet.IsEnabled = true;
-            tbSuburb.IsEnabled = true;
-            tbPostCode.IsEnabled = true;
-            cboState.IsEnabled = true;
-            tbPhone.IsEnabled = true;
-            tbEmail.IsEnabled = true;
-            tbUser.IsEnabled = true;
-            tbPassword.IsEnabled = true;
+
+
+            //dgClients.IsEnabled = false;
+            //btnSave.IsEnabled = true;
+            //btnCancel.IsEnabled = true;
+            //tbName.IsEnabled = true;
+            //tbStreet.IsEnabled = true;
+            //tbSuburb.IsEnabled = true;
+            //tbPostCode.IsEnabled = true;
+            //cboState.IsEnabled = true;
+            //tbPhone.IsEnabled = true;
+            //tbEmail.IsEnabled = true;
+            //tbUser.IsEnabled = true;
+            //tbPassword.IsEnabled = true;
         }
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {

@@ -48,7 +48,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Command="{Binding AddCommand}" x:Name="btnAdd" Click="btnAdd_Click" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                    <Button x:Name="btnAdd" Command="{Binding AddCommand}"  Click="btnAdd_Click" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>

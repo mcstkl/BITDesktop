@@ -1,5 +1,6 @@
 ﻿using BITServices.DAL;
 using BITServices.Model;
+using BITServices.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,8 +9,10 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace BITServices.ViewModel
 {
@@ -81,7 +84,7 @@ namespace BITServices.ViewModel
             SelectedClient = new Client();
             Clients allClients = new Clients();
             this.Clients = new ObservableCollection<Client>(allClients);
-            OnPropertyChanged("Clients");
+            //OnPropertyChanged("Clients");
         }
         // -------------------------------------------------------
 
@@ -206,9 +209,18 @@ namespace BITServices.ViewModel
             SelectedClient?.UpdateClient();
             LoadGrid();
         }
+
+        private void Window1_DataChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("Client Added", "Client Added");
+        }
         public void AddMethod()
         {
-            SelectedClient = new Client();
+            //SelectedClient = new Client();
+            //LoadGrid();
+            AddClientView addClientView = new AddClientView();
+            addClientView.DataChanged += Window1_DataChanged;
+            addClientView.ShowDialog();
             LoadGrid();
         }
         public void DeleteMethod()
@@ -297,11 +309,12 @@ namespace BITServices.ViewModel
 
         // ------------------------ HELPERS -------------------------
         // ----------------------------------------------------------
-        private void LoadGrid()
+        public void LoadGrid()
         {
             Clients allClients = new Clients();
             this.Clients = new ObservableCollection<Client>(allClients);
         }
+
         // ----------------------------------------------------------
 
     }
