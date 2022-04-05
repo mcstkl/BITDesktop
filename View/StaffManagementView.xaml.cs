@@ -68,20 +68,20 @@ namespace BITServices.View
         }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            dgStaffs.IsEnabled = false;
-            btnSave.IsEnabled = true;
-            btnCancel.IsEnabled = true;
-            tbFirstName.IsEnabled = true;
-            tbLastName.IsEnabled = true;
-            tbStreet.IsEnabled = true;
-            tbSuburb.IsEnabled = true;
-            tbPostCode.IsEnabled = true;
-            tbState.IsEnabled = true;
-            tbPhone.IsEnabled = true;
-            tbEmail.IsEnabled = true;
-            tbUsername.IsEnabled = true;
-            tbPassword.IsEnabled = true;
-            tbStaffType.IsEnabled = true;
+            //dgStaffs.IsEnabled = false;
+            //btnSave.IsEnabled = true;
+            //btnCancel.IsEnabled = true;
+            //tbFirstName.IsEnabled = true;
+            //tbLastName.IsEnabled = true;
+            //tbStreet.IsEnabled = true;
+            //tbSuburb.IsEnabled = true;
+            //tbPostCode.IsEnabled = true;
+            //tbState.IsEnabled = true;
+            //tbPhone.IsEnabled = true;
+            //tbEmail.IsEnabled = true;
+            //tbUsername.IsEnabled = true;
+            //tbPassword.IsEnabled = true;
+            //tbStaffType.IsEnabled = true;
         }
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
@@ -102,7 +102,6 @@ namespace BITServices.View
         }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Staff deleted", "Deleted Record", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
         private void btnSaveUpdate_Click(object sender, RoutedEventArgs e)

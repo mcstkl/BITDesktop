@@ -85,6 +85,7 @@
     <Compile Include="RelayCommand.cs" />
     <Compile Include="ViewModel\AddClientViewModel.cs" />
     <Compile Include="ViewModel\AddContractorViewModel.cs" />
+    <Compile Include="ViewModel\AddStaffViewModel.cs" />
     <Compile Include="ViewModel\AvailabilityManagementViewModel.cs" />
     <Compile Include="ViewModel\ContractorManagementViewModel.cs" />
     <Compile Include="ViewModel\StaffManagementViewModel.cs" />
@@ -94,6 +95,9 @@
     </Compile>
     <Compile Include="View\AddContractorView.xaml.cs">
       <DependentUpon>AddContractorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddStaffView.xaml.cs">
+      <DependentUpon>AddStaffView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AvailabilityManagementView.xaml.cs">
       <DependentUpon>AvailabilityManagementView.xaml</DependentUpon>
@@ -127,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddContractorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddStaffView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

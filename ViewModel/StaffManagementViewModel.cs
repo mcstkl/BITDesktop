@@ -1,4 +1,5 @@
 ﻿using BITServices.Model;
+using BITServices.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -241,10 +242,20 @@ namespace BITServices.ViewModel
         {
             SelectedStaff.UpdateStaff();
         }
+
+        private void Window1_DataChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("Client Added", "Client Added");
+        }
         public void AddMethod()
         {
-            SelectedStaff = new Staff();
-            this.Staffs.Add(SelectedStaff);
+            //SelectedStaff = new Staff();
+            //this.Staffs.Add(SelectedStaff);
+
+            AddStaffView addStaffView = new AddStaffView();
+            addStaffView.DataChanged += Window1_DataChanged;
+            addStaffView.ShowDialog();
+            LoadGrid();
         }
         public void DeleteMethod()
         {
