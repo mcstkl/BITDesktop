@@ -1,4 +1,5 @@
 ﻿using BITServices.Model;
+using BITServices.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -242,10 +243,19 @@ namespace BITServices.ViewModel
         {
             SelectedContractor.UpdateContractor();
         }
+
+        private void Window1_DataChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("Client Added", "Client Added");
+        }
         public void AddMethod()
         {
-            SelectedContractor = new Contractor();
-            this.Contractors.Add(SelectedContractor);
+            //SelectedContractor = new Contractor();
+            //this.Contractors.Add(SelectedContractor);
+            AddContractorView addContractorView = new AddContractorView();
+            addContractorView.DataChanged += Window1_DataChanged;
+            addContractorView.ShowDialog();
+            LoadGrid();
         }
         public void DeleteMethod()
         {

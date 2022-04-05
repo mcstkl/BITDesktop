@@ -44,3 +44,5 @@ C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\bin\
 C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\BITServices_Content.g.cs
 C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\AddClientView.g.cs
 C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\AddClientView.baml
+C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\AddContractorView.g.cs
+C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\AddContractorView.baml

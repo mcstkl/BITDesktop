@@ -21,7 +21,7 @@ namespace BITServices.Model
         private string _phone;
         private string _email;
         private string _userName;
-        private string _password;
+        private string _password = "pw";
         private Decimal _contractorRating;
         private Decimal _payRate;
         private bool _active;

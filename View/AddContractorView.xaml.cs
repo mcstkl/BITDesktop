@@ -16,18 +16,18 @@ using System.Windows.Shapes;
 namespace BITServices.View
 {
     /// <summary>
-    /// Interaction logic for AddClientView.xaml
+    /// Interaction logic for AddContractorView.xaml
     /// </summary>
-    public partial class AddClientView : Window
+    public partial class AddContractorView : Window
     {
 
         public delegate void DataChangedEventHandler(object sender, EventArgs e);
         public event DataChangedEventHandler DataChanged;
 
-        public AddClientView()
+        public AddContractorView()
         {
             InitializeComponent();
-            DataContext = new AddClientViewModel();
+            DataContext = new AddContractorViewModel();
 
         }
 

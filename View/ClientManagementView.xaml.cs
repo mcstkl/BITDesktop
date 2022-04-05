@@ -67,8 +67,6 @@ namespace BITServices.View
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
-
             //dgClients.IsEnabled = false;
             //btnSave.IsEnabled = true;
             //btnCancel.IsEnabled = true;
