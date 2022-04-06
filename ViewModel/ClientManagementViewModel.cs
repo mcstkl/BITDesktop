@@ -242,6 +242,11 @@ namespace BITServices.ViewModel
             Clients allClients = new Clients();
             Clients searchedClients = new Clients();
             searchedClients.Clear();
+            if (string.IsNullOrEmpty(SearchValue.ToString()))
+            {
+                LoadGrid();
+                return;
+            }
             foreach (Client client in allClients)
             {
                 switch (selectedSearch)
@@ -268,17 +273,15 @@ namespace BITServices.ViewModel
                         return;
                 }
             }
-            if(SearchValue.ToString() == "")
-            {
-                LoadGrid();
-            }
-            else if (searchedClients.Count == 0)
+  
+            if (searchedClients.Count == 0)
             {
                 this.Clients.Clear();
                 MessageBox.Show("No results found.");
+                return;
             }
 
-            else if(searchedClients.Count > 0)
+            else if (searchedClients.Count > 0)
             {
                 this.Clients = new ObservableCollection<Client>(searchedClients);
             }

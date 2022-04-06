@@ -284,6 +284,11 @@ namespace BITServices.ViewModel
             Contractors allContractors = new Contractors();
             Contractors searchedContractors = new Contractors();
             searchedContractors.Clear();
+            if (string.IsNullOrEmpty(SearchValue))
+            {
+                LoadGrid();
+                return;
+            }
             foreach (Contractor contractor in allContractors)
             {
                 switch (selectedSearch)
@@ -301,13 +306,15 @@ namespace BITServices.ViewModel
                         }
                         break;
                     case "Payrate":
-                        if (contractor.PayRate <= Convert.ToDecimal(SearchValue.ToString()))
+                        bool isPayrateNumber = Decimal.TryParse(SearchValue.ToString(), out Decimal payrate);
+                        if (isPayrateNumber && contractor.PayRate <= payrate)
                         {
                             searchedContractors.Add(contractor);
                         }
                         break;
                     case "Rating":
-                        if (contractor.ContractorRating >= Convert.ToDecimal(SearchValue.ToString()))
+                        bool isRatingNumber = Decimal.TryParse(SearchValue.ToString(), out Decimal rating);
+                        if (isRatingNumber && contractor.ContractorRating >= rating)
                         {
                             searchedContractors.Add(contractor);
                         }
@@ -328,11 +335,8 @@ namespace BITServices.ViewModel
                         return;
                 }
             }
-            if (string.IsNullOrEmpty(SearchValue))
-            {
-                LoadGrid();
-            }
-            else if (searchedContractors.Count == 0)
+    
+            if (searchedContractors.Count == 0)
             {
                 this.Contractors.Clear();
                 MessageBox.Show("No results found.");
