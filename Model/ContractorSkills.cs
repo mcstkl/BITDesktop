@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace BITServices.Model
 {
-    public class Skills : List<Skill>
+    public class ContractorSkills : List<Skill>
     {
         private SQLHelper _db;
-        public Skills()
+        public ContractorSkills()
         {
             _db = new SQLHelper();
             string sql = "SELECT * " +
@@ -27,15 +27,15 @@ namespace BITServices.Model
 
 
 
-        public Skills(string skillName)
+        public ContractorSkills(int contractorID)
         {
             _db = new SQLHelper();
-            string sql = "SELECT SkillName " +
+            string sql = "SELECT * " +
                             " FROM ContractorSkill " +
                             " WHERE contractorID = @ContractorID";
             SqlParameter[] parameters = new SqlParameter[1];
             parameters[0] = new SqlParameter("ContractorID", DbType.Int32);
-            parameters[0].Value = skillName;
+            parameters[0].Value = contractorID;
             DataTable dtSkills = _db.ExecuteSQL(sql, parameters);
 
             foreach (DataRow dataRow in dtSkills.Rows)
@@ -43,15 +43,6 @@ namespace BITServices.Model
                 Skill newSkill = new Skill(dataRow);
                 this.Add(newSkill);
             }
-        }
-
-
-        public int GetNumberOfSkills()
-        {
-            string sql = "select count(*) from ContractorSkill";
-            int rows = (int)_db.ExecuteSQLScalar(sql, null);
-            return rows;
-
         }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -103,6 +104,7 @@ namespace BITServices.ViewModel
         private RelayCommand _searchCommand;
         private RelayCommand _saveCommand;
         private RelayCommand _cancelCommand;
+        private RelayCommand _skillsCommand;
 
         public Contractor SelectedContractor
         {
@@ -229,6 +231,19 @@ namespace BITServices.ViewModel
             set
             { _cancelCommand = value; }
         }
+        public RelayCommand SkillsCommand
+        {
+            get
+            {
+                if (_skillsCommand == null)
+                {
+                    _skillsCommand = new RelayCommand(this.SkillsMethod, true);
+                }
+                return _skillsCommand;
+            }
+            set
+            { _skillsCommand = value; }
+        }
 
 
 
@@ -344,6 +359,20 @@ namespace BITServices.ViewModel
         {
             Contractors allContractors = new Contractors();
             this.Contractors = new ObservableCollection<Contractor>(allContractors);
+        }
+        public void SkillsMethod()
+        {
+            if(SelectedContractor != null)
+            {
+                ContractorSkillsView skillsView = new ContractorSkillsView(SelectedContractor);
+                //skillsView.DataChanged += Window1_DataChanged;
+                skillsView.ShowDialog();
+                LoadGrid();
+            }
+            else
+            {
+                MessageBox.Show("Please select a contractor to view skills");
+            }
         }
 
 

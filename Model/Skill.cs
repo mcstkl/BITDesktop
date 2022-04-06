@@ -1,6 +1,7 @@
 ﻿using BITServices.DAL;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -9,21 +10,33 @@ using System.Threading.Tasks;
 
 namespace BITServices.Model
 {
-    public class Skill
+    public class Skill : INotifyPropertyChanged
     {
         private int _contractorID;
         private string _skillName;
         private SQLHelper _db;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string prop)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
         public int ContractorID
         {
             get { return _contractorID; }
-            set { _contractorID = value; }
+            set { _contractorID = value;
+                OnPropertyChanged("ContractorID");
+            }
         }
         public string SkillName
         {
             get { return _skillName; }
-            set { _skillName = value; }
+            set { _skillName = value;
+                OnPropertyChanged("SkillName");
+            }
         }
 
 
@@ -43,7 +56,7 @@ namespace BITServices.Model
         public int InsertSkill()
         {
             int result = -1;
-            string sql = "insert into ContractorSkills(contractorID, skillName) " +
+            string sql = "insert into ContractorSkill(contractorID, skillName) " +
                 " values(@ContractorID, @SkillName)";
             SqlParameter[] objParams;
             objParams = new SqlParameter[2];
@@ -57,7 +70,7 @@ namespace BITServices.Model
         public int UpdateSkill()
         {
             int result = -1;
-            string sql = "UPDATE ContractorSkills set " +
+            string sql = "UPDATE ContractorSkill set " +
                 "skillName = @SkillName, " +
                 " WHERE contractorID = @ContractorID";
             SqlParameter[] objParams;
@@ -72,7 +85,7 @@ namespace BITServices.Model
         public int DeleteSkill()
         {
             int result = -1;
-            string sql = "DELETE FROM ContractorSkills WHERE skillName = @SkillName AND contractorID = @ContractorID";
+            string sql = "DELETE FROM ContractorSkill WHERE skillName = @SkillName AND contractorID = @ContractorID";
             SqlParameter[] objParams;
             objParams = new SqlParameter[2];
             objParams[0] = new SqlParameter("@ContractorID", DbType.Int32);

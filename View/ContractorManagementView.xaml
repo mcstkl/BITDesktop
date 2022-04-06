@@ -230,7 +230,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Margin="175 0 0 0"  Command="{Binding CancelCommand}" 
+                    <Button Margin="175 0 0 0"  Command="{Binding SkillsCommand}" 
                             Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -243,7 +243,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Margin="10 0 0 0"  Command="{Binding CancelCommand}" 
+                    <Button Margin="10 0 0 0"   Command="{Binding HistoryCommand}" 
                             Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -256,7 +256,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button  Margin="10 0 0 0"  Command="{Binding CancelCommand}" 
+                    <Button  Margin="10 0 0 0"  Command="{Binding RatingCommand}" 
                             Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
                         <Button.Resources>
                             <Style TargetType="Border">
