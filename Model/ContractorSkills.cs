@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BITServices.Model
 {
-    public class ContractorSkills : List<Skill>
+    public class ContractorSkills : List<ContractorSkill>
     {
         private SQLHelper _db;
         public ContractorSkills()
@@ -20,7 +20,7 @@ namespace BITServices.Model
             DataTable dtSkills = _db.ExecuteSQL(sql);
             foreach (DataRow dataRow in dtSkills.Rows)
             {
-                Skill newSkill = new Skill(dataRow);
+                ContractorSkill newSkill = new ContractorSkill(dataRow);
                 this.Add(newSkill);
             }
         }
@@ -40,7 +40,7 @@ namespace BITServices.Model
 
             foreach (DataRow dataRow in dtSkills.Rows)
             {
-                Skill newSkill = new Skill(dataRow);
+                ContractorSkill newSkill = new ContractorSkill(dataRow);
                 this.Add(newSkill);
             }
         }

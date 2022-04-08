@@ -24,5 +24,11 @@ namespace BITServices.View
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsEditSkillsView editSkillsView = new SettingsEditSkillsView();
+            editSkillsView.ShowDialog();
+        }
     }
 }

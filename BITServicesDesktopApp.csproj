@@ -76,6 +76,7 @@
     <Compile Include="Model\Availability.cs" />
     <Compile Include="Model\Contractor.cs" />
     <Compile Include="Model\Contractors.cs" />
+    <Compile Include="Model\ContractorSkill.cs" />
     <Compile Include="Model\ContractorSkills.cs" />
     <Compile Include="Model\Staff.cs" />
     <Compile Include="Model\Staffs.cs" />
@@ -90,6 +91,8 @@
     <Compile Include="ViewModel\AvailabilityManagementViewModel.cs" />
     <Compile Include="ViewModel\ContractorManagementViewModel.cs" />
     <Compile Include="ViewModel\ContractorSkillsViewModel.cs" />
+    <Compile Include="ViewModel\SettingsEditSkillsViewModel.cs" />
+    <Compile Include="ViewModel\SettingsManagementViewModel.cs" />
     <Compile Include="ViewModel\StaffManagementViewModel.cs" />
     <Compile Include="ViewModel\ClientManagementViewModel.cs" />
     <Compile Include="View\AddClientView.xaml.cs">
@@ -109,6 +112,9 @@
     </Compile>
     <Compile Include="View\ContractorSkillsView.xaml.cs">
       <DependentUpon>ContractorSkillsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingsEditSkillsView.xaml.cs">
+      <DependentUpon>SettingsEditSkillsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\StaffManagementView.xaml.cs">
       <DependentUpon>StaffManagementView.xaml</DependentUpon>
@@ -152,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ContractorSkillsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingsEditSkillsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

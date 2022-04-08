@@ -4,11 +4,44 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BITServices.View"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="770" d:DesignWidth="1040"
       Title="SettingsManagementView">
 
     <Grid>
-        <Label>SETTINGS</Label>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0 10 0 0" Orientation="Horizontal">
+            
+            <fa:ImageAwesome Margin="10 8 0 0" VerticalAlignment="Top" Foreground="#666" Icon="ChevronCircleRight" Height="20" />
+            <Label Foreground="#666" FontSize="20" FontWeight="Bold">Settings</Label>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+
+            <Label  Margin="50 0 200 0" VerticalAlignment="Center" FontSize="20" Foreground="#666">Manage Contractor Skills</Label>
+            <Button  Width="110"  Height="30" Background="#3D59AB" Click="Button_Click" >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="PencilSquareOutline" Foreground="white" Margin="0 0 5 0" Width="30" Height="18"/>
+                    <TextBlock Margin="0 0 10 0" FontSize="20" Text="Edit" Foreground="white" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
     </Grid>
 </Page>

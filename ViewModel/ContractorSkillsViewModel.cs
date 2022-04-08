@@ -12,9 +12,9 @@ namespace BITServices.ViewModel
 {
     public class ContractorSkillsViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<Skill> _skills;
+        private ObservableCollection<ContractorSkill> _skills;
         private Contractor _selectedContractor;
-        private ObservableCollection<Skill> _contractorSkills;
+        private ObservableCollection<ContractorSkill> _contractorSkills;
 
         public Contractor SelectedContractor
         {
@@ -23,7 +23,7 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("SelectedContractor");
             }
         }
-        public ObservableCollection<Skill> Skills
+        public ObservableCollection<ContractorSkill> Skills
         {
             get { return _skills; }
             set
@@ -32,7 +32,7 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("Skills");
             }
         }
-        public ObservableCollection<Skill> ContractorSkills
+        public ObservableCollection<ContractorSkill> ContractorSkills
         {
             get { return _contractorSkills; }
             set
@@ -45,17 +45,17 @@ namespace BITServices.ViewModel
 
         public ContractorSkillsViewModel()
         {
-            Skills skills = new Skills();
-            this.Skills = new ObservableCollection<Skill>(skills);
+            ContractorSkills skills = new ContractorSkills();
+            this.Skills = new ObservableCollection<ContractorSkill>(skills);
             OnPropertyChanged("Skills");
         }
         public ContractorSkillsViewModel(Contractor currentContractor)
         {
             SelectedContractor = currentContractor;
-            Skills skills = new Skills();
-            this.Skills = new ObservableCollection<Skill>(skills);
+            ContractorSkills skills = new ContractorSkills();
+            this.Skills = new ObservableCollection<ContractorSkill>(skills);
             ContractorSkills contractorSkills = new ContractorSkills(SelectedContractor.ContractorID);
-            this.ContractorSkills = new ObservableCollection<Skill>(contractorSkills);
+            this.ContractorSkills = new ObservableCollection<ContractorSkill>(contractorSkills);
             OnPropertyChanged("Skills");
         }
 

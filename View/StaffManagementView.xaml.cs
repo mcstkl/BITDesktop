@@ -31,7 +31,7 @@ namespace BITServices.View
         {
             dgStaffs.IsEnabled = true;
             btnSaveUpdate.IsEnabled = false;
-            btnSave.IsEnabled = false;
+            //btnSave.IsEnabled = false;
             btnCancel.IsEnabled = false;
             dgStaffs.SelectedIndex = 0;
             tbFirstName.IsEnabled = false;
@@ -45,12 +45,12 @@ namespace BITServices.View
             tbUsername.IsEnabled = false;
             tbPassword.IsEnabled = false;
             tbStaffType.IsEnabled = false;
-            MessageBox.Show("Changes were not saved", "Changes discarded", MessageBoxButton.OK, MessageBoxImage.Error);
+            //MessageBox.Show("Changes were not saved", "Changes discarded", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             dgStaffs.IsEnabled = true;
-            btnSave.IsEnabled = false;
+            btnSaveUpdate.IsEnabled = false;
             btnCancel.IsEnabled = false;
             tbFirstName.IsEnabled = false;
             tbLastName.IsEnabled = false;
@@ -63,7 +63,7 @@ namespace BITServices.View
             tbUsername.IsEnabled = false;
             tbPassword.IsEnabled = false;
             tbStaffType.IsEnabled = false;
-            MessageBox.Show("Staff details saved", "Changes Saved", MessageBoxButton.OK, MessageBoxImage.Information);
+            //MessageBox.Show("Staff details saved", "Changes Saved", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -120,7 +120,7 @@ namespace BITServices.View
             tbUsername.IsEnabled = false;
             tbPassword.IsEnabled = false;
             tbStaffType.IsEnabled = false;
-            MessageBox.Show("Staff updated", "Record Updated", MessageBoxButton.OK, MessageBoxImage.Information);
+            //MessageBox.Show("Staff updated", "Record Updated", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

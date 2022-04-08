@@ -47,7 +47,7 @@ namespace BITServices.Model
 
         public Skill(DataRow dr)
         {
-            this.ContractorID = Convert.ToInt32(dr["ContractorID"].ToString());
+            //this.ContractorID = Convert.ToInt32(dr["ContractorID"].ToString());
             this.SkillName = dr["SkillName"].ToString();
 
             _db = new SQLHelper();
@@ -56,42 +56,38 @@ namespace BITServices.Model
         public int InsertSkill()
         {
             int result = -1;
-            string sql = "insert into ContractorSkill(contractorID, skillName) " +
-                " values(@ContractorID, @SkillName)";
+            string sql = "insert into Skill(skillName) " +
+                " values(@SkillName)";
             SqlParameter[] objParams;
-            objParams = new SqlParameter[2];
-            objParams[0] = new SqlParameter("@ContractorID", DbType.String);
-            objParams[0].Value = this.ContractorID;
-            objParams[1] = new SqlParameter("@SkillName", DbType.String);
-            objParams[1].Value = this.SkillName;
+            objParams = new SqlParameter[1];
+            objParams[0] = new SqlParameter("@SkillName", DbType.String);
+            objParams[0].Value = this.SkillName;
             result = _db.ExecuteNonQuery(sql, objParams);
             return result;
         }
-        public int UpdateSkill()
-        {
-            int result = -1;
-            string sql = "UPDATE ContractorSkill set " +
-                "skillName = @SkillName, " +
-                " WHERE contractorID = @ContractorID";
-            SqlParameter[] objParams;
-            objParams = new SqlParameter[2];
-            objParams[0] = new SqlParameter("@ContractorID", DbType.String);
-            objParams[0].Value = this.ContractorID;
-            objParams[1] = new SqlParameter("@SkillName", DbType.String);
-            objParams[1].Value = this.SkillName;
-            result = _db.ExecuteNonQuery(sql, objParams);
-            return result;
-        }
+        //public int UpdateSkill()
+        //{
+        //    int result = -1;
+        //    string sql = "UPDATE Skill set " +
+        //        "skillName = @SkillName, " +
+        //        " WHERE contractorID = @ContractorID";
+        //    SqlParameter[] objParams;
+        //    objParams = new SqlParameter[2];
+        //    objParams[0] = new SqlParameter("@ContractorID", DbType.String);
+        //    objParams[0].Value = this.ContractorID;
+        //    objParams[1] = new SqlParameter("@SkillName", DbType.String);
+        //    objParams[1].Value = this.SkillName;
+        //    result = _db.ExecuteNonQuery(sql, objParams);
+        //    return result;
+        //}
         public int DeleteSkill()
         {
             int result = -1;
-            string sql = "DELETE FROM ContractorSkill WHERE skillName = @SkillName AND contractorID = @ContractorID";
+            string sql = "DELETE FROM Skill WHERE skillName = @SkillName";
             SqlParameter[] objParams;
-            objParams = new SqlParameter[2];
-            objParams[0] = new SqlParameter("@ContractorID", DbType.Int32);
-            objParams[0].Value = this.ContractorID; 
-            objParams[1] = new SqlParameter("@SkillName", DbType.Int32);
-            objParams[1].Value = this.SkillName;
+            objParams = new SqlParameter[1];
+            objParams[0] = new SqlParameter("@SkillName", DbType.String);
+            objParams[0].Value = this.SkillName;
             result = _db.ExecuteNonQuery(sql, objParams);
             return result;
         }

@@ -50,3 +50,5 @@ C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\
 C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\AddStaffView.baml
 C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\ContractorSkillsView.g.cs
 C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\ContractorSkillsView.baml
+C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\SettingsEditSkillsView.g.cs
+C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\SettingsEditSkillsView.baml

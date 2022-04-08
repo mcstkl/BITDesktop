@@ -16,7 +16,7 @@ namespace BITServices.Model
         {
             _db = new SQLHelper();
             string sql = "SELECT * " +
-                         " FROM ContractorSkill";
+                         " FROM Skill";
             DataTable dtSkills = _db.ExecuteSQL(sql);
             foreach (DataRow dataRow in dtSkills.Rows)
             {
