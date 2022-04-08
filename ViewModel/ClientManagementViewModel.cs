@@ -30,7 +30,7 @@ namespace BITServices.ViewModel
         private RelayCommand _addCommand;
         private RelayCommand _deleteCommand;
         private RelayCommand _searchCommand;
-        private RelayCommand _saveCommand;
+        //private RelayCommand _saveCommand;
         private RelayCommand _cancelCommand;
         // ------------------------------------------------------
 
@@ -166,21 +166,21 @@ namespace BITServices.ViewModel
             set
             { _searchCommand = value; }
         }
-        public RelayCommand SaveCommand
-        {
-            get
-            {
-                if (_saveCommand == null)
-                {
-                    //Remember RelayCommand is taking first parameter as Action
-                    //Action is nothing but a Method. Only use the Method name
-                    _saveCommand = new RelayCommand(this.SaveMethod, true);
-                }
-                return _saveCommand;
-            }
-            set
-            { _saveCommand = value; }
-        }
+        //public RelayCommand SaveCommand
+        //{
+        //    get
+        //    {
+        //        if (_saveCommand == null)
+        //        {
+        //            //Remember RelayCommand is taking first parameter as Action
+        //            //Action is nothing but a Method. Only use the Method name
+        //            _saveCommand = new RelayCommand(this.SaveMethod, true);
+        //        }
+        //        return _saveCommand;
+        //    }
+        //    set
+        //    { _saveCommand = value; }
+        //}
         public RelayCommand CancelCommand
         {
             get
@@ -286,20 +286,21 @@ namespace BITServices.ViewModel
                 this.Clients = new ObservableCollection<Client>(searchedClients);
             }
         }
-        public void SaveMethod()
-        {
+        //public void SaveMethod()
+        //{
 
-            try
-            {
-                SelectedClient.InsertClient();
+        //    try
+        //    {
+        //        SelectedClient.InsertClient();
             
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Couldn't save Client. Please fill in complete client details.", "Unable to Save Client", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            LoadGrid();
-        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        MessageBox.Show("Couldn't save Client. Please fill in complete client details.", "Unable to Save Client", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //    LoadGrid();
+        //}
+
         public void CancelMethod()
         {
             LoadGrid();

@@ -81,8 +81,8 @@ namespace BITServices.View
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             dgContractors.IsEnabled = true;
+            //btnSave.IsEnabled = false;
             btnSaveUpdate.IsEnabled = false;
-            btnSave.IsEnabled = false;
             btnCancel.IsEnabled = false;
             dgContractors.SelectedIndex = 0;
             tbFirstName.IsEnabled = false;
@@ -106,7 +106,7 @@ namespace BITServices.View
                 return;
             }
             dgContractors.IsEnabled = true;
-            btnSave.IsEnabled = false;
+            btnSaveUpdate.IsEnabled = false;
             btnCancel.IsEnabled = false;
             tbFirstName.IsEnabled = false;
             tbLastName.IsEnabled = false;

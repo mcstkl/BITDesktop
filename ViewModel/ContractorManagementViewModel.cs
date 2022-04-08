@@ -102,7 +102,7 @@ namespace BITServices.ViewModel
         private RelayCommand _addCommand;
         private RelayCommand _deleteCommand;
         private RelayCommand _searchCommand;
-        private RelayCommand _saveCommand;
+        //private RelayCommand _saveCommand;
         private RelayCommand _cancelCommand;
         private RelayCommand _skillsCommand;
 
@@ -205,19 +205,19 @@ namespace BITServices.ViewModel
             set
             { _searchCommand = value; }
         }
-        public RelayCommand SaveCommand
-        {
-            get
-            {
-                if (_saveCommand == null)
-                {
-                    _saveCommand = new RelayCommand(this.SaveMethod, true);
-                }
-                return _saveCommand;
-            }
-            set
-            { _saveCommand = value; }
-        }
+        //public RelayCommand SaveCommand
+        //{
+        //    get
+        //    {
+        //        if (_saveCommand == null)
+        //        {
+        //            _saveCommand = new RelayCommand(this.SaveMethod, true);
+        //        }
+        //        return _saveCommand;
+        //    }
+        //    set
+        //    { _saveCommand = value; }
+        //}
         public RelayCommand CancelCommand
         {
             get
@@ -254,10 +254,8 @@ namespace BITServices.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
-        public void UpdateMethod()
-        {
-            SelectedContractor.UpdateContractor();
-        }
+
+
 
         private void Window1_DataChanged(object sender, EventArgs e)
         {
@@ -347,22 +345,26 @@ namespace BITServices.ViewModel
                 this.Contractors = new ObservableCollection<Contractor>(searchedContractors);
             }
         }
-        public void SaveMethod()
-        {
-            try
-            {
-                SelectedContractor.InsertContractor();
+        //public void SaveMethod()
+        //{
+        //    try
+        //    {
+        //        SelectedContractor.InsertContractor();
 
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Couldn't save Contractor. Please fill in complete Contractor details.", "Unable to Save Contractor", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        MessageBox.Show("Couldn't save Contractor. Please fill in complete Contractor details.", "Unable to Save Contractor", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //}
         public void CancelMethod()
         {
             Contractors allContractors = new Contractors();
             this.Contractors = new ObservableCollection<Contractor>(allContractors);
+        }
+        public void UpdateMethod()
+        {
+            SelectedContractor.UpdateContractor();
         }
         public void SkillsMethod()
         {

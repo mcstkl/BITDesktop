@@ -33,7 +33,7 @@ namespace BITServices.View
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             dgClients.IsEnabled = true;
-            btnSaveUpdate.IsEnabled = false;
+            //btnSaveUpdate.IsEnabled = false;
             btnSave.IsEnabled = false;
             btnCancel.IsEnabled = false;
             dgClients.SelectedIndex = 0;
@@ -83,7 +83,7 @@ namespace BITServices.View
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             dgClients.IsEnabled = false;
-            btnSaveUpdate.IsEnabled = true;
+            btnSave.IsEnabled = true;
             btnCancel.IsEnabled = true;
             tbName.IsEnabled = true;
             tbStreet.IsEnabled = true;
@@ -100,20 +100,20 @@ namespace BITServices.View
            
 
         }
-        private void btnSaveUpdate_Click(object sender, RoutedEventArgs e)
-        {
-            dgClients.IsEnabled = true;
-            btnSaveUpdate.IsEnabled = false;
-            btnCancel.IsEnabled = false;
-            tbName.IsEnabled = false;
-            tbStreet.IsEnabled = false;
-            tbSuburb.IsEnabled = false;
-            tbPostCode.IsEnabled = false;
-            cboState.IsEnabled = false;
-            tbPhone.IsEnabled = false;
-            tbEmail.IsEnabled = false;
-            tbUser.IsEnabled = false;
-            tbPassword.IsEnabled = false;
-        }
+        //private void btnSaveUpdate_Click(object sender, RoutedEventArgs e)
+        //{
+        //    dgClients.IsEnabled = true;
+        //    btnSaveUpdate.IsEnabled = false;
+        //    btnCancel.IsEnabled = false;
+        //    tbName.IsEnabled = false;
+        //    tbStreet.IsEnabled = false;
+        //    tbSuburb.IsEnabled = false;
+        //    tbPostCode.IsEnabled = false;
+        //    cboState.IsEnabled = false;
+        //    tbPhone.IsEnabled = false;
+        //    tbEmail.IsEnabled = false;
+        //    tbUser.IsEnabled = false;
+        //    tbPassword.IsEnabled = false;
+        //}
     }
 }
