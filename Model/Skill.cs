@@ -12,7 +12,7 @@ namespace BITServices.Model
 {
     public class Skill : INotifyPropertyChanged
     {
-        private int _contractorID;
+        //private int _contractorID;
         private string _skillName;
         private SQLHelper _db;
 
@@ -24,13 +24,13 @@ namespace BITServices.Model
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
-        public int ContractorID
-        {
-            get { return _contractorID; }
-            set { _contractorID = value;
-                OnPropertyChanged("ContractorID");
-            }
-        }
+        //public int ContractorID
+        //{
+        //    get { return _contractorID; }
+        //    set { _contractorID = value;
+        //        OnPropertyChanged("ContractorID");
+        //    }
+        //}
         public string SkillName
         {
             get { return _skillName; }

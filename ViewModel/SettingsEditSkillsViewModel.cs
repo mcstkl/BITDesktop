@@ -14,6 +14,8 @@ namespace BITServices.ViewModel
     {
         private ObservableCollection<Skill> _skills;
         private Skill _selectedSkill;
+        private Skill _newSkill = new Skill();
+
 
 
         private RelayCommand _saveCommand;
@@ -35,6 +37,15 @@ namespace BITServices.ViewModel
             {
                 _selectedSkill = value;
                 OnPropertyChanged("SelectedSkill");
+            }
+        }
+        public Skill NewSkill
+        {
+            get { return _newSkill; }
+            set
+            {
+                _newSkill = value;
+                OnPropertyChanged("NewSkill");
             }
         }
 
@@ -92,18 +103,28 @@ namespace BITServices.ViewModel
         {
             try
             {
-                SelectedSkill.InsertSkill();
+                
+                NewSkill.InsertSkill();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Could not save. Skill already exists.", "Unable to Save Skill", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            LoadGrid();
+
+        }
+        public void RemoveMethod()
+        {
+            
+            try
+            {
+                SelectedSkill?.DeleteSkill();
 
             }
             catch (Exception)
             {
                 MessageBox.Show("Couldn't save Skill. Please fill in complete Skill details.", "Unable to Save Skill", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-        }
-        public void RemoveMethod()
-        {
-            SelectedSkill?.DeleteSkill();
             LoadGrid();
         }
 

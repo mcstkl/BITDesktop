@@ -30,5 +30,6 @@ namespace BITServices.View
             SettingsEditSkillsView editSkillsView = new SettingsEditSkillsView();
             editSkillsView.ShowDialog();
         }
+
     }
 }
