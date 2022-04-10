@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -103,6 +104,7 @@ namespace BITServices.ViewModel
         private RelayCommand _searchCommand;
         private RelayCommand _saveCommand;
         private RelayCommand _cancelCommand;
+        private RelayCommand _loginsCommand;
 
         public Staff SelectedStaff
         {
@@ -228,6 +230,19 @@ namespace BITServices.ViewModel
             set
             { _cancelCommand = value; }
         }
+        public RelayCommand LoginsCommand
+        {
+            get
+            {
+                if (_loginsCommand == null)
+                {
+                    _loginsCommand = new RelayCommand(this.LoginsMethod, true);
+                }
+                return _loginsCommand;
+            }
+            set
+            { _loginsCommand = value; }
+        }
 
 
 
@@ -338,6 +353,27 @@ namespace BITServices.ViewModel
         {
             Staffs allStaffs = new Staffs();
             this.Staffs = new ObservableCollection<Staff>(allStaffs);
+        }
+        public void LoginsMethod()
+        {
+            var fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "log.txt");
+            List<string> allLinesText = File.ReadAllLines(fileName).ToList();
+            string userLogins = string.Empty;
+            foreach(string line in allLinesText)
+            {
+                if (line.Contains(SelectedStaff.UserName))
+                {
+                    userLogins += line + "\n";
+                }
+            }
+            if (string.IsNullOrEmpty(userLogins))
+            {
+                MessageBox.Show("No Logins for this user", "No Logins");
+            }
+            else
+            {
+                MessageBox.Show(userLogins, "Logins for " + SelectedStaff.FirstName + " " + SelectedStaff.LastName);
+            }
         }
 
 

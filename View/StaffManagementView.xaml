@@ -225,7 +225,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Margin="300 0 0 0"  Command="{Binding CancelCommand}" 
+                    <Button Margin="300 0 0 0"  Command="{Binding LoginsCommand}" 
                             Width="160"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
                         <Button.Resources>
                             <Style TargetType="Border">
