@@ -130,16 +130,23 @@ namespace BITServices.ViewModel
 
         public void AddMethod()
         {
-            try
+            if(SelectedSkill != null)
             {
-                ContractorSkill selectedContractorSkill = new ContractorSkill();
-                selectedContractorSkill.ContractorID = SelectedContractor.ContractorID;
-                selectedContractorSkill.SkillName = SelectedSkill.SkillName;
-                selectedContractorSkill.InsertSkill();
-                LoadGrid();
-            }catch (Exception ex)
+                try
+                {
+                    ContractorSkill selectedContractorSkill = new ContractorSkill();
+                    selectedContractorSkill.ContractorID = SelectedContractor.ContractorID;
+                    selectedContractorSkill.SkillName = SelectedSkill.SkillName;
+                    selectedContractorSkill.InsertSkill();
+                    LoadGrid();
+                }catch (Exception ex)
+                {
+                    MessageBox.Show("Skill already exists for this contractor", "Cannot Add Skill");
+                }
+            }
+            else
             {
-                MessageBox.Show("Skill already exists for this contractor", "Cannot Add Skill");
+                MessageBox.Show("Please select a skill", "No skill selected");
             }
 
         }

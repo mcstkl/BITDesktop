@@ -4,11 +4,243 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BITServices.View"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="770" d:DesignWidth="1040"
       Title="JobManagementView">
 
-    <Grid>
-        <Label>JOBS</Label>
+
+    <Grid Margin="5 0 5 0">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Height="40" Margin="0 5 0 0">
+                <fa:ImageAwesome Foreground="#666" Icon="ChevronCircleRight" HorizontalAlignment="Right" 
+                                     Visibility="Visible" Height="20"  Margin="10 0 0 0"/>
+                <Label Foreground="#666" FontSize="20" FontWeight="Bold" Margin="10 0 0 0">Job Requests</Label>
+                <Label Height="35" FontSize="18" Margin="20 0 0 0">Search By:</Label>
+
+                <Border BorderThickness="1 1 0 0" CornerRadius="3.2" BorderBrush="Black" Background="Transparent" Height="28" Margin="6">
+                    <Border BorderThickness="0 0 1 1" CornerRadius="3.2" BorderBrush="#444" Padding="1">
+                        <ComboBox SelectedIndex="0" SelectedValue="{Binding SelectedItemInFilter, Mode=OneWayToSource}" SelectedValuePath="Content" Margin="-1 -1 -1 -1" FontSize="16" Height="29">
+                            <ComboBoxItem>-- Select --</ComboBoxItem>
+                            <ComboBoxItem>Date</ComboBoxItem>
+                            <ComboBoxItem>Contractor</ComboBoxItem>
+
+                        </ComboBox>
+                    </Border>
+                </Border>
+                <TextBox Text="{Binding SearchValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Margin="5 0 0 0" Width="220" Height="28"></TextBox>
+                <StackPanel Margin="0 0 0 0" Orientation="Horizontal" >
+                    <Button Command="{Binding SearchCommand}" x:Name="btnSearch" Margin="5 0 60 0" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="Refresh" Foreground="#3D59AB"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding AddCommand}"  x:Name="btnAdd" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="Plus" Foreground="#666" Margin="0 0 10 0" Width="20" Height="14"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Add" />
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding DeleteCommand}" x:Name="btnDelete" Margin="10 0 10 0" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="Minus" Foreground="#666" Margin="0 0 10 0" Width="20" Height="4"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Delete" />
+                        </StackPanel>
+                    </Button>
+                    <Button  x:Name="btnUpdate" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="ArrowUp" Foreground="#666" Margin="0 0 10 0" Width="20" Height="14"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Update" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+
+            <DataGrid x:Name="dgJobs" VerticalAlignment="top" IsReadOnly="true" Grid.Row="1" GridLinesVisibility="None" AutoGenerateColumns="false"
+                  ItemsSource="{Binding Jobs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedJob, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalScrollBarVisibility="Hidden" 
+                  AlternatingRowBackground="WhiteSmoke"
+                  Height="280" HeadersVisibility="Column" Margin="0 5 0 0" BorderThickness="0.2" Background="Transparent">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Date"/>
+                    <DataGridTextColumn Binding="{Binding StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Start Time"/>
+                    <DataGridTextColumn Binding="{Binding CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Company"/>
+                    <DataGridTextColumn Binding="{Binding Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Street"/>
+                    <DataGridTextColumn Binding="{Binding Suburb, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Suburb"/>
+                    <DataGridTextColumn Binding="{Binding PostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="PostCode"/>
+                    <DataGridTextColumn Binding="{Binding State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="State"/>
+                    <DataGridTextColumn Binding="{Binding EstimatedHours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Est. Hours"/>
+                    <DataGridTextColumn Binding="{Binding SkillName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Req. Skill"/>
+                    <DataGridTextColumn Binding="{Binding JobStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Job Status"/>
+                    <!--<DataGridTextColumn Binding="{Binding ContractorRating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Rating"/>
+                    <DataGridTextColumn Binding="{Binding PayRate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Pay Rate"/>-->
+
+                </DataGrid.Columns>
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                        <Setter Property="Background" Value="#be6716" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="BorderThickness" Value="0 0 0 0"/>
+                        <Setter Property="Margin" Value="1, 1, 0 , 0" />
+                        <Setter Property="Height" Value="38" />
+                        <Setter Property="Width" Value="auto"/>
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="BorderThickness" Value="1 2 1 2"/>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell" >
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#3D59AB"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Trigger>
+                        </Style.Triggers>
+
+                    </Style>
+                </DataGrid.CellStyle>
+            </DataGrid>
+            <StackPanel Grid.Row="2">
+                <Grid  Margin="15 -20 20 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!--<Label FontSize="16" FontWeight="Bold" Grid.Row="1" Grid.Column="1" ContentStringFormat="Company Details {0}" Content="{Binding SelectedStaff.CompanyName}"/>-->
+                    <Label FontSize="16" Grid.Row="1" Margin="-4 0 0 20" Grid.Column="1" FontWeight="Bold">Job Details</Label>
+                    <Label Grid.Row="2" Grid.Column="0" FontSize="16">Date</Label>
+                    <Label Grid.Row="2" Grid.Column="3" FontSize="16">Start Time</Label>
+                    <Label Grid.Row="3" Grid.Column="0" FontSize="16">Company</Label>
+                    <Label Grid.Row="3" Grid.Column="3" FontSize="16">Street</Label>
+                    <Label Grid.Row="4" Grid.Column="0" FontSize="16">Suburb</Label>
+                    <Label Grid.Row="4" Grid.Column="3" FontSize="16">PostCode</Label>
+                    <Label Grid.Row="5" Grid.Column="0" FontSize="16">State</Label>
+                    <Label Grid.Row="5" Grid.Column="3" FontSize="16">Est. Hours</Label>
+                    <Label Grid.Row="6" Grid.Column="0" FontSize="16">Req. Skill</Label>
+                    <Label Grid.Row="6" Grid.Column="3" FontSize="16">Job Status</Label>
+
+
+                    <TextBox x:Name="tbDate" IsEnabled="False" Grid.Row="2" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="tbStartTime" IsEnabled="False" Grid.Row="2" Grid.Column="4" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox x:Name="tbCompany" IsEnabled="False" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="tbStreet" IsEnabled="False" Grid.Row="3" Grid.Column="4" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox x:Name="tbSuburb" IsEnabled="False" Grid.Row="4" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.Suburb, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox x:Name="tbPostCode" IsEnabled="False" Grid.Row="4" Grid.Column="4" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.PostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox x:Name="tbState" IsEnabled="False" Grid.Row="5" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox x:Name="tbEstimatedHours" IsEnabled="False" Grid.Row="5" Grid.Column="4" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.EstimatedHours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox x:Name="tbSkill" IsEnabled="False" Grid.Row="6" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.SkillName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox x:Name="tbJobStatus" IsEnabled="False" Grid.Row="6" Grid.Column="4" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.JobStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                </Grid>
+                <StackPanel  Margin="0 10 0 0" Grid.Row="11" Orientation="Horizontal" >
+                    <Button x:Name="btnSaveUpdate"  Margin="130 0 40 0" Command="{Binding UpdateCommand}" 
+                            Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white" IsEnabled="False">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="Save" Foreground="#80fc39" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Save" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnCancel"  Margin="-27 0 0 0"  Command="{Binding CancelCommand}" 
+                            Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white" IsEnabled="False">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="Ban" Foreground="OrangeRed" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Cancel" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Margin="295 0 0 0"  Command="{Binding AssignCommand}" 
+                            Width="160"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="SignIn" Foreground="#ffcc00" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Assign" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Margin="30 0 0 0"  Command="{Binding VerifyCommand}" 
+                            Width="160"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="CheckCircle" Foreground="#ffcc00" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Verify" />
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
