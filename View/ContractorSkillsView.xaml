@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:BITServices.View"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="ContractorSkillsView" Height="500" Width="800"
+        Title="ContractorSkillsView" Height="600" Width="650"
         WindowStyle="None" Background="Transparent"
         SnapsToDevicePixels="True"
         AllowsTransparency="True" 
         WindowStartupLocation="CenterScreen">
-        
+
     <Grid>
+
         <Grid Margin="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
@@ -21,7 +22,7 @@
             <StackPanel x:Name="spTopBar" Grid.Row="0" Background="Transparent" MouseLeftButtonDown="spTopBar_MouseLeftButtonDown">
                 <Border CornerRadius="10 10 0 0" Background="#3D59AB" Height="30">
                     <StackPanel Background="Transparent" HorizontalAlignment="Right" Orientation="Horizontal">
-                        <Label FontSize="16" Content="CONTRACTOR SKILLS" VerticalAlignment="Stretch" Margin="0 0 250 0" FontWeight="Bold" Foreground="white"/>
+                        <Label FontSize="16" Content="CONTRACTOR DETAILS" VerticalAlignment="Stretch" Margin="0 0 180 0" FontWeight="Bold" Foreground="white"/>
 
                         <StackPanel Background="Transparent" x:Name="spTopbar" Orientation="Horizontal" Margin="0 0 8 0">
                             <Button x:Name="btnMinimizeWindow" Background="#3D59AB" Margin="0" Click="btnMinimizeWindow_Click">
@@ -35,17 +36,18 @@
                 </Border>
             </StackPanel>
             <Grid Grid.Row="1" Background="white">
+
                 <Grid>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1.2*"/>
                     </Grid.ColumnDefinitions>
                     <Grid>
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width=".5*"/>
+                            <ColumnDefinition Width=".2*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
@@ -59,28 +61,28 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <!--<Label FontSize="16" FontWeight="Bold" Grid.Row="1" Grid.Column="1" ContentStringFormat="Company Details {0}" Content="{Binding SelectedContractor.CompanyName}"/>-->
                         <!--<Image Grid.Row="1" Grid.Column="1" Width="100" Height="100" Source="../Images/placeholder-profile.png">-->
                         <Border Grid.Row="1" Grid.Column="1" Width="100" Height="100" CornerRadius="8,8,8,8">
-                                <Border.Background>
+                            <Border.Background>
                                 <ImageBrush Stretch="Fill" ImageSource="../Images/placeholder-profile.png"/>
-                                </Border.Background>
-                            </Border>
+                            </Border.Background>
+                        </Border>
 
-                        <Label FontSize="16" Grid.Row="0" HorizontalAlignment="Center" Margin="-4 0 0 20" Grid.Column="1"  FontWeight="Bold">Contractor Details</Label>
-                        <Label Grid.Row="3" Grid.Column="0" FontSize="16">Firstname</Label>
-                        <Label Grid.Row="4" Grid.Column="0" FontSize="16">Lastname</Label>
+                        <Label Margin="10 0 0 0" Grid.Row="3" Grid.Column="0" FontSize="16">Firstname</Label>
+                        <Label Margin="10 0 0 0" Grid.Row="4" Grid.Column="0" FontSize="16">Lastname</Label>
                         <!--<Label Grid.Row="3" Grid.Column="0" FontSize="16">Street</Label>-->
                         <!--<Label Grid.Row="3" Grid.Column="3" FontSize="16">Suburb</Label>-->
                         <!--<Label Grid.Row="4" Grid.Column="0" FontSize="16">PostCode</Label>-->
                         <!--<Label Grid.Row="4" Grid.Column="3" FontSize="16">State</Label>-->
-                        <Label Grid.Row="5" Grid.Column="0" FontSize="16">Phone</Label>
-                        <Label Grid.Row="6" Grid.Column="0" FontSize="16">Email</Label>
-                        <Label Grid.Row="7" Grid.Column="0" FontSize="16">Username</Label>
+                        <Label Margin="10 0 0 0" Grid.Row="5" Grid.Column="0" FontSize="16">Phone</Label>
+                        <Label Margin="10 0 0 0" Grid.Row="6" Grid.Column="0" FontSize="16">Email</Label>
+                        <Label Margin="10 0 0 0" Grid.Row="7" Grid.Column="0" FontSize="16">Username</Label>
                         <!--<Label Grid.Row="6" Grid.Column="3" FontSize="16">Password</Label>-->
-                        <Label Grid.Row="8" Grid.Column="0" FontSize="16">Rating</Label>
-                        <Label Grid.Row="9" Grid.Column="0" FontSize="16">Payrate</Label>
+                        <Label Margin="10 0 0 0" Grid.Row="8" Grid.Column="0" FontSize="16">Rating</Label>
+                        <Label Margin="10 0 0 0" Grid.Row="9" Grid.Column="0" FontSize="16">Payrate</Label>
 
 
                         <TextBox x:Name="tbFirstName" IsEnabled="False" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedContractor.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -95,36 +97,9 @@
                         <!--<TextBox x:Name="tbPassword" IsEnabled="False" Grid.Row="6" Grid.Column="4" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedContractor.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
                         <TextBox x:Name="tbRating" IsEnabled="False" Grid.Row="8" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedContractor.ContractorRating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         <TextBox x:Name="tbPayrate" IsEnabled="False" Grid.Row="9" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedContractor.PayRate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-
-                    </Grid>
-                    <Grid Grid.Column="1" Margin="0 100 0 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Margin="30 30 0 0" FontWeight="Bold" FontSize="20" Content="Current Skills" Grid.Row="0" Grid.Column="0"/>
-                        <ListView ItemsSource="{Binding ContractorSkills, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                              Grid.Row="0" Grid.Column="0" Height="200" Width="150">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn DisplayMemberBinding="{Binding SkillName}"/>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-
-                        <Label Margin="50 30 0 0" FontWeight="Bold" FontSize="20" Content="All Skills" Grid.Row="0" Grid.Column="2"/>
-                        <ListView ItemsSource="{Binding Skills, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                              Grid.Row="0" Grid.Column="2" Height="200" Width="150">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn DisplayMemberBinding="{Binding SkillName}"/>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-
-                        <Button x:Name="btnClose" Click="btnClose_Click"  Margin="0 0 0 20"  Command="{Binding CloseCommand}" Grid.Row="0" Grid.Column="2"  VerticalAlignment="Bottom"
-                            Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
+                        <Button x:Name="btnClose" Click="btnClose_Click"  Margin="0 0 0 20"  Command="{Binding CloseCommand}" 
+                                Grid.Row="10" Grid.Column="1"  Grid.RowSpan="2" VerticalAlignment="Bottom"
+                                Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>
@@ -135,9 +110,65 @@
                                 <TextBlock Margin="0 0 10 0" FontSize="18" Text="Done" />
                             </StackPanel>
                         </Button>
+
+                    </Grid>
+                    <Grid Grid.Column="1" >
+                        <Border HorizontalAlignment="Left" Opacity="0.2" Width="1" Margin="2" Background="#666"/>
+
+                        <Grid  Margin="0 0 0 0">
+                            <!--<Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="20" Content="Add Skills" Grid.Row="0" Grid.Column="0"/>-->
+                            <Label FontSize="16" Grid.Row="0" HorizontalAlignment="Center" Margin="0 140 0 0" Grid.Column="1"  FontWeight="Bold">Add/Remove Skills</Label>
+
+                            <StackPanel Orientation="Horizontal" Margin="10 190 0 0">
+
+                                <ComboBox FontSize="18" ItemsSource="{Binding Skills, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="SkillName" 
+                                          SelectedItem="{Binding SelectedSkill}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30">
+                            
+                                </ComboBox>
+                                <Button x:Name="btnAdd" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10 0 0 0"  Command="{Binding AddCommand}" 
+                                Grid.Row="10" Grid.Column="0"  Grid.RowSpan="2"
+                                Height="30" Width="80" FontWeight="Bold" Background="#3D59AB" Foreground="white">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="5"/>
+                                        </Style>
+                                    </Button.Resources>
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:ImageAwesome Icon="PlusCircle" Foreground="white" Margin="0 0 5 0" Width="30" Height="18"/>
+                                        <TextBlock Margin="0 0 10 0" FontSize="18" Text="Add" />
+                                    </StackPanel>
+                                </Button>
+
+                            </StackPanel>
+                            <ListView ItemsSource="{Binding ContractorSkills, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                      SelectedItem="{Binding SelectedContractorSkill}" Grid.Row="0" Grid.Column="0" Height="190" Width="200" VerticalAlignment="Top"
+                                      Margin="0 240 0 0">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn DisplayMemberBinding="{Binding SkillName}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+                            <Button x:Name="btnRemove" Margin="0 0 0 90"  Command="{Binding RemoveCommand}" 
+                                Grid.Row="10" Grid.Column="0"  Grid.RowSpan="2" VerticalAlignment="Bottom"
+                                Width="200"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:ImageAwesome Icon="Remove" Foreground="red" Margin="0 0 5 0" Width="30" Height="18"/>
+                                    <TextBlock Margin="0 0 10 0" FontSize="18" Text="Remove" />
+                                </StackPanel>
+                            </Button>
+
+
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>
-    </Grid>
+        </Grid>
     </Grid>
 </Window>
