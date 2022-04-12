@@ -16,6 +16,8 @@ namespace BITServices.ViewModel
         // --------------------- FIELDS -------------------------
         // ------------------------------------------------------
         private ObservableCollection<Job> _jobs;
+        private ObservableCollection<Skill> _skills;
+        private Skill _selectedSkill;
         private Job _selectedJob;
         public string _selectedItemInFilter = string.Empty;
         public string _searchValue = string.Empty;
@@ -26,6 +28,7 @@ namespace BITServices.ViewModel
         private RelayCommand _searchCommand;
         //private RelayCommand _saveCommand;
         private RelayCommand _cancelCommand;
+        private RelayCommand _verifyCommand;
         // ------------------------------------------------------
 
 
@@ -68,6 +71,24 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("Jobs");
             }
         }
+        public ObservableCollection<Skill> Skills
+        {
+            get { return _skills; }
+            set
+            {
+                _skills = value;
+                OnPropertyChanged("Skills");
+            }
+        }
+        public Skill SelectedSkill
+        {
+            get { return _selectedSkill; }
+            set
+            {
+                _selectedSkill = value;
+                OnPropertyChanged("SelectedSkill");
+            }
+        }
         // -------------------------------------------------------
 
 
@@ -78,6 +99,9 @@ namespace BITServices.ViewModel
             SelectedJob = new Job();
             Jobs allJobs = new Jobs();
             this.Jobs = new ObservableCollection<Job>(allJobs);
+            Skills allSkills = new Skills();
+            this.Skills = new ObservableCollection<Skill>(allSkills);
+            SelectedSkill = new Skill(SelectedJob.SkillName);
             //OnPropertyChanged("Jobs");
         }
         // -------------------------------------------------------
@@ -175,6 +199,21 @@ namespace BITServices.ViewModel
             set
             { _cancelCommand = value; }
         }
+        public RelayCommand VerifyCommand
+        {
+            get
+            {
+                if (_verifyCommand == null)
+                {
+                    //Remember RelayCommand is taking first parameter as Action
+                    //Action is nothing but a Method. Only use the Method name
+                    _verifyCommand = new RelayCommand(this.VerifyMethod, true);
+                }
+                return _verifyCommand;
+            }
+            set
+            { _verifyCommand = value; }
+        }
         // ----------------------------------------------------------
 
 
@@ -185,7 +224,7 @@ namespace BITServices.ViewModel
         public void UpdateMethod()
         {
 
-            //SelectedJob?.UpdateJob();
+            SelectedJob?.UpdateJob();
             LoadGrid();
         }
         public void AddMethod()
@@ -200,7 +239,7 @@ namespace BITServices.ViewModel
         {
             if (SelectedJob != null)
             {
-                //SelectedJob?.DeleteJob();
+                SelectedJob?.DeleteJob();
             }
             else
             {
@@ -262,6 +301,20 @@ namespace BITServices.ViewModel
         public void CancelMethod()
         {
             LoadGrid();
+        }
+        public void VerifyMethod()
+        {
+            if(SelectedJob.JobStatus == "Completed")
+            {
+                SelectedJob.JobStatusID = 6;
+                SelectedJob.UpdateJob();
+                LoadGrid();
+            }
+            else
+            {
+                MessageBox.Show("Job has not yet been completed", "Cannot verify job");
+            }
+
         }
         // ---------------------------------------------------------
 

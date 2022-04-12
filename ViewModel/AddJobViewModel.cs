@@ -156,15 +156,7 @@ namespace BITServices.ViewModel
         }
         public void CancelMethod()
         {
-            //LoadGrid();
         }
-
-
-        //private void LoadGrid()
-        //{
-        //    Clients allClients = new Clients();
-        //    this.Clients = new ObservableCollection<Client>(allClients);
-        //}
 
 
     }

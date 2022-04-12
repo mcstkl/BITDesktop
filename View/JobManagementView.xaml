@@ -184,6 +184,7 @@
                     <TextBox x:Name="tbState" IsEnabled="False" Grid.Row="5" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBox x:Name="tbEstimatedHours" IsEnabled="False" Grid.Row="5" Grid.Column="4" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.EstimatedHours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBox x:Name="tbSkill" IsEnabled="False" Grid.Row="6" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.SkillName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <!--<ComboBox x:Name="cboSkillName" Grid.Row="6" Grid.Column="1" FontSize="18" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" SelectedItem="{Binding SelectedSkill}" ItemsSource="{Binding Skills}" Text="{Binding SelectedSkill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="SkillName"/>-->
                     <TextBox x:Name="tbJobStatus" IsEnabled="False" Grid.Row="6" Grid.Column="4" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.JobStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 </Grid>

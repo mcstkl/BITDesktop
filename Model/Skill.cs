@@ -52,6 +52,14 @@ namespace BITServices.Model
 
             _db = new SQLHelper();
         }
+        public Skill(string skillName)
+        {
+            //this.ContractorID = Convert.ToInt32(dr["ContractorID"].ToString());
+            this.SkillName = skillName;
+
+            _db = new SQLHelper();
+        }
+
 
         public int InsertSkill()
         {

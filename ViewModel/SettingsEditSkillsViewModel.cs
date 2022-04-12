@@ -123,7 +123,7 @@ namespace BITServices.ViewModel
             }
             catch (Exception)
             {
-                MessageBox.Show("Couldn't save Skill. Please fill in complete Skill details.", "Unable to Save Skill", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Cannot remove skill. Skill is used in job requests", "Unable to Remove Skill", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             LoadGrid();
         }

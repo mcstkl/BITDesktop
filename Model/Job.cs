@@ -203,6 +203,7 @@ namespace BITServices.Model
             this.ActualHours = Convert.ToInt32(dr["ActualHours"].ToString());
             this.SkillName = dr["SkillName"].ToString();
             this.JobStatus = dr["JobStatus"].ToString();
+            _db = new SQLHelper();
         }
 
 
@@ -249,6 +250,67 @@ namespace BITServices.Model
             }
 
 
+        }
+
+        public int DeleteJob()
+        {
+            int result = -1;
+            string sql = "DELETE FROM Job WHERE JobID = @JobID";
+            SqlParameter[] objParams;
+            objParams = new SqlParameter[1];
+            objParams[0] = new SqlParameter("@JobID", DbType.Int32);
+            objParams[0].Value = this.JobID;
+            result = _db.ExecuteNonQuery(sql, objParams);
+            return result;
+        }
+
+        public int UpdateJob()
+        {
+            string sql = "UPDATE job SET " +
+                "jobStatusID = @JobStatusID, " +
+                "street = @Street, " +
+                "suburb = @Suburb, " +
+                "postCode = @PostCode, " +
+                "state = @State, " +
+                "date = @Date, " +
+                "startTime = @StartTime, " +
+                "travelDistance = @TravelDistance, " +
+                "estimatedHours = @EstimatedHours, " +
+                "actualHours = @ActualHours, " +
+                "skillName = @SkillName, " +
+                "clientID = @ClientID " +
+                 " WHERE jobID = @JobID";
+            DateTime dtime = Convert.ToDateTime(this.Date);
+            SqlParameter[] objParams;
+            objParams = new SqlParameter[13];
+            objParams[0] = new SqlParameter("@JobStatusID", DbType.Int32);
+            objParams[0].Value = this.JobStatusID;
+            objParams[1] = new SqlParameter("@Street", DbType.String);
+            objParams[1].Value = this.Street;
+            objParams[2] = new SqlParameter("@Suburb", DbType.String);
+            objParams[2].Value = this.Suburb;
+            objParams[3] = new SqlParameter("@PostCode", DbType.String);
+            objParams[3].Value = this.PostCode;
+            objParams[4] = new SqlParameter("@State", DbType.String);
+            objParams[4].Value = this.State;
+            objParams[5] = new SqlParameter("@Date", DbType.DateTime);
+            objParams[5].Value = dtime;
+            objParams[6] = new SqlParameter("@StartTime", DbType.Time);
+            objParams[6].Value = this.StartTime;
+            objParams[7] = new SqlParameter("@TravelDistance", DbType.Int32);
+            objParams[7].Value = this.TravelDistance;
+            objParams[8] = new SqlParameter("@EstimatedHours", DbType.Int32);
+            objParams[8].Value = this.EstimatedHours;
+            objParams[9] = new SqlParameter("@ActualHours", DbType.Int32);
+            objParams[9].Value = this.ActualHours;
+            objParams[10] = new SqlParameter("@SkillName", DbType.String);
+            objParams[10].Value = this.SkillName;
+            objParams[11] = new SqlParameter("@ClientID", DbType.Int32);
+            objParams[11].Value = this.ClientID;
+            objParams[12] = new SqlParameter("@JobID", DbType.Int32);
+            objParams[12].Value = this.JobID;
+            int result = _db.ExecuteNonQuery(sql, objParams);
+            return result;
         }
     }
 }
