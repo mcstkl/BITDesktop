@@ -135,7 +135,7 @@
                 </DataGrid.CellStyle>
             </DataGrid>
             <StackPanel Grid.Row="2">
-                <Grid  Margin="15 10 20 10">
+                <Grid  Margin="15 10 15 10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="3*"/>
@@ -165,7 +165,7 @@
                     <Label Grid.Row="7" Grid.Column="0" FontSize="16">Phone</Label>
                     <Label Grid.Row="8" Grid.Column="0" FontSize="16">Email</Label>
                     <Label Grid.Row="9" Grid.Column="0" FontSize="16">UserName</Label>
-                    <Label Grid.Row="10" Grid.Column="0" FontSize="16">Password</Label>
+                    <!--<Label Grid.Row="10" Grid.Column="0" FontSize="16">Password</Label>-->
 
 
                     <TextBox x:Name="tbName" IsEnabled="False" Grid.Row="2" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -184,10 +184,54 @@
                     <TextBox x:Name="tbPhone" IsEnabled="False" Grid.Row="7" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox x:Name="tbEmail" IsEnabled="False" Grid.Row="8" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox x:Name="tbUser" IsEnabled="False" Grid.Row="9" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                    <TextBox x:Name="tbPassword" IsEnabled="False" Grid.Row="10" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <!--<TextBox x:Name="tbPassword" IsEnabled="False" Grid.Row="10" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />-->
 
                     <Label FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="3" ContentStringFormat="Current Job Requests {0}" Content="{Binding SelectedClient.CompanyName}"/>
-                    <DataGrid Grid.Column="3" Grid.Row="2" Grid.RowSpan="9" Margin="20 0 0 10"/>
+                    <DataGrid GridLinesVisibility="None" AutoGenerateColumns="False" ItemsSource="{Binding CurrentJobs}" Grid.Column="3" 
+                              Grid.Row="2" Grid.RowSpan="9" HorizontalScrollBarVisibility="Hidden" AlternatingRowBackground="WhiteSmoke" 
+                              Height="280" HeadersVisibility="Column" Margin="10 0 0 0" BorderThickness="0.2" Background="Transparent">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Date"/>
+                            <DataGridTextColumn Binding="{Binding StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="StartTime" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding JobStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Status"/>
+                            <DataGridTextColumn Binding="{Binding SkillName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Skill"/>
+
+                        </DataGrid.Columns>
+
+                        <DataGrid.Resources>
+                            <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                                <Setter Property="Background" Value="#be6716" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="BorderBrush" Value="Black"/>
+                                <Setter Property="BorderThickness" Value="0 0 0 0"/>
+                                <Setter Property="Margin" Value="1, 1, 0 , 0" />
+                                <Setter Property="Height" Value="38" />
+                                <Setter Property="Width" Value="auto"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="FontSize" Value="14"/>
+                                <Setter Property="BorderThickness" Value="1 2 1 2"/>
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell" >
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#3D59AB"/>
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                    </Trigger>
+                                </Style.Triggers>
+
+                            </Style>
+                        </DataGrid.CellStyle>
+                    </DataGrid>
                 </Grid>
                     <StackPanel  Margin="0 10 0 0" Grid.Row="11" Orientation="Horizontal" >
 

@@ -22,6 +22,7 @@ namespace BITServices.ViewModel
         // --------------------- FIELDS -------------------------
         // ------------------------------------------------------
         private ObservableCollection<Client> _clients;
+        private ObservableCollection<Job> _currentJobs;
         private Client _selectedClient;
         public string _selectedItemInFilter = string.Empty;
         public string _searchValue = string.Empty;
@@ -44,6 +45,16 @@ namespace BITServices.ViewModel
             {
                 _selectedClient = value;
                 OnPropertyChanged("SelectedClient");
+                Jobs jobs = new Jobs();
+                List<Job> currentJobs = new List<Job>();
+                foreach(Job job in jobs)
+                {
+                    if(job.CompanyName == SelectedClient.CompanyName)
+                    {
+                        currentJobs.Add(job);
+                    }
+                }
+                CurrentJobs = new ObservableCollection<Job>(currentJobs);
             }
         }
         public string SelectedItemInFilter
@@ -74,6 +85,15 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("Clients");
             }
         }
+        public ObservableCollection<Job> CurrentJobs
+        {
+            get { return _currentJobs; }
+            set
+            {
+                _currentJobs = value;
+                OnPropertyChanged("CurrentJobs");
+            }
+        }
         // -------------------------------------------------------
 
 
@@ -84,6 +104,8 @@ namespace BITServices.ViewModel
             SelectedClient = new Client();
             Clients allClients = new Clients();
             this.Clients = new ObservableCollection<Client>(allClients);
+            Jobs allJobs = new Jobs();
+            this.CurrentJobs = new ObservableCollection<Job>(allJobs);
             //OnPropertyChanged("Clients");
         }
         // -------------------------------------------------------

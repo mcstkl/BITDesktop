@@ -45,7 +45,7 @@ namespace BITServices.View
             tbPhone.IsEnabled = false;
             tbEmail.IsEnabled = false;
             tbUser.IsEnabled = false;
-            tbPassword.IsEnabled = false;
+            //tbPassword.IsEnabled = false;
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +60,7 @@ namespace BITServices.View
             tbPhone.IsEnabled = false;
             tbEmail.IsEnabled = false;
             tbUser.IsEnabled = false;
-            tbPassword.IsEnabled = false;
+            //tbPassword.IsEnabled = false;
 
         }
 
@@ -93,7 +93,7 @@ namespace BITServices.View
             tbPhone.IsEnabled = true;
             tbEmail.IsEnabled = true;
             tbUser.IsEnabled = true;
-            tbPassword.IsEnabled = true;
+            //tbPassword.IsEnabled = true;
         }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
