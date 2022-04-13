@@ -33,6 +33,7 @@ namespace BITServices.ViewModel
         private RelayCommand _searchCommand;
         //private RelayCommand _saveCommand;
         private RelayCommand _cancelCommand;
+        private RelayCommand _showAllCommand;
         // ------------------------------------------------------
 
 
@@ -218,6 +219,21 @@ namespace BITServices.ViewModel
             set
             { _cancelCommand = value; }
         }
+        public RelayCommand ShowAllCommand
+        {
+            get
+            {
+                if (_showAllCommand == null)
+                {
+                    //Remember RelayCommand is taking first parameter as Action
+                    //Action is nothing but a Method. Only use the Method name
+                    _showAllCommand = new RelayCommand(this.ShowAllMethod, true);
+                }
+                return _showAllCommand;
+            }
+            set
+            { _showAllCommand = value; }
+        }
         // ----------------------------------------------------------
 
 
@@ -230,6 +246,11 @@ namespace BITServices.ViewModel
             
             SelectedClient?.UpdateClient();
             LoadGrid();
+        }
+        public void ShowAllMethod()
+        {
+            Jobs allJobs = new Jobs();
+            this.CurrentJobs = new ObservableCollection<Job>(allJobs);
         }
 
         private void Window1_DataChanged(object sender, EventArgs e)

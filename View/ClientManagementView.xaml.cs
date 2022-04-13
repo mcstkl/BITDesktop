@@ -67,18 +67,7 @@ namespace BITServices.View
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            //dgClients.IsEnabled = false;
-            //btnSave.IsEnabled = true;
-            //btnCancel.IsEnabled = true;
-            //tbName.IsEnabled = true;
-            //tbStreet.IsEnabled = true;
-            //tbSuburb.IsEnabled = true;
-            //tbPostCode.IsEnabled = true;
-            //cboState.IsEnabled = true;
-            //tbPhone.IsEnabled = true;
-            //tbEmail.IsEnabled = true;
-            //tbUser.IsEnabled = true;
-            //tbPassword.IsEnabled = true;
+
         }
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
@@ -100,20 +89,11 @@ namespace BITServices.View
            
 
         }
-        //private void btnSaveUpdate_Click(object sender, RoutedEventArgs e)
-        //{
-        //    dgClients.IsEnabled = true;
-        //    btnSaveUpdate.IsEnabled = false;
-        //    btnCancel.IsEnabled = false;
-        //    tbName.IsEnabled = false;
-        //    tbStreet.IsEnabled = false;
-        //    tbSuburb.IsEnabled = false;
-        //    tbPostCode.IsEnabled = false;
-        //    cboState.IsEnabled = false;
-        //    tbPhone.IsEnabled = false;
-        //    tbEmail.IsEnabled = false;
-        //    tbUser.IsEnabled = false;
-        //    tbPassword.IsEnabled = false;
-        //}
+
+        private void btnShowAll_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
     }
 }
