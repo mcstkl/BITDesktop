@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +20,7 @@ namespace BITServices.Model
         private string _fullName;
         private string _availableDate;
         private TimeSpan _startTime;
-        private TimeSpan _finishTime;
+        private TimeSpan _finishTime = new TimeSpan(19,0,0);
         private Decimal _contractorRating;
         private Decimal _payRate;
 
@@ -112,7 +114,7 @@ namespace BITServices.Model
 
         public Availability(DataRow dr)
         {
-            //this.ContractorID = (int)dr["ContractorID"];
+            this.ContractorID = (int)dr["ContractorID"];
             this.FirstName = (string)dr["FirstName"];
             this.LastName = (string)dr["LastName"];
             this.AvailableDate = ((DateTime)dr["AvailableDate"]).ToShortDateString();
@@ -125,7 +127,46 @@ namespace BITServices.Model
         }
 
 
-  
+        public int InsertAvailability()
+        {
+            int result = -1;
+            string sql = "insert into Availability(ContractorID, StartTime, AvailableDate, FinishTime) " +
+                " values(@ContractorID, @StartTime, @AvailableDate, @FinishTime)";
+            SqlParameter[] objParams;
+            objParams = new SqlParameter[4];
+            objParams[0] = new SqlParameter("@ContractorID", DbType.Int32);
+            objParams[0].Value = this.ContractorID;
+            objParams[1] = new SqlParameter("@StartTime", DbType.Time);
+            objParams[1].Value = this.StartTime;
+            objParams[2] = new SqlParameter("@AvailableDate", DbType.DateTime);
+            objParams[2].Value = this.AvailableDate;
+            objParams[3] = new SqlParameter("@FinishTime", DbType.Time);
+            objParams[3].Value = this.FinishTime;
+            result = _db.ExecuteNonQuery(sql, objParams);
+            return result;
+        }
 
+        public int DeleteAvailability()
+        {
+            int result = -1;
+            string sql = "DELETE FROM Availability" +
+                " WHERE contractorID = @ContractorID" +
+                " AND startTime = @StartTime" +
+                " AND availableDate = @AvailableDate " +
+                " AND finishTime = @FinishTime";
+            DateTime availableDate = Convert.ToDateTime(this.AvailableDate);
+            SqlParameter[] objParams;
+            objParams = new SqlParameter[4];
+            objParams[0] = new SqlParameter("@ContractorID", DbType.Int32);
+            objParams[0].Value = this.ContractorID;
+            objParams[1] = new SqlParameter("@StartTime", DbType.Time);
+            objParams[1].Value = this.StartTime;
+            objParams[2] = new SqlParameter("@AvailableDate", DbType.Date);
+            objParams[2].Value = availableDate;
+            objParams[3] = new SqlParameter("@FinishTime", DbType.Time);
+            objParams[3].Value = this.FinishTime;
+            result = _db.ExecuteNonQuery(sql, objParams);
+            return result;
+        }
     }
 }

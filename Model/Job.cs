@@ -203,6 +203,7 @@ namespace BITServices.Model
             this.ActualHours = Convert.ToInt32(dr["ActualHours"].ToString());
             this.SkillName = dr["SkillName"].ToString();
             this.JobStatus = dr["JobStatus"].ToString();
+            this.JobStatusID = Convert.ToInt32(dr["JobStatusID"].ToString());
             _db = new SQLHelper();
         }
 
@@ -283,7 +284,7 @@ namespace BITServices.Model
             DateTime dtime = Convert.ToDateTime(this.Date);
             SqlParameter[] objParams;
             objParams = new SqlParameter[13];
-            objParams[0] = new SqlParameter("@JobStatusID", DbType.Int32);
+            objParams[0] = new SqlParameter("@JobStatusID", DbType.String);
             objParams[0].Value = this.JobStatusID;
             objParams[1] = new SqlParameter("@Street", DbType.String);
             objParams[1].Value = this.Street;

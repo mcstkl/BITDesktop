@@ -1,0 +1,114 @@
+﻿<Window x:Class="BITServices.View.JobAssignView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BITServices.View"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        Title="JobAssignView" Height="400" Width="450"
+        WindowStyle="None" Background="Transparent"
+        SnapsToDevicePixels="True"
+        AllowsTransparency="True" 
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel x:Name="spTopBar" Grid.Row="0" Background="Transparent" MouseLeftButtonDown="spTopBar_MouseLeftButtonDown">
+                <Border CornerRadius="10 10 0 0" Background="#3D59AB" Height="30">
+                    <StackPanel Background="Transparent" HorizontalAlignment="Right" Orientation="Horizontal">
+                        <Label FontSize="16" Content="ASSIGN CONTRACTOR" VerticalAlignment="Stretch" Margin="0 0 180 0" FontWeight="Bold" Foreground="white"/>
+
+                        <StackPanel Background="Transparent" x:Name="spTopbar" Orientation="Horizontal" Margin="0 0 8 0">
+                            <Button x:Name="btnMinimizeWindow" Background="#3D59AB" Margin="0" Click="btnMinimizeWindow_Click">
+                                <fa:ImageAwesome  Margin="5 8 5 0" Icon="WindowMinimize" Style="{StaticResource buttonIcon}" Width="15" Height="15" Foreground="white" />
+                            </Button>
+                            <Button x:Name="btnCloseWindow" Background="#3D59AB" Margin="0" Click="btnCloseWindow_Click">
+                                <fa:ImageAwesome Margin="5"  Icon="Close" Style="{StaticResource buttonIcon}" Width="15" Height="15" Foreground="white" />
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <Grid Grid.Row="1" Background="white">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center" Grid.Row="0" Margin="20 0 0 0" Orientation="Horizontal">
+                        <Label FontSize="18" Width="305" HorizontalAlignment="Left"></Label>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Center" Grid.Row="1" Margin="20 0 0 0" Orientation="Horizontal">
+                        <Label FontSize="18" Width="305" HorizontalAlignment="Left">Minimum Contractor Rating</Label>
+                        <TextBox Text="{Binding SelectedRating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Width="110" VerticalAlignment="Top" Height="30"/>
+                </StackPanel>
+                    <StackPanel  VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" Margin="20 0 0 0" Orientation="Horizontal">
+                        <Label FontSize="18" Width="305" HorizontalAlignment="Left">Maximum Contractor Payrate</Label>
+                        <TextBox Text="{Binding SelectedPayRate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Width="110" VerticalAlignment="Top" Height="30"/>
+                </StackPanel>
+                    <Button Grid.Column="0" Grid.Row="3" x:Name="btnRefresh" Margin="315 0 0 0" Command="{Binding RefreshCommand}" 
+                            Width="110"  Height="30" FontWeight="Bold" Background="#0275d8" Foreground="white">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="Refresh" Foreground="white" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Refresh" />
+                        </StackPanel>
+                    </Button>
+                    <ListView Margin="5" Grid.Column="0" Grid.Row="4" SelectedItem="{Binding SelectedContractor}" ItemsSource="{Binding Contractors}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="80" Header="First Name" DisplayMemberBinding="{Binding FirstName}"/>
+                                <GridViewColumn Width="80" Header="Last Name" DisplayMemberBinding="{Binding LastName}"/>
+                                <GridViewColumn Width="80" Header="Payrate" DisplayMemberBinding="{Binding PayRate}"/>
+                                <GridViewColumn Width="80" Header="Rating" DisplayMemberBinding="{Binding ContractorRating}"/>
+                                <GridViewColumn Width="80" Header="Username" DisplayMemberBinding="{Binding UserName}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Grid.Row="5" Orientation="Horizontal">
+                    <Button Grid.Column="0" Grid.Row="5" x:Name="btnAssign" Margin="200 0 0 0" Command="{Binding AssignCommand}" 
+                            Width="110"  Height="30" FontWeight="Bold" Background="#0275d8" Foreground="white">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="UserPlus" Foreground="white" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Assign" />
+                        </StackPanel>
+                    </Button>
+                    <Button Grid.Column="0" Grid.Row="5" x:Name="btnDone" Click="btnDone_Click" Margin="20 0 0 0" Command="{Binding AssignCommand}" 
+                            Width="110"  Height="30" FontWeight="Bold" Background="#0275d8" Foreground="white">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="SignIn" Foreground="white" Margin="0 0 5 0" Width="30" Height="18"/>
+                            <TextBlock Margin="0 0 10 0" FontSize="18" Text="Done" />
+                        </StackPanel>
+                    </Button>
+                    </StackPanel>
+
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

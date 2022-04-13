@@ -92,8 +92,10 @@
     <Compile Include="ViewModel\AddJobViewModel.cs" />
     <Compile Include="ViewModel\AddStaffViewModel.cs" />
     <Compile Include="ViewModel\AvailabilityManagementViewModel.cs" />
+    <Compile Include="ViewModel\ContractorAvailabilityViewModel.cs" />
     <Compile Include="ViewModel\ContractorManagementViewModel.cs" />
     <Compile Include="ViewModel\ContractorSkillsViewModel.cs" />
+    <Compile Include="ViewModel\JobAssignViewModel.cs" />
     <Compile Include="ViewModel\JobManagementViewModel.cs" />
     <Compile Include="ViewModel\SettingsEditSkillsViewModel.cs" />
     <Compile Include="ViewModel\SettingsManagementViewModel.cs" />
@@ -114,11 +116,17 @@
     <Compile Include="View\AvailabilityManagementView.xaml.cs">
       <DependentUpon>AvailabilityManagementView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ContractorAvailabilityView.xaml.cs">
+      <DependentUpon>ContractorAvailabilityView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ContractorManagementView.xaml.cs">
       <DependentUpon>ContractorManagementView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ContractorSkillsView.xaml.cs">
       <DependentUpon>ContractorSkillsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\JobAssignView.xaml.cs">
+      <DependentUpon>JobAssignView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SettingsEditSkillsView.xaml.cs">
       <DependentUpon>SettingsEditSkillsView.xaml</DependentUpon>
@@ -164,11 +172,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ContractorAvailabilityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ContractorManagementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ContractorSkillsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\JobAssignView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

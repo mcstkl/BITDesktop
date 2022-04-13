@@ -105,6 +105,7 @@ namespace BITServices.ViewModel
         //private RelayCommand _saveCommand;
         private RelayCommand _cancelCommand;
         private RelayCommand _skillsCommand;
+        private RelayCommand _availabilitiesCommand;
 
         public Contractor SelectedContractor
         {
@@ -244,7 +245,19 @@ namespace BITServices.ViewModel
             set
             { _skillsCommand = value; }
         }
-
+        public RelayCommand AvailabilitiesCommand
+        {
+            get
+            {
+                if (_availabilitiesCommand == null)
+                {
+                    _availabilitiesCommand = new RelayCommand(this.AvailabilitiesMethod, true);
+                }
+                return _availabilitiesCommand;
+            }
+            set
+            { _availabilitiesCommand = value; }
+        }
 
 
         private void OnPropertyChanged(string prop)
@@ -378,6 +391,20 @@ namespace BITServices.ViewModel
             else
             {
                 MessageBox.Show("Please select a contractor to view skills");
+            }
+        }
+
+        public void AvailabilitiesMethod()
+        {
+            if (SelectedContractor != null)
+            {
+                ContractorAvailabilityView contractorAvailabilityView = new ContractorAvailabilityView(SelectedContractor);
+                contractorAvailabilityView.ShowDialog();
+                LoadGrid();
+            }
+            else
+            {
+                MessageBox.Show("Please select a contractor to view availabilities");
             }
         }
 

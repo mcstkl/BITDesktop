@@ -54,3 +54,7 @@ C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\
 C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\SettingsEditSkillsView.baml
 C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\AddJobView.g.cs
 C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\AddJobView.baml
+C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\ContractorAvailabilityView.g.cs
+C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\ContractorAvailabilityView.baml
+C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\JobAssignView.g.cs
+C:\Users\mstic\Desktop\TAFE Assessments\BITServices\BITServices\BITServices\obj\Debug\View\JobAssignView.baml

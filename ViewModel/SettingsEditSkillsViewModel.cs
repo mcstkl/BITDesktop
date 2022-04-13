@@ -103,7 +103,6 @@ namespace BITServices.ViewModel
         {
             try
             {
-                
                 NewSkill.InsertSkill();
             }
             catch (Exception)

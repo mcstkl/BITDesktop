@@ -29,6 +29,7 @@ namespace BITServices.ViewModel
         //private RelayCommand _saveCommand;
         private RelayCommand _cancelCommand;
         private RelayCommand _verifyCommand;
+        private RelayCommand _assignCommand;
         // ------------------------------------------------------
 
 
@@ -214,6 +215,21 @@ namespace BITServices.ViewModel
             set
             { _verifyCommand = value; }
         }
+        public RelayCommand AssignCommand
+        {
+            get
+            {
+                if (_assignCommand == null)
+                {
+                    //Remember RelayCommand is taking first parameter as Action
+                    //Action is nothing but a Method. Only use the Method name
+                    _assignCommand = new RelayCommand(this.AssignMethod, true);
+                }
+                return _assignCommand;
+            }
+            set
+            { _assignCommand = value; }
+        }
         // ----------------------------------------------------------
 
 
@@ -310,11 +326,28 @@ namespace BITServices.ViewModel
                 SelectedJob.UpdateJob();
                 LoadGrid();
             }
+            else if ( SelectedJob.JobStatus == "Verified")
+            {
+                MessageBox.Show("Job has already been verified", "Cannot verify job");
+            }
             else
             {
                 MessageBox.Show("Job has not yet been completed", "Cannot verify job");
             }
 
+        }
+        public void AssignMethod()
+        {
+            if (SelectedJob != null)
+            {
+                JobAssignView assignView = new JobAssignView(SelectedJob);
+                assignView.ShowDialog();
+                LoadGrid();
+            }
+            else
+            {
+                MessageBox.Show("Please select a job to assign");
+            }
         }
         // ---------------------------------------------------------
 
