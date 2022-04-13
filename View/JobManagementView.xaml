@@ -100,6 +100,7 @@
                     <DataGridTextColumn Binding="{Binding EstimatedHours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Est. Hours"/>
                     <DataGridTextColumn Binding="{Binding SkillName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Req. Skill"/>
                     <DataGridTextColumn Binding="{Binding JobStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Job Status"/>
+                    <DataGridTextColumn Binding="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Username"/>
                     <!--<DataGridTextColumn Binding="{Binding ContractorRating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Rating"/>
                     <DataGridTextColumn Binding="{Binding PayRate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Pay Rate"/>-->
 

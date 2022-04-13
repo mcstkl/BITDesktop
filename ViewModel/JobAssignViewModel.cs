@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BITServices.ViewModel
 {
@@ -117,16 +118,32 @@ namespace BITServices.ViewModel
         {
             Contractors contractors = new Contractors();
             this.Contractors = new ObservableCollection<Contractor>(contractors);
-
             SelectedJob = selectedJob;
         }
 
 
         public void AssignMethod()
         {
-            SelectedJob.ContractorID = SelectedContractor.ContractorID;
-            SelectedJob.JobStatusID = 2;
-            SelectedJob.UpdateJob();
+            if(SelectedJob != null)
+            {
+                if(SelectedJob.ContractorID == 0)
+                {
+                    try
+                    {
+                        SelectedJob.ContractorID = SelectedContractor.ContractorID;
+                        SelectedJob.JobStatusID = 2;
+                        SelectedJob.UpdateJob();
+                        MessageBox.Show("Contractor assigned to job", "Contractor assigned", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }catch(Exception ex)
+                    {
+                        MessageBox.Show("Cannot Assign Job", "Cannot Assign Job", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This Job is already assigned to a contractor", "Job is already assigned", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
         }
 
         public void RefreshMethod()

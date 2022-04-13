@@ -93,7 +93,7 @@
                             <TextBlock Margin="0 0 10 0" FontSize="18" Text="Assign" />
                         </StackPanel>
                     </Button>
-                    <Button Grid.Column="0" Grid.Row="5" x:Name="btnDone" Click="btnDone_Click" Margin="20 0 0 0" Command="{Binding AssignCommand}" 
+                    <Button Grid.Column="0" Grid.Row="5" x:Name="btnDone" Click="btnDone_Click" Margin="20 0 0 0" 
                             Width="110"  Height="30" FontWeight="Bold" Background="#0275d8" Foreground="white">
                         <Button.Resources>
                             <Style TargetType="Border">
