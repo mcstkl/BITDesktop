@@ -22,6 +22,7 @@ namespace BITServices.Model
         private string _phone;
         private string _email;
         private string _userName;
+        private string _profile = "../Images/placeholder-profile.png";
         private string _password = "pw";
         private Decimal _contractorRating;
         private Decimal _payRate;
@@ -84,6 +85,11 @@ namespace BITServices.Model
             get { return _userName; }
             set { _userName = value; }
         }
+        public string Profile
+        {
+            get { return _profile; }
+            set { _profile = value; }
+        }
         public string Password
         {
             get { return _password; }
@@ -127,6 +133,7 @@ namespace BITServices.Model
             this.Password = dr["Password"].ToString();
             this.ContractorRating = Convert.ToDecimal(dr["ContractorRating"].ToString());
             this.PayRate = Convert.ToDecimal(dr["PayRate"].ToString());
+            this.Profile = dr["Profile"].ToString();
             this.Active = Convert.ToBoolean(dr["Active"].ToString());
             _db = new SQLHelper();
         }
@@ -134,11 +141,11 @@ namespace BITServices.Model
         public int InsertContractor()
         {
             string sql = "insert into contractor(firstName, lastName, street, suburb, postcode, state, phone, email, " +
-                " userName, password, contractorRating, payRate, active) " +
+                " userName, password, contractorRating, payRate, profile, active) " +
                 " values(@FirstName, @LastName,@Street, @Suburb, @PostCode, @State, @Phone, @Email, " +
-                " @UserName, @Password, @ContractorRating, @PayRate, @Active)";
+                " @UserName, @Password, @ContractorRating, @PayRate, @Profile, @Active)";
             SqlParameter[] objParams;
-            objParams = new SqlParameter[14];
+            objParams = new SqlParameter[15];
             objParams[0] = new SqlParameter("@ContractorID", DbType.String);
             objParams[0].Value = this.ContractorID;
             objParams[1] = new SqlParameter("@FirstName", DbType.String);
@@ -165,8 +172,10 @@ namespace BITServices.Model
             objParams[11].Value = this.ContractorRating;
             objParams[12] = new SqlParameter("@PayRate", DbType.Decimal);
             objParams[12].Value = this.PayRate;
-            objParams[13] = new SqlParameter("@Active", DbType.String);
-            objParams[13].Value = this.Active;
+            objParams[13] = new SqlParameter("@Profile", DbType.String);
+            objParams[13].Value = this.Profile; 
+            objParams[14] = new SqlParameter("@Active", DbType.String);
+            objParams[14].Value = this.Active;
             int result = _db.ExecuteNonQuery(sql, objParams);
             return result;
         }
@@ -186,10 +195,11 @@ namespace BITServices.Model
                 "password =  @Password, " +
                 "contractorRating =  @ContractorRating, " +
                 "payRate =  @PayRate, " +
+                "profile =  @Profile, " +
                 "active = @Active " +
                 " WHERE contractorID = @ContractorID";
             SqlParameter[] objParams;
-            objParams = new SqlParameter[14];
+            objParams = new SqlParameter[15];
             objParams[0] = new SqlParameter("@ContractorID", DbType.String);
             objParams[0].Value = this.ContractorID;
             objParams[1] = new SqlParameter("@FirstName", DbType.String);
@@ -216,8 +226,10 @@ namespace BITServices.Model
             objParams[11].Value = this.ContractorRating;
             objParams[12] = new SqlParameter("@PayRate", DbType.Decimal);
             objParams[12].Value = this.PayRate;
-            objParams[13] = new SqlParameter("@Active", DbType.String);
-            objParams[13].Value = this.Active;
+            objParams[13] = new SqlParameter("@Profile", DbType.String);
+            objParams[13].Value = this.Profile;
+            objParams[14] = new SqlParameter("@Active", DbType.String);
+            objParams[14].Value = this.Active;
             result = _db.ExecuteNonQuery(sql, objParams);
             return result;
         }

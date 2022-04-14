@@ -259,6 +259,13 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Resource Include="bin\Debug\log.txt" />
+    <Resource Include="Images\catProfile.PNG" />
+    <Resource Include="Images\catProfile2.jpg" />
+    <Resource Include="Images\disasterGirl.jpeg" />
+    <Resource Include="Images\gigachad.jpg" />
+    <Resource Include="Images\successKid.jpg" />
+    <Resource Include="Images\richard.jpg" />
+    <Resource Include="Images\catProfile3.jpg" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

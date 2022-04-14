@@ -272,7 +272,7 @@ namespace BITServices.ViewModel
 
         private void Window1_DataChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Client Added", "Client Added");
+            MessageBox.Show("Contractor Added", "Contractor Added", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         public void AddMethod()
         {

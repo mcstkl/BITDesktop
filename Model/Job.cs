@@ -30,6 +30,7 @@ namespace BITServices.Model
         private int _jobID;
         private string _jobStatus;
         private string _userName;
+        private string _fullName;
         private SQLHelper _db;
 
         public int JobID
@@ -168,6 +169,11 @@ namespace BITServices.Model
             get { return _userName; }
             set { _userName = value; }
         }
+        public string FullName
+        {
+            get { return _fullName; }
+            set { _fullName = value; }
+        }
         public string JobStatus
         {
             get { return _jobStatus; }
@@ -212,6 +218,7 @@ namespace BITServices.Model
             this.JobStatusID = Convert.ToInt32(dr["JobStatusID"].ToString());
             this.ContractorID = dr["ContractorID"] as int? ?? default(int);
             this.UserName = dr["UserName"].ToString();
+            this.FullName = dr["FullName"].ToString();
             _db = new SQLHelper();
         }
 

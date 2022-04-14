@@ -17,7 +17,7 @@ namespace BITServices.Model
             _db = new SQLHelper();
             string sql = "SELECT contractorID, firstName, lastName, street, suburb, postCode, state, " +
                                " phone, email, userName, password, " +
-                               " contractorRating, payRate, active " +
+                               " contractorRating, payRate, profile, active " +
                          " FROM Contractor";
             DataTable dtContractors = _db.ExecuteSQL(sql);
             foreach (DataRow dataRow in dtContractors.Rows)
@@ -49,7 +49,7 @@ namespace BITServices.Model
             //                " AND a.StartTime < j.StartTime " +
             //                " AND j.JobID = @JobID";
             string sql = "SELECT DISTINCT c.contractorID, c.FirstName, c.LastName, c.street, c.suburb, c.postcode, c.state, " +
-                         " c.phone, c.email, c.username, c.password, c.contractorrating, c.payrate, c.active " +
+                         " c.phone, c.email, c.username, c.password, c.contractorrating, c.payrate, c.profile, c.active " +
                          " FROM Contractorskill cs, Job j, Contractor c, [Availability] a " +
                          " WHERE c.ContractorID = cs.ContractorID " +
                          " AND cs.SkillName = j.SkillName " +

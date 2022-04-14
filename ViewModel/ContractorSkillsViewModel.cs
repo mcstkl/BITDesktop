@@ -141,7 +141,7 @@ namespace BITServices.ViewModel
                     LoadGrid();
                 }catch (Exception ex)
                 {
-                    MessageBox.Show("Skill already exists for this contractor", "Cannot Add Skill");
+                    MessageBox.Show("Skill already exists for this contractor", "Can not Add Skill", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             else
