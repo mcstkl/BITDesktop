@@ -20,7 +20,7 @@
             <StackPanel x:Name="spTopBar" Grid.Row="0" Background="Transparent" MouseLeftButtonDown="spTopBar_MouseLeftButtonDown">
                 <Border CornerRadius="10 10 0 0" Background="#3D59AB" Height="30">
                     <StackPanel Background="Transparent" HorizontalAlignment="Right" Orientation="Horizontal">
-                        <Label FontSize="16" Content="ASSIGN CONTRACTOR" VerticalAlignment="Stretch" Margin="0 0 180 0" FontWeight="Bold" Foreground="white"/>
+                        <Label FontSize="16" Content="ASSIGN CONTRACTOR" VerticalAlignment="Stretch" Margin="0 0 80 0" FontWeight="Bold" Foreground="white"/>
 
                         <StackPanel Background="Transparent" x:Name="spTopbar" Orientation="Horizontal" Margin="0 0 8 0">
                             <Button x:Name="btnMinimizeWindow" Background="#3D59AB" Margin="0" Click="btnMinimizeWindow_Click">
@@ -50,11 +50,11 @@
                         <Label FontSize="18" Width="305" HorizontalAlignment="Left"></Label>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Center" Grid.Row="1" Margin="20 0 0 0" Orientation="Horizontal">
-                        <Label FontSize="18" Width="305" HorizontalAlignment="Left">Minimum Contractor Rating</Label>
+                        <Label FontSize="16" Width="305" HorizontalAlignment="Left">Minimum Contractor Rating</Label>
                         <TextBox Text="{Binding SelectedRating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Width="110" VerticalAlignment="Top" Height="30"/>
                 </StackPanel>
                     <StackPanel  VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" Margin="20 0 0 0" Orientation="Horizontal">
-                        <Label FontSize="18" Width="305" HorizontalAlignment="Left">Maximum Contractor Payrate</Label>
+                        <Label FontSize="16" Width="305" HorizontalAlignment="Left">Maximum Contractor Payrate</Label>
                         <TextBox Text="{Binding SelectedPayRate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Width="110" VerticalAlignment="Top" Height="30"/>
                 </StackPanel>
                     <Button Grid.Column="0" Grid.Row="3" x:Name="btnRefresh" Margin="315 0 0 0" Command="{Binding RefreshCommand}" 
@@ -69,17 +69,55 @@
                             <TextBlock Margin="0 0 10 0" FontSize="18" Text="Refresh" />
                         </StackPanel>
                     </Button>
-                    <ListView Margin="5" Grid.Column="0" Grid.Row="4" SelectedItem="{Binding SelectedContractor}" ItemsSource="{Binding SkilledContractors}">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Width="80" Header="First Name" DisplayMemberBinding="{Binding FirstName}"/>
-                                <GridViewColumn Width="80" Header="Last Name" DisplayMemberBinding="{Binding LastName}"/>
-                                <GridViewColumn Width="80" Header="Payrate" DisplayMemberBinding="{Binding PayRate}"/>
-                                <GridViewColumn Width="80" Header="Rating" DisplayMemberBinding="{Binding ContractorRating}"/>
-                                <GridViewColumn Width="80" Header="Username" DisplayMemberBinding="{Binding UserName}"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
+
+                    <DataGrid GridLinesVisibility="None" AutoGenerateColumns="False" SelectedItem="{Binding SelectedContractor}" ItemsSource="{Binding SkilledContractors}" Grid.Column="3" 
+                              Grid.Row="4" Grid.RowSpan="9" HorizontalScrollBarVisibility="Hidden" AlternatingRowBackground="WhiteSmoke" 
+                               HeadersVisibility="Column" Margin="10 0 10 50" BorderThickness="0.2" Background="Transparent">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Fullname"/>
+                            <DataGridTextColumn Binding="{Binding PayRate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Payrate" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding ContractorRating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Rating"/>
+                            <DataGridTextColumn Binding="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Username"/>
+
+                        </DataGrid.Columns>
+
+                        <DataGrid.Resources>
+                            <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                                <Setter Property="Background" Value="#be6716" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="BorderBrush" Value="Black"/>
+                                <Setter Property="BorderThickness" Value="0 0 0 0"/>
+                                <Setter Property="Margin" Value="1, 1, 0 , 0" />
+                                <Setter Property="Height" Value="38" />
+                                <Setter Property="Width" Value="auto"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="FontSize" Value="14"/>
+                                <Setter Property="BorderThickness" Value="1 2 1 2"/>
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell" >
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#3D59AB"/>
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                    </Trigger>
+                                </Style.Triggers>
+
+                            </Style>
+                        </DataGrid.CellStyle>
+                    </DataGrid>
+
+
+
                     <StackPanel Grid.Row="5" Orientation="Horizontal">
                     <Button Grid.Column="0" Grid.Row="5" x:Name="btnAssign" Margin="200 0 0 0" Command="{Binding AssignCommand}" 
                             Width="110"  Height="30" FontWeight="Bold" Background="#0275d8" Foreground="white">

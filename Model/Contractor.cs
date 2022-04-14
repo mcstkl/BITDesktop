@@ -14,6 +14,7 @@ namespace BITServices.Model
         private int _contractorID;
         private string _firstName;
         private string _lastName;
+        private string _fullName;
         private string _street;
         private string _suburb;
         private string _postCode;
@@ -42,6 +43,11 @@ namespace BITServices.Model
         {
             get { return _lastName; }
             set { _lastName = value; }
+        }
+        public string FullName
+        {
+            get { return _firstName + " " + _lastName; }
+            set { _fullName = value; }
         }
         public string Street
         {
