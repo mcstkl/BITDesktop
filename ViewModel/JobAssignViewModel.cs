@@ -18,6 +18,7 @@ namespace BITServices.ViewModel
         private Decimal _selectedPayRate;
         private Decimal _selectedRating;
         private ObservableCollection<Contractor> _filteredContractors;
+        private ObservableCollection<Contractor> _skilledContractors;
         private Contractor _selectedContractor;
 
         private RelayCommand _assignCommand;
@@ -49,6 +50,15 @@ namespace BITServices.ViewModel
             {
                 _filteredContractors = value;
                 OnPropertyChanged("FilteredContractors");
+            }
+        }
+        public ObservableCollection<Contractor> SkilledContractors
+        {
+            get { return _skilledContractors; }
+            set
+            {
+                _skilledContractors = value;
+                OnPropertyChanged("SkilledContractors");
             }
         }
         public Job SelectedJob { get { return _selectedJob; } set { _selectedJob = value; } }
@@ -116,17 +126,18 @@ namespace BITServices.ViewModel
         }
         public JobAssignViewModel(Job selectedJob)
         {
-            Contractors contractors = new Contractors();
-            this.Contractors = new ObservableCollection<Contractor>(contractors);
+            //Contractors contractors = new Contractors();
+            //this.Contractors = new ObservableCollection<Contractor>(contractors);
             SelectedJob = selectedJob;
+            LoadSkilledContractors();
         }
 
 
         public void AssignMethod()
         {
-            if(SelectedJob != null)
+            if (SelectedJob != null)
             {
-                if(SelectedJob.ContractorID == 0)
+                if (SelectedJob.ContractorID == 0)
                 {
                     try
                     {
@@ -134,7 +145,8 @@ namespace BITServices.ViewModel
                         SelectedJob.JobStatusID = 2;
                         SelectedJob.UpdateJob();
                         MessageBox.Show("Contractor assigned to job", "Contractor assigned", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }catch(Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         MessageBox.Show("Cannot Assign Job", "Cannot Assign Job", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
@@ -148,17 +160,23 @@ namespace BITServices.ViewModel
 
         public void RefreshMethod()
         {
-            Contractors allContractors = new Contractors();
-            ObservableCollection<Contractor> AllContractors = new ObservableCollection<Contractor>(allContractors);
+            LoadSkilledContractors();
             List<Contractor> filteredContractors = new List<Contractor>();
-            foreach (Contractor contractor in AllContractors)
+            foreach (Contractor contractor in this.SkilledContractors)
             {
                 if (SelectedPayRate >= contractor.PayRate && SelectedRating <= contractor.ContractorRating)
                 {
                     filteredContractors.Add(contractor);
                 }
             }
-            this.Contractors = new ObservableCollection<Contractor>(filteredContractors);
+            this.SkilledContractors = new ObservableCollection<Contractor>(filteredContractors);
+        }
+
+
+        public void LoadSkilledContractors()
+        {
+            Contractors skilledContractors = new Contractors(SelectedJob.JobID);
+            this.SkilledContractors = new ObservableCollection<Contractor>(skilledContractors);
         }
     }
 }

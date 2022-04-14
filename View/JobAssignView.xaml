@@ -69,7 +69,7 @@
                             <TextBlock Margin="0 0 10 0" FontSize="18" Text="Refresh" />
                         </StackPanel>
                     </Button>
-                    <ListView Margin="5" Grid.Column="0" Grid.Row="4" SelectedItem="{Binding SelectedContractor}" ItemsSource="{Binding Contractors}">
+                    <ListView Margin="5" Grid.Column="0" Grid.Row="4" SelectedItem="{Binding SelectedContractor}" ItemsSource="{Binding SkilledContractors}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Width="80" Header="First Name" DisplayMemberBinding="{Binding FirstName}"/>
