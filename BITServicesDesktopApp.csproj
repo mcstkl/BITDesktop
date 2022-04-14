@@ -95,6 +95,7 @@
     <Compile Include="ViewModel\ContractorAvailabilityViewModel.cs" />
     <Compile Include="ViewModel\ContractorManagementViewModel.cs" />
     <Compile Include="ViewModel\ContractorSkillsViewModel.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\JobAssignViewModel.cs" />
     <Compile Include="ViewModel\JobManagementViewModel.cs" />
     <Compile Include="ViewModel\SettingsEditSkillsViewModel.cs" />
