@@ -12,8 +12,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="1.3*"/>
+                <RowDefinition Height="1.2*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="1">
@@ -50,7 +50,62 @@
                         <Label FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Active Contractors</Label>
                         <Label Cursor="Hand" Foreground="Blue" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 -10 40 0" FontSize="10">>>Show Details</Label>
                     </StackPanel>
+                </Border>
+            </Grid>
+            <Separator Grid.Row="1" VerticalAlignment="Bottom" Margin="20 0 20 40"/>
+            <Grid Margin="0 -50 0 0" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="0.5" Grid.Column="0" Background="WhiteSmoke" BorderBrush="#666" CornerRadius="5,5,5,5" Margin="20 40">
+                    <StackPanel VerticalAlignment="Center">
+                        <Label FontSize="18" FontWeight="Bold" HorizontalAlignment="Center">Top Contractors</Label>
+                        <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
+                            <Border Grid.Row="1" Grid.Column="1" Width="30" Height="30" CornerRadius="80,80,80,80">
+                                <Border.Background>
+                                    <ImageBrush Stretch="Fill" ImageSource="{Binding ContractorOne.Profile}"/>
+                                </Border.Background>
+                            </Border>
+                            <Label Content="{Binding ContractorOne.FullName}" Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
+                            <Label Content="{Binding ContractorOne.ContractorRating}" Margin="0 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
+                            <Label Content="{Binding ContractorOne.PayRate}" ContentStringFormat="${0} p/h" Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
+                            <Label FontStyle="Italic" Cursor="Hand" Content="View" Margin="10 0 0 0" Foreground="Blue" FontSize="16"/>
+                        </StackPanel>
+                        <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
+
+                            <Border Grid.Row="1" Grid.Column="1" Width="30" Height="30" CornerRadius="80,80,80,80">
+                                <Border.Background>
+                                    <ImageBrush Stretch="Fill" ImageSource="{Binding ContractorTwo.Profile}"/>
+                                </Border.Background>
+                            </Border>
+                            <Label Content="{Binding ContractorTwo.FullName}" Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
+                            <Label Content="{Binding ContractorTwo.ContractorRating}" Margin="0 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
+                            <Label Content="{Binding ContractorTwo.PayRate}" ContentStringFormat="${0} p/h" Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
+                            <Label FontStyle="Italic" Cursor="Hand" Content="View" Margin="10 0 0 0" Foreground="Blue" FontSize="16"/>
+                        </StackPanel>
+                        <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
+
+                            <Border Grid.Row="1" Grid.Column="1" Width="30" Height="30" CornerRadius="80,80,80,80">
+                                <Border.Background>
+                                    <ImageBrush Stretch="Fill" ImageSource="{Binding ContractorThree.Profile}"/>
+                                </Border.Background>
+                            </Border>
+                            <Label Content="{Binding ContractorThree.FullName}" Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
+                            <Label Content="{Binding ContractorThree.ContractorRating}" FontWeight="Bold" Margin="0 0 0 0" Foreground="#666" FontSize="16"/>
+                            <Label Content="{Binding ContractorThree.PayRate}" ContentStringFormat="${0} p/h" Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
+                            <Label FontStyle="Italic" Cursor="Hand" Content="View" Margin="10 0 0 0" Foreground="Blue" FontSize="16"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border BorderThickness="0.5" Grid.Column="2" Background="WhiteSmoke" BorderBrush="#666" CornerRadius="5,5,5,5" Margin="20 40">
+                    <StackPanel VerticalAlignment="Center">
+                        <Label Foreground="Red" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" Content="{Binding NumberOfActiveJobs}"/>
+                        <Label FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Upcoming Jobs</Label>
+                        <Label Cursor="Hand" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 -10 30 0" FontSize="10">>>Show Details</Label>
+                    </StackPanel>
                 </Border>
             </Grid>
         </Grid>

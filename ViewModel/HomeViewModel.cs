@@ -1,6 +1,7 @@
 ﻿using BITServices.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -14,8 +15,32 @@ namespace BITServices.ViewModel
         private int _numberOfContractors;
         private int _numberOfActiveJobs;
         private int _numberOfCompletedJobs;
+        private ObservableCollection<Contractor> _topContractors;
+        private Contractor _contractorOne;
+        private Contractor _contractorTwo;
+        private Contractor _contractorThree;
 
-
+        public Contractor ContractorOne
+        {
+            get { return _topContractors[0]; }
+            set { _contractorOne = value;
+                OnPropertyChanged("ContractorOne");
+            }
+        }
+        public Contractor ContractorTwo
+        {
+            get { return _topContractors[1]; }
+            set { _contractorOne = value;
+                OnPropertyChanged("ContractorTwo");
+            }
+        }
+        public Contractor ContractorThree
+        {
+            get { return _topContractors[2]; }
+            set { _contractorOne = value;
+                OnPropertyChanged("ContractorThree");
+            }
+        }
         public int NumberOfClients
         {
             get { return _numberOfClients; }
@@ -42,6 +67,13 @@ namespace BITServices.ViewModel
             get { return _numberOfCompletedJobs; }
             set { _numberOfCompletedJobs = value;
                 OnPropertyChanged("NumberOfCompletedJobs");
+            }
+        }
+        public ObservableCollection<Contractor> TopContractors
+        {
+            get { return _topContractors; }
+            set { _topContractors = value;
+                OnPropertyChanged("TopContractors");
             }
         }
 
@@ -86,6 +118,18 @@ namespace BITServices.ViewModel
                 }
             }
             NumberOfCompletedJobs = completedJobs.Count;
+            TopContractors = GetTopContractors();
         }
+
+
+        public ObservableCollection<Contractor> GetTopContractors()
+        {
+            Contractors topContractors = new Contractors();
+            topContractors.Sort();
+            topContractors.Reverse();
+            return new ObservableCollection<Contractor>(topContractors);
+        }
+
+ 
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BITServices.Model
 {
-    public class Contractor
+    public class Contractor : IComparable
     {
         private int _contractorID;
         private string _firstName;
@@ -47,7 +47,7 @@ namespace BITServices.Model
         }
         public string FullName
         {
-            get { return _firstName + " " + _lastName; }
+            get { return _firstName + " " + _lastName+"\t".PadRight(2); }
             set { _fullName = value; }
         }
         public string Street
@@ -245,6 +245,10 @@ namespace BITServices.Model
             return result;
         }
 
+        public int CompareTo(object obj)
+        {
+            return ContractorRating.CompareTo(((Contractor)obj).ContractorRating);
+        }
     }
 }
 
