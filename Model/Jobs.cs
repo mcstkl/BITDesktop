@@ -26,6 +26,7 @@ namespace BITServices.Model
                 " LEFT JOIN  Client cl ON j.ClientID = cl.ClientID " +
                 " LEFT JOIN  JobStatus js ON js.JobStatusID = j.JobStatusID " +
                 " LEFT JOIN  ContractorSkill cs ON j.SkillName = cs.SkillName";
+                
             DataTable dtJobs = _db.ExecuteSQL(sql);
             foreach (DataRow dataRow in dtJobs.Rows)
             {

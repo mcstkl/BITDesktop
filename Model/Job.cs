@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace BITServices.Model
         private string _suburb;
         private string _postCode;
         private string _state;
-        private string _date;
+        private DateTime _date = DateTime.Now;
         private TimeSpan _startTime;
         private int _travelDistance;
         private int _estimatedHours;
@@ -96,7 +97,7 @@ namespace BITServices.Model
                 OnPropertyChanged("State");
             }
         }
-        public string Date
+        public DateTime Date
         {
             get { return _date; }
             set
@@ -208,7 +209,7 @@ namespace BITServices.Model
             this.Suburb = dr["Suburb"].ToString();
             this.PostCode = dr["PostCode"].ToString();
             this.State = dr["State"].ToString();
-            this.Date = ((DateTime)dr["Date"]).ToShortDateString();
+            this.Date = ((DateTime)dr["Date"]);
             this.StartTime = (TimeSpan)dr["StartTime"];
             this.TravelDistance = Convert.ToInt32(dr["TravelDistance"].ToString());
             this.EstimatedHours = Convert.ToInt32(dr["EstimatedHours"].ToString());
@@ -229,7 +230,7 @@ namespace BITServices.Model
             {
                 string sql = "insert into job(jobStatusID, street, suburb, postCode, state, date, startTime, travelDistance, estimatedHours, actualHours, skillName, clientID) " +
                     " values(@JobStatusID, @Street, @Suburb, @PostCode, @State, @Date, @StartTime, @TravelDistance, @EstimatedHours, @ActualHours, @SkillName, @ClientID)";
-                DateTime dtime = Convert.ToDateTime(this.Date);
+                //DateTime dtime = Convert.ToDateTime(this.Date);
                 SqlParameter[] objParams;
                 objParams = new SqlParameter[12];
                 objParams[0] = new SqlParameter("@JobStatusID", DbType.Int32);
@@ -243,7 +244,7 @@ namespace BITServices.Model
                 objParams[4] = new SqlParameter("@State", DbType.String);
                 objParams[4].Value = this.State;
                 objParams[5] = new SqlParameter("@Date", DbType.DateTime);
-                objParams[5].Value = dtime;
+                objParams[5].Value = this.Date;
                 objParams[6] = new SqlParameter("@StartTime", DbType.Time);
                 objParams[6].Value = this.StartTime;
                 objParams[7] = new SqlParameter("@TravelDistance", DbType.Int32);
@@ -259,9 +260,10 @@ namespace BITServices.Model
                 int result = _db.ExecuteNonQuery(sql, objParams);
                 return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Could not add client", "Could not add client", MessageBoxButton.OK, MessageBoxImage.Error);
+
                 return -1;
             }
 

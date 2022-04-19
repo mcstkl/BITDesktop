@@ -90,7 +90,7 @@
                   AlternatingRowBackground="WhiteSmoke"
                   Height="280" HeadersVisibility="Column" Margin="0 5 0 0" BorderThickness="0.2" Background="Transparent">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Date"/>
+                    <DataGridTextColumn  Binding="{Binding Date, StringFormat=\{0:dd/MM/yyyy\}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Date"/>
                     <DataGridTextColumn Binding="{Binding StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Start Time"/>
                     <DataGridTextColumn Binding="{Binding CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Company"/>
                     <DataGridTextColumn Binding="{Binding Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Street"/>
@@ -176,7 +176,7 @@
                     <Label Grid.Row="6" Grid.Column="3" FontSize="16">Job Status</Label>
 
 
-                    <TextBox x:Name="tbDate" IsEnabled="False" Grid.Row="2" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="tbDate"  IsEnabled="False" Grid.Row="2" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.Date, StringFormat=\{0:dd/MM/yyyy\}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox x:Name="tbStartTime" IsEnabled="False" Grid.Row="2" Grid.Column="4" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBox x:Name="tbCompany" IsEnabled="False" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox x:Name="tbStreet" IsEnabled="False" Grid.Row="3" Grid.Column="4" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />

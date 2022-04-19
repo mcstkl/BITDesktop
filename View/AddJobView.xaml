@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BITServices.View"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
              WindowStyle="None" Background="Transparent"
@@ -71,7 +72,7 @@
             <Label Margin="30 0 0 0" Grid.Row="10" Grid.Column="0" FontSize="18">Estimated Hours</Label>
 
 
-            <DatePicker x:Name="dtpDate" Grid.Row="2" Grid.Column="1" FontSize="18" Margin="0 0 50 10"  BorderThickness="0 0 0 1" Text="{Binding SelectedJob.Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <DatePicker  x:Name="dtpDate" Grid.Row="2" Grid.Column="1" FontSize="18" Margin="0 0 50 10" BorderThickness="0 0 0 1" SelectedDate="{Binding SelectedJob.Date, StringFormat=\{0:dd/MM/yyyy\}, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
             <ComboBox x:Name="cboTime" Grid.Row="3" Grid.Column="1" FontSize="18" Margin="0 0 50 10" Background="NavajoWhite" BorderThickness="0 0 0 1"  Text="{Binding SelectedJob.StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <ComboBoxItem>7:00</ComboBoxItem>
                 <ComboBoxItem>8:00</ComboBoxItem>

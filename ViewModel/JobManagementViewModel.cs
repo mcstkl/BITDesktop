@@ -104,6 +104,7 @@ namespace BITServices.ViewModel
             this.Skills = new ObservableCollection<Skill>(allSkills);
             SelectedSkill = new Skill(SelectedJob.SkillName);
             //OnPropertyChanged("Jobs");
+            
         }
         // -------------------------------------------------------
 

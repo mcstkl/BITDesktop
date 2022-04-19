@@ -25,6 +25,7 @@ namespace BITServices.View
         {
             InitializeComponent();
             this.DataContext = new JobManagementViewModel();
+            
         }
     }
 }
