@@ -21,7 +21,7 @@ namespace BITServices.Model
             //    " AND j.JobStatusID = js.JobStatusID " +
             //    " AND j.SkillName = cs.SkillName";
             string sql = "SELECT DISTINCT j.jobID, j.jobStatusID, cl.ClientID, cl.CompanyName, j.Street, j.Suburb, j.PostCode, j.[state], " +
-                "j.[date], j.startTime, j.travelDistance, j.estimatedHours, j.actualHours,  cs.SkillName, js.JobStatus, c.ContractorID, c.Username, c.FirstName + ' ' + c.LastName as FullName " +
+                "j.[date], j.startTime, j.travelDistance, j.estimatedHours, j.actualHours,  j.SkillName, js.JobStatus, c.ContractorID, c.Username, c.FirstName + ' ' + c.LastName as FullName " +
                 " FROM Job j LEFT OUTER JOIN  Contractor c ON j.ContractorID = c.ContractorID " +
                 " LEFT JOIN  Client cl ON j.ClientID = cl.ClientID " +
                 " LEFT JOIN  JobStatus js ON js.JobStatusID = j.JobStatusID " +
