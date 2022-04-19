@@ -191,7 +191,7 @@
                               Grid.Row="2" Grid.RowSpan="9" HorizontalScrollBarVisibility="Hidden" AlternatingRowBackground="WhiteSmoke" 
                               Height="280" HeadersVisibility="Column" Margin="10 0 0 0" BorderThickness="0.2" Background="Transparent">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Date"/>
+                            <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yyyy\}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Date"/>
                             <DataGridTextColumn Binding="{Binding StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="StartTime" Width="*"/>
                             <DataGridTextColumn Binding="{Binding JobStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Status"/>
                             <DataGridTextColumn Binding="{Binding SkillName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Skill"/>

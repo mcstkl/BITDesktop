@@ -46,16 +46,21 @@ namespace BITServices.ViewModel
             {
                 _selectedClient = value;
                 OnPropertyChanged("SelectedClient");
+                
                 Jobs jobs = new Jobs();
                 List<Job> currentJobs = new List<Job>();
                 foreach(Job job in jobs)
                 {
-                    if(job.CompanyName == SelectedClient.CompanyName)
+                    if(SelectedClient != null && job != null)
                     {
-                        currentJobs.Add(job);
+                        if(job.CompanyName == SelectedClient.CompanyName)
+                        {
+                            currentJobs.Add(job);
+                        }
                     }
                 }
                 CurrentJobs = new ObservableCollection<Job>(currentJobs);
+            
             }
         }
         public string SelectedItemInFilter
