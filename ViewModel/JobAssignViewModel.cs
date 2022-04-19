@@ -143,7 +143,7 @@ namespace BITServices.ViewModel
                     {
                         SelectedJob.ContractorID = SelectedContractor.ContractorID;
                         SelectedJob.JobStatusID = 2;
-                        SelectedJob.UpdateJob();
+                        SelectedJob.UpdateJobStatus();
                         MessageBox.Show("Contractor assigned to job", "Contractor assigned", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (Exception ex)

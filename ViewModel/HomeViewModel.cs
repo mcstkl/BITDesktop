@@ -209,7 +209,9 @@ namespace BITServices.ViewModel
             {
                 if (job.Date > DateTime.Now)
                 {
-                    job.CompanyName = job.CompanyName + "\t".PadRight(2);
+                    char pad = ' ';
+                    job.CompanyName = job.CompanyName + "\t".PadLeft(10, pad);
+                    job.UpcomingJobDate = string.Format("{0,8:dd/MM/yyyy}", job.Date);
                     upcomingJobs.Add(job);
                 }
             }

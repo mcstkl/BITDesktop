@@ -111,25 +111,25 @@
                         <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
                          
-                            <Label Content="{Binding UpcomingOne.CompanyName}" Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
-                            <Label Content="{Binding UpcomingOne.Date}" Margin="20 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
-                            <Label Content="{Binding UpcomingOne.StartTime}" Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
-                            <Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="50 0 0 0" Foreground="Blue" FontSize="16"/>
+                            <Label Content="{Binding UpcomingOne.CompanyName}" Margin="0 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
+                            <Label Content="{Binding UpcomingOne.UpcomingJobDate}" Margin="0 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
+                            <Label Content="{Binding UpcomingOne.StartTime}" Margin="20 0 0 0" Foreground="#666" FontSize="16"/>
+                            <Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="30 0 0 0" Foreground="Blue" FontSize="16"/>
                         </StackPanel>
                         <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
 
-                            <Label Content="{Binding UpcomingTwo.CompanyName}"  Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
-                            <Label Content="{Binding UpcomingTwo.Date}" Margin="20 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
-                            <Label Content="{Binding UpcomingTwo.StartTime}" Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
-                            <Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="50 0 0 0" Foreground="Blue" FontSize="16"/>
+                            <Label Content="{Binding UpcomingTwo.CompanyName}"  Margin="0 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
+                            <Label Content="{Binding UpcomingTwo.UpcomingJobDate}" Margin="0 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
+                            <Label Content="{Binding UpcomingTwo.StartTime}" Margin="20 0 0 0" Foreground="#666" FontSize="16"/>
+                            <Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="30 0 0 0" Foreground="Blue" FontSize="16"/>
                         </StackPanel>
                         <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
-                            <Label Content="{Binding UpcomingThree.CompanyName}" Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
-                            <Label Content="{Binding UpcomingThree.Date}" FontWeight="Bold" Margin="20 0 0 0" Foreground="#666" FontSize="16"/>
-                            <Label Content="{Binding UpcomingThree.StartTime}"  Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
-                            <Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="50 0 0 0" Foreground="Blue" FontSize="16"/>
+                            <Label Content="{Binding UpcomingThree.CompanyName}" Margin="0 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
+                            <Label Content="{Binding UpcomingThree.UpcomingJobDate}" FontWeight="Bold" Margin="0 0 0 0" Foreground="#666" FontSize="16"/>
+                            <Label Content="{Binding UpcomingThree.StartTime}"  Margin="20 0 0 0" Foreground="#666" FontSize="16"/>
+                            <Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="30 0 0 0" Foreground="Blue" FontSize="16"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>

@@ -17,7 +17,9 @@ namespace BITServices.ViewModel
         // ------------------------------------------------------
         private ObservableCollection<Job> _jobs;
         private ObservableCollection<Skill> _skills;
+        private ObservableCollection<Client> _clients;
         private Skill _selectedSkill;
+        private Client _selectedClient;
         private Job _selectedJob;
         public string _selectedItemInFilter = string.Empty;
         public string _searchValue = string.Empty;
@@ -81,6 +83,15 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("Skills");
             }
         }
+        public ObservableCollection<Client> Clients
+        {
+            get { return _clients; }
+            set
+            {
+                _clients = value;
+                OnPropertyChanged("Clients");
+            }
+        }
         public Skill SelectedSkill
         {
             get { return _selectedSkill; }
@@ -88,6 +99,16 @@ namespace BITServices.ViewModel
             {
                 _selectedSkill = value;
                 OnPropertyChanged("SelectedSkill");
+            }
+        }
+        public Client SelectedClient
+        {
+            get { return _selectedClient; }
+            set
+            {
+                _selectedClient = value;
+                OnPropertyChanged("SelectedClient");
+
             }
         }
         // -------------------------------------------------------
@@ -104,6 +125,10 @@ namespace BITServices.ViewModel
             Skills allSkills = new Skills();
             this.Skills = new ObservableCollection<Skill>(allSkills);
             SelectedSkill = new Skill(SelectedJob.SkillName);
+            Clients allClients = new Clients();
+            this.Clients = new ObservableCollection<Client>(allClients);
+
+
             //OnPropertyChanged("Jobs");
             
             
