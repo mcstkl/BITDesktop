@@ -99,11 +99,13 @@ namespace BITServices.ViewModel
         {
             SelectedJob = new Job();
             Jobs allJobs = new Jobs();
+
             this.Jobs = new ObservableCollection<Job>(allJobs);
             Skills allSkills = new Skills();
             this.Skills = new ObservableCollection<Skill>(allSkills);
             SelectedSkill = new Skill(SelectedJob.SkillName);
             //OnPropertyChanged("Jobs");
+            
             
         }
         // -------------------------------------------------------
