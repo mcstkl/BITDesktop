@@ -23,6 +23,7 @@ namespace BITServices.ViewModel
         private Job _upcomingOne;
         private Job _upcomingTwo;
         private Job _upcomingThree;
+        private DateTime _timeNow = DateTime.Now;
 
 
         public Contractor ContractorOne
@@ -71,6 +72,13 @@ namespace BITServices.ViewModel
             {
                 _upcomingThree = value;
                 OnPropertyChanged("UpcomingThree");
+            }
+        }
+        public DateTime TimeNow
+        {
+            get { return _timeNow; }
+            set { _timeNow = value;
+                OnPropertyChanged("TimeNow");
             }
         }
 
@@ -201,6 +209,7 @@ namespace BITServices.ViewModel
             {
                 if (job.Date > DateTime.Now)
                 {
+                    job.CompanyName = job.CompanyName + "\t".PadRight(2);
                     upcomingJobs.Add(job);
                 }
             }

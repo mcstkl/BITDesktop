@@ -162,7 +162,7 @@ namespace BITServices.Model
         }
         public string CompanyName
         {
-            get { return _companyName + "\t".PadRight(2); }
+            get { return _companyName; }
             set { _companyName = value; }
         }
         public string UserName

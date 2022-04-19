@@ -8,7 +8,12 @@
       d:DesignHeight="770" d:DesignWidth="1040"
       Title="HomeView">
     <Grid>
-        <Label FontSize="30" Margin="20 50 0 0" Foreground="#666">Current Activity</Label>
+           
+        
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+            <Label FontSize="30" Margin="20 50 0 0" Foreground="#666">Current Activity</Label>
+
+        </StackPanel>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
@@ -48,7 +53,7 @@
                     <StackPanel VerticalAlignment="Center">
                         <Label Foreground="#be6716" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" Content="{Binding NumberOfContractors}"/>
                         <Label FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Active Contractors</Label>
-                        <Label Cursor="Hand" Foreground="Blue" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 -10 40 0" FontSize="10">>>Show Details</Label>
+                        <Label Cursor="Hand" Foreground="Blue" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 -10 35 0" FontSize="10">>>Show Details</Label>
                     </StackPanel>
                 </Border>
             </Grid>
@@ -72,7 +77,7 @@
                             <Label Content="{Binding ContractorOne.FullName}" Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
                             <Label Content="{Binding ContractorOne.ContractorRating}" Margin="0 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
                             <Label Content="{Binding ContractorOne.PayRate}" ContentStringFormat="${0} p/h" Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
-                            <Label FontStyle="Italic" Cursor="Hand" Content="View" Margin="10 0 0 0" Foreground="Blue" FontSize="16"/>
+                            <Label FontStyle="Italic" Cursor="Hand" Content="View" Margin="20 0 0 0" Foreground="Blue" FontSize="16"/>
                         </StackPanel>
                         <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
@@ -84,7 +89,7 @@
                             <Label Content="{Binding ContractorTwo.FullName}" Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
                             <Label Content="{Binding ContractorTwo.ContractorRating}" Margin="0 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
                             <Label Content="{Binding ContractorTwo.PayRate}" ContentStringFormat="${0} p/h" Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
-                            <Label FontStyle="Italic" Cursor="Hand" Content="View" Margin="10 0 0 0" Foreground="Blue" FontSize="16"/>
+                            <Label FontStyle="Italic" Cursor="Hand" Content="View" Margin="20 0 0 0" Foreground="Blue" FontSize="16"/>
                         </StackPanel>
                         <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
@@ -96,7 +101,7 @@
                             <Label Content="{Binding ContractorThree.FullName}" Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
                             <Label Content="{Binding ContractorThree.ContractorRating}" FontWeight="Bold" Margin="0 0 0 0" Foreground="#666" FontSize="16"/>
                             <Label Content="{Binding ContractorThree.PayRate}" ContentStringFormat="${0} p/h" Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
-                            <Label FontStyle="Italic" Cursor="Hand" Content="View" Margin="10 0 0 0" Foreground="Blue" FontSize="16"/>
+                            <Label FontStyle="Italic" Cursor="Hand" Content="View" Margin="20 0 0 0" Foreground="Blue" FontSize="16"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -107,28 +112,32 @@
 
                          
                             <Label Content="{Binding UpcomingOne.CompanyName}" Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
-                            <Label Content="{Binding UpcomingOne.Date}" Margin="0 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
+                            <Label Content="{Binding UpcomingOne.Date}" Margin="20 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
                             <Label Content="{Binding UpcomingOne.StartTime}" Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
-                            <Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="10 0 0 0" Foreground="Blue" FontSize="16"/>
+                            <Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="50 0 0 0" Foreground="Blue" FontSize="16"/>
                         </StackPanel>
                         <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
 
-                            <Label Content="{Binding UpcomingTwo.CompanyName}" Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
-                            <Label Content="{Binding UpcomingTwo.Date}" Margin="0 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
+                            <Label Content="{Binding UpcomingTwo.CompanyName}"  Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
+                            <Label Content="{Binding UpcomingTwo.Date}" Margin="20 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
                             <Label Content="{Binding UpcomingTwo.StartTime}" Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
-                            <Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="10 0 0 0" Foreground="Blue" FontSize="16"/>
+                            <Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="50 0 0 0" Foreground="Blue" FontSize="16"/>
                         </StackPanel>
                         <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
                             <Label Content="{Binding UpcomingThree.CompanyName}" Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontSize="16"/>
-                            <Label Content="{Binding UpcomingThree.Date}" FontWeight="Bold" Margin="0 0 0 0" Foreground="#666" FontSize="16"/>
+                            <Label Content="{Binding UpcomingThree.Date}" FontWeight="Bold" Margin="20 0 0 0" Foreground="#666" FontSize="16"/>
                             <Label Content="{Binding UpcomingThree.StartTime}"  Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
-                            <Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="10 0 0 0" Foreground="Blue" FontSize="16"/>
+                            <Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="50 0 0 0" Foreground="Blue" FontSize="16"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
+                
             </Grid>
+            <StackPanel Grid.Row="3">
+                <TextBlock x:Name="tbClock" Background="Transparent" Width="300" Height="100" FontSize="16" FontWeight="Bold" HorizontalAlignment="Right" Margin="0 140 -180 0"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

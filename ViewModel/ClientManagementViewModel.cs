@@ -51,9 +51,9 @@ namespace BITServices.ViewModel
                 List<Job> currentJobs = new List<Job>();
                 foreach(Job job in jobs)
                 {
-                    if(SelectedClient != null && job != null)
+                    if (SelectedClient != null && job != null)
                     {
-                        if(job.CompanyName == SelectedClient.CompanyName)
+                        if (job.CompanyName == SelectedClient.CompanyName)
                         {
                             currentJobs.Add(job);
                         }
