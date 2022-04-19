@@ -171,5 +171,18 @@ namespace BITServices
                             "Currently logged in as " + _currentUser.UserName, 
                             MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+
+        private void btnMaximizeMainWindow_Click(object sender, RoutedEventArgs e)
+        {
+            if(this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                this.WindowState=WindowState.Maximized;
+            }
+        }
     }
 }

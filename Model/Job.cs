@@ -15,7 +15,7 @@ namespace BITServices.Model
     public class Job : INotifyPropertyChanged
     {
         private int _jobStatusID;
-        private int _contractorID;
+        private int? _contractorID;
         private string _companyName;
         private string _street;
         private string _suburb;
@@ -52,7 +52,7 @@ namespace BITServices.Model
                 OnPropertyChanged("JobStatusID");
             }
         }
-        public int ContractorID
+        public int? ContractorID
         {
             get { return _contractorID; }
             set
@@ -284,6 +284,7 @@ namespace BITServices.Model
 
         public int UpdateJob()
         {
+           // if(this.ContractorID == 0) { this.ContractorID = null; }
             string sql = "UPDATE job SET " +
                 "jobStatusID = @JobStatusID, " +
                 "street = @Street, " +
@@ -296,12 +297,11 @@ namespace BITServices.Model
                 "estimatedHours = @EstimatedHours, " +
                 "actualHours = @ActualHours, " +
                 "skillName = @SkillName, " +
-                "clientID = @ClientID, " +
-                "contractorID = @ContractorID " +
+                "clientID = @ClientID " +
                  " WHERE jobID = @JobID";
-            DateTime dtime = Convert.ToDateTime(this.Date);
+            //DateTime dtime = Convert.ToDateTime(this.Date);
             SqlParameter[] objParams;
-            objParams = new SqlParameter[14];
+            objParams = new SqlParameter[13];
             objParams[0] = new SqlParameter("@JobStatusID", DbType.String);
             objParams[0].Value = this.JobStatusID;
             objParams[1] = new SqlParameter("@Street", DbType.String);
@@ -313,7 +313,7 @@ namespace BITServices.Model
             objParams[4] = new SqlParameter("@State", DbType.String);
             objParams[4].Value = this.State;
             objParams[5] = new SqlParameter("@Date", DbType.DateTime);
-            objParams[5].Value = dtime;
+            objParams[5].Value = this.Date;
             objParams[6] = new SqlParameter("@StartTime", DbType.Time);
             objParams[6].Value = this.StartTime;
             objParams[7] = new SqlParameter("@TravelDistance", DbType.Int32);
@@ -328,10 +328,11 @@ namespace BITServices.Model
             objParams[11].Value = this.ClientID;
             objParams[12] = new SqlParameter("@JobID", DbType.Int32);
             objParams[12].Value = this.JobID;
-            objParams[13] = new SqlParameter("@ContractorID", DbType.Int32);
-            objParams[13].Value = this.ContractorID;
+            //objParams[13] = new SqlParameter("@ContractorID", DbType.Int32);
+            //objParams[13].Value = this.ContractorID;
             int result = _db.ExecuteNonQuery(sql, objParams);
             return result;
         }
+
     }
 }

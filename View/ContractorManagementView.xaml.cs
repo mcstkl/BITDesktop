@@ -97,6 +97,8 @@ namespace BITServices.View
             tbPassword.IsEnabled = false;
             tbRating.IsEnabled = false;
             tbPayrate.IsEnabled = false;
+            btnSkills.IsEnabled = true;
+            btnAvailabilities.IsEnabled = true;
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -120,6 +122,8 @@ namespace BITServices.View
             tbPassword.IsEnabled = false;
             tbRating.IsEnabled = false;
             tbPayrate.IsEnabled = false;
+            btnSkills.IsEnabled = true;
+            btnAvailabilities.IsEnabled = true;
 
         }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -157,6 +161,9 @@ namespace BITServices.View
             tbPassword.IsEnabled = true;
             tbRating.IsEnabled = true;
             tbPayrate.IsEnabled = true;
+            btnSkills.IsEnabled = false;
+            btnAvailabilities.IsEnabled = false;
+            
         }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -179,6 +186,8 @@ namespace BITServices.View
             tbPassword.IsEnabled = false;
             tbRating.IsEnabled = false;
             tbPayrate.IsEnabled = false;
+            btnSkills.IsEnabled = true;
+            btnAvailabilities.IsEnabled = true;
         }
     }
 }

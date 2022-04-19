@@ -205,6 +205,9 @@
                                 <Button x:Name="btnMinimizeMainWindow" Background="#3D59AB" Margin="0" Click="btnMinimizeMainWindow_Click">
                                     <fa:ImageAwesome  Margin="5 8 5 0" Icon="WindowMinimize" Style="{StaticResource buttonIcon}" Width="15" Height="15" Foreground="white" />
                                 </Button>
+                                <Button x:Name="btnMaximizeMainWindow" Background="#3D59AB" Margin="0" Click="btnMaximizeMainWindow_Click">
+                                    <fa:ImageAwesome  Margin="5 2 5 0" Icon="WindowMaximize" Style="{StaticResource buttonIcon}" Width="15" Height="15" Foreground="white" />
+                                </Button>
                                 <Button x:Name="btnCloseMainWindow" Background="#3D59AB" Margin="0" Click="btnCloseMainWindow_Click">
                                     <fa:ImageAwesome Margin="5"  Icon="Close" Style="{StaticResource buttonIcon}" Width="15" Height="15" Foreground="white" />
                                 </Button>

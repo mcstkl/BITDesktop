@@ -27,5 +27,63 @@ namespace BITServices.View
             this.DataContext = new JobManagementViewModel();
             
         }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            dgJobs.IsEnabled = false;
+            btnSaveUpdate.IsEnabled = true;
+            btnCancel.IsEnabled = true;
+            tbDate.IsEnabled = true;
+            tbCompany.IsEnabled = true;
+            tbSuburb.IsEnabled = true;
+            tbState.IsEnabled = true;
+            tbSkill.IsEnabled = true;
+            tbStartTime.IsEnabled = true;
+            tbStreet.IsEnabled = true;
+            tbPostCode.IsEnabled = true;
+            tbEstimatedHours.IsEnabled = true;
+            tbJobStatus.IsEnabled = true;
+            btnAssign.IsEnabled = false;
+            btnVerify.IsEnabled = false;
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            dgJobs.IsEnabled = true;
+            dgJobs.SelectedIndex = 0;
+            btnSaveUpdate.IsEnabled = false;
+            btnCancel.IsEnabled = false;
+            tbDate.IsEnabled = false;
+            tbCompany.IsEnabled = false;
+            tbSuburb.IsEnabled = false;
+            tbState.IsEnabled = false;
+            tbSkill.IsEnabled = false;
+            tbStartTime.IsEnabled = false;
+            tbStreet.IsEnabled = false;
+            tbPostCode.IsEnabled = false;
+            tbEstimatedHours.IsEnabled = false;
+            tbJobStatus.IsEnabled = false;
+            btnAssign.IsEnabled = true;
+            btnVerify.IsEnabled = true;
+        }
+
+        private void btnSaveUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            dgJobs.IsEnabled = true;
+            btnSaveUpdate.IsEnabled = false;
+            btnCancel.IsEnabled = false;
+            tbDate.IsEnabled = false;
+            tbCompany.IsEnabled = false;
+            tbSuburb.IsEnabled = false;
+            tbState.IsEnabled = false;
+            tbSkill.IsEnabled = false;
+            tbStartTime.IsEnabled = false;
+            tbStreet.IsEnabled = false;
+            tbPostCode.IsEnabled = false;
+            tbEstimatedHours.IsEnabled = false;
+            tbJobStatus.IsEnabled = false;
+            btnAssign.IsEnabled = true;
+            btnVerify.IsEnabled = true;
+        }
     }
 }

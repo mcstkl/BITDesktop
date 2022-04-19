@@ -230,7 +230,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Margin="295 0 0 0"  Command="{Binding SkillsCommand}" 
+                    <Button Margin="295 0 0 0" x:Name="btnSkills"  Command="{Binding SkillsCommand}" 
                             Width="160"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -243,7 +243,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Margin="30 0 0 0"   Command="{Binding AvailabilitiesCommand}" 
+                    <Button Margin="30 0 0 0" x:Name="btnAvailabilities"  Command="{Binding AvailabilitiesCommand}" 
                             Width="160"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
                         <Button.Resources>
                             <Style TargetType="Border">
