@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BITServices.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace BITServices.View
         public RecordManagementView()
         {
             InitializeComponent();
+            this.DataContext = new RecordManagementViewModel();
         }
     }
 }

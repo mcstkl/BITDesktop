@@ -98,6 +98,7 @@
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\JobAssignViewModel.cs" />
     <Compile Include="ViewModel\JobManagementViewModel.cs" />
+    <Compile Include="ViewModel\RecordManagementViewModel.cs" />
     <Compile Include="ViewModel\SettingsEditSkillsViewModel.cs" />
     <Compile Include="ViewModel\SettingsManagementViewModel.cs" />
     <Compile Include="ViewModel\StaffManagementViewModel.cs" />
