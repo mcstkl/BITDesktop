@@ -23,9 +23,7 @@ namespace BITServices.Model
         private TimeSpan _finishTime = new TimeSpan(19,0,0);
         private Decimal _contractorRating;
         private Decimal _payRate;
-
-
-
+        private bool _available;
 
 
 
@@ -94,6 +92,11 @@ namespace BITServices.Model
                 OnPropertyChanged("PayRate");
             }
         }
+        public bool Available
+        {
+            get { return _available; }
+            set { _available = value; }
+        }
 
 
 
@@ -122,6 +125,7 @@ namespace BITServices.Model
             this.FinishTime = (TimeSpan)dr["FinishTime"];
             this.ContractorRating = (Decimal)dr["ContractorRating"];
             this.PayRate = (Decimal)dr["PayRate"];
+            this.Available = Convert.ToBoolean(dr["Available"]);
            
             _db = new SQLHelper();
         }

@@ -56,6 +56,7 @@ namespace BITServices.Model
                          " AND a.AvailableDate = j.[Date] " +
                          " AND a.ContractorID = c.ContractorID " +
                          " AND a.StartTime <= j.StartTime " +
+                         " AND a.Available = 1 " +
                          " AND j.JobID = @JobID";
             SqlParameter[] objParams;
             objParams = new SqlParameter[1];

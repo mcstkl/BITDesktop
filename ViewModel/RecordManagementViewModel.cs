@@ -261,7 +261,7 @@ namespace BITServices.ViewModel
             List<Job> records = new List<Job>();
             foreach(Job job in allJobs)
             {
-                if(job.JobStatusID == 5)
+                if(job.JobStatusID == 6)
                 {
                     records.Add(job);
                 }

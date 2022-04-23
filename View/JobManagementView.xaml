@@ -189,7 +189,7 @@
                     <TextBox x:Name="tbJobStatus" IsEnabled="False" Grid.Row="6" Grid.Column="4" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedJob.JobStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 </Grid>
-                <StackPanel  Margin="0 10 0 0" Grid.Row="11" Orientation="Horizontal" >
+                <StackPanel  Margin="80 10 0 0" Grid.Row="11" Orientation="Horizontal" >
                     <Button x:Name="btnSaveUpdate" Click="btnSaveUpdate_Click"  Margin="130 0 40 0" Command="{Binding UpdateCommand}" 
                             Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white" IsEnabled="False">
                         <Button.Resources>
@@ -215,7 +215,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Margin="295 0 0 0" x:Name="btnAssign"  Command="{Binding AssignCommand}" 
+                    <Button Margin="220 0 0 0" x:Name="btnAssign"  Command="{Binding AssignCommand}" 
                             Width="160"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
                         <Button.Resources>
                             <Style TargetType="Border">

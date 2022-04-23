@@ -15,7 +15,7 @@ namespace BITServices.Model
         public Availabilities()
         {
             _db = new SQLHelper();
-                string sql = "SELECT c.ContractorID, c.FirstName, c.LastName, a.AvailableDate, a.StartTime, a.FinishTime, c.ContractorRating, c.PayRate " +
+                string sql = "SELECT c.ContractorID, c.FirstName, c.LastName, a.AvailableDate, a.StartTime, a.FinishTime, a.Available, c.ContractorRating, c.PayRate " +
                              " FROM Contractor AS c " +
                              " INNER JOIN Availability AS a ON c.ContractorID = a.ContractorID";
             DataTable dtAvailabilities = _db.ExecuteSQL(sql);
