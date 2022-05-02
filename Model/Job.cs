@@ -186,6 +186,13 @@ namespace BITServices.Model
             get { return _upcomingJobDate; }
             set {_upcomingJobDate = value; }
         }
+        private string _toolTip;
+
+        public string ToolTip
+        {
+            get { return "Estimated Hours: " + EstimatedHours + "\n" + "Requested Skill: " + SkillName; }
+        }
+
 
 
 

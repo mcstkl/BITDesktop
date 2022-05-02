@@ -33,42 +33,42 @@
                     <StackPanel VerticalAlignment="Center">
                         
                         <Label Foreground="Red" FontSize="32" FontWeight="Bold" HorizontalAlignment="Center" Content="{Binding NumberOfActiveJobs}"/>
-                        <Label FontSize="18" FontWeight="Bold" HorizontalAlignment="Center">Active Job Requests</Label>
-                        <Label Cursor="Hand" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 -10 0 0" FontSize="10">>>Show Details</Label>
+                        <Label FontSize="20" FontWeight="Bold" Foreground="#444" HorizontalAlignment="Center">Active Job Requests</Label>
+                        <Label Cursor="Hand" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 -10 0 0" FontSize="11">>>Show Details</Label>
                     </StackPanel>
                 </Border>
                 <Border BorderThickness="0.5" Grid.Column="1" Background="WhiteSmoke" BorderBrush="#666" CornerRadius="5,5,5,5" Margin="20 70 20 70">
                     <StackPanel VerticalAlignment="Center" >
                         <Label Foreground="Green" FontSize="32" FontWeight="Bold" HorizontalAlignment="Center" Content="{Binding NumberOfCompletedJobs}"/>
-                        <Label FontSize="18" FontWeight="Bold" HorizontalAlignment="Center">Completed Requests</Label>
-                        <Label Cursor="Hand" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 -10 0 0" FontSize="10">>>Show Details</Label>
+                        <Label FontSize="20" FontWeight="Bold" Foreground="#444" HorizontalAlignment="Center">Completed Requests</Label>
+                        <Label Cursor="Hand" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 -10 0 0" FontSize="11">>>Show Details</Label>
                     </StackPanel>
                 </Border>
                 <Border BorderThickness="0.5" Grid.Column="2" Background="WhiteSmoke" BorderBrush="#666" CornerRadius="5,5,5,5" Margin="20 70 20 70">
                     <StackPanel VerticalAlignment="Center">
                         <Label Foreground="#3D59AB" FontSize="32" FontWeight="Bold" HorizontalAlignment="Center" Content="{Binding NumberOfClients}"/>
-                        <Label FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"> Current Clients</Label>
-                        <Label Cursor="Hand" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 -10 0 0" FontSize="10">>>Show Details</Label>
+                        <Label FontSize="20" FontWeight="Bold" Foreground="#444" HorizontalAlignment="Center"> Current Clients</Label>
+                        <Label Cursor="Hand" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 -10 0 0" FontSize="11">>>Show Details</Label>
                     </StackPanel>
                 </Border>
                 <Border BorderThickness="0.5" Grid.Column="3" Background="WhiteSmoke" BorderBrush="#666" CornerRadius="5,5,5,5" Margin="20 70 20 70">
                     <StackPanel VerticalAlignment="Center">
                         <Label Foreground="#be6716" FontSize="32" FontWeight="Bold" HorizontalAlignment="Center" Content="{Binding NumberOfContractors}"/>
-                        <Label FontSize="18" FontWeight="Bold" HorizontalAlignment="Center">Active Contractors</Label>
-                        <Label Cursor="Hand" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 -10 0 0" FontSize="10">>>Show Details</Label>
+                        <Label FontSize="20" FontWeight="Bold" Foreground="#444" HorizontalAlignment="Center">Active Contractors</Label>
+                        <Label Cursor="Hand" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 -10 0 0" FontSize="11">>>Show Details</Label>
                     </StackPanel>
                 </Border>
             </Grid>
             <Separator Grid.Row="1" VerticalAlignment="Bottom" Margin="20 0 20 40"/>
-            <Grid Margin="0 -50 0 0" Grid.Row="2">
+            <Grid Margin="0 -50 0 -15" Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="7"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border BorderThickness="0.5" Grid.Column="0" Background="WhiteSmoke" BorderBrush="#666" CornerRadius="5,5,5,5" Margin="20 40">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Label FontSize="18" FontWeight="Bold" HorizontalAlignment="Center">Top Contractors</Label>
+                        <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center">Top Contractors</Label>
                         <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
                             <Border Grid.Row="1" Grid.Column="1" Width="30" Height="30" CornerRadius="80,80,80,80">
@@ -86,7 +86,7 @@
                                 </TextBox.Resources>
                             </TextBox>
                             <Label Content="{Binding ContractorOne.PayRate}" ContentStringFormat="${0} p/h" Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
-                            <fa:ImageAwesome Icon="InfoCircle" Foreground="Blue" Margin="20 0 0 0" Cursor="Hand" Style="{StaticResource buttonIcon}"/>
+                            <fa:ImageAwesome Icon="InfoCircle" Foreground="Blue" ToolTip="{Binding ContractorOne.ToolTip}" Margin="20 0 0 0" Cursor="Hand" Style="{StaticResource buttonIcon}"/>
                             <!--<Label FontStyle="Italic" Cursor="Hand" Content="View" Margin="20 0 0 0" Foreground="Blue" FontSize="16"/>-->
                         </StackPanel>
                         <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
@@ -107,7 +107,7 @@
                             </TextBox>
                             <Label Content="{Binding ContractorTwo.PayRate}" ContentStringFormat="${0} p/h" Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
                             <!--<Label FontStyle="Italic" Cursor="Hand" Content="View" Margin="20 0 0 0" Foreground="Blue" FontSize="16"/>-->
-                            <fa:ImageAwesome Icon="InfoCircle" Foreground="Blue" Margin="20 0 0 0" Cursor="Hand" Style="{StaticResource buttonIcon}"/>
+                            <fa:ImageAwesome Icon="InfoCircle" Foreground="Blue" Margin="20 0 0 0" Cursor="Hand" ToolTip="{Binding ContractorTwo.ToolTip}" Style="{StaticResource buttonIcon}"/>
                         </StackPanel>
                         <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
@@ -127,13 +127,13 @@
                             </TextBox>
                             <Label Content="{Binding ContractorThree.PayRate}" ContentStringFormat="${0} p/h" Margin="40 0 0 0" Foreground="#666" FontSize="16"/>
                             <!--<Label FontStyle="Italic" Cursor="Hand" Content="View" Margin="20 0 0 0" Foreground="Blue" FontSize="16"/>-->
-                            <fa:ImageAwesome Icon="InfoCircle" Foreground="Blue" Margin="20 0 0 0" Cursor="Hand" Style="{StaticResource buttonIcon}"/>
+                            <fa:ImageAwesome Icon="InfoCircle" ToolTip="{Binding ContractorThree.ToolTip}" Foreground="Blue" Margin="20 0 0 0" Cursor="Hand" Style="{StaticResource buttonIcon}"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
                 <Border BorderThickness="0.5" Grid.Column="2" Background="WhiteSmoke" BorderBrush="#666" CornerRadius="5,5,5,5" Margin="20 40">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Label FontSize="18" FontWeight="Bold" HorizontalAlignment="Center">Upcoming Jobs</Label>
+                        <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center">Upcoming Jobs</Label>
                         <StackPanel Margin="10 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
 
@@ -141,7 +141,7 @@
                             <Label Content="{Binding UpcomingOne.UpcomingJobDate}" Margin="0 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
                             <Label Content="{Binding UpcomingOne.StartTime}" Margin="30 0 0 0" Foreground="#666" FontSize="16"/>
                             <!--<Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="30 0 0 0" Foreground="Blue" FontSize="16"/>-->
-                            <fa:ImageAwesome Icon="InfoCircle" Foreground="Blue" Margin="30 0 0 0" Cursor="Hand" Style="{StaticResource buttonIcon}"/>
+                            <fa:ImageAwesome Icon="InfoCircle" ToolTip="{Binding UpcomingOne.ToolTip}" Foreground="Blue" Margin="30 0 0 0" Cursor="Hand" Style="{StaticResource buttonIcon}"/>
                         </StackPanel>
                         <StackPanel Margin="10 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
@@ -150,7 +150,7 @@
                             <Label Content="{Binding UpcomingTwo.UpcomingJobDate}" Margin="0 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
                             <Label Content="{Binding UpcomingTwo.StartTime}" Margin="30 0 0 0" Foreground="#666" FontSize="16"/>
                             <!--<Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="30 0 0 0" Foreground="Blue" FontSize="16"/>-->
-                            <fa:ImageAwesome Icon="InfoCircle" Foreground="Blue" Margin="30 0 0 0" Cursor="Hand" Style="{StaticResource buttonIcon}"/>
+                            <fa:ImageAwesome Icon="InfoCircle" ToolTip="{Binding UpcomingTwo.ToolTip}" Foreground="Blue" Margin="30 0 0 0" Cursor="Hand" Style="{StaticResource buttonIcon}"/>
                         </StackPanel>
                         <StackPanel Margin="10 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
@@ -158,7 +158,7 @@
                             <Label Content="{Binding UpcomingThree.UpcomingJobDate}" FontWeight="Bold" Margin="0 0 0 0" Foreground="#666" FontSize="16"/>
                             <Label Content="{Binding UpcomingThree.StartTime}"  Margin="30 0 0 0" Foreground="#666" FontSize="16"/>
                             <!--<Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="30 0 0 0" Foreground="Blue" FontSize="16"/>-->
-                            <fa:ImageAwesome Icon="InfoCircle" Foreground="Blue" Margin="30 0 0 0" Cursor="Hand" Style="{StaticResource buttonIcon}"/>
+                            <fa:ImageAwesome Icon="InfoCircle" Foreground="Blue" ToolTip="{Binding UpcomingThree.ToolTip}" Margin="30 0 0 0" Cursor="Hand" Style="{StaticResource buttonIcon}"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>

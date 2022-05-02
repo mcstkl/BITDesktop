@@ -138,7 +138,6 @@ namespace BITServices.ViewModel
             }
 
         }
-
         public void RemoveMethod()
         {
             if (SelectedAvailability != null)

@@ -50,7 +50,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Command="{Binding AddCommand}"  x:Name="btnAdd" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                    <Button Command="{Binding AddCommand}" IsEnabled="False" x:Name="btnAdd" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>
@@ -61,7 +61,7 @@
                             <TextBlock Margin="0 0 10 0" FontSize="18" Text="Add" />
                         </StackPanel>
                     </Button>
-                    <Button Command="{Binding DeleteCommand}" x:Name="btnDelete" Margin="10 0 10 0" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                    <Button Command="{Binding DeleteCommand}" IsEnabled="False" x:Name="btnDelete" Margin="10 0 10 0" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>
@@ -72,7 +72,7 @@
                             <TextBlock Margin="0 0 10 0" FontSize="18" Text="Delete" />
                         </StackPanel>
                     </Button>
-                    <Button  x:Name="btnUpdate" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                    <Button  x:Name="btnUpdate" IsEnabled="False" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>

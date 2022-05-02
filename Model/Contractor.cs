@@ -28,6 +28,7 @@ namespace BITServices.Model
         private Decimal _contractorRating;
         private Decimal _payRate;
         private bool _active;
+        private string _toolTip;
         private SQLHelper _db;
 
 
@@ -110,6 +111,10 @@ namespace BITServices.Model
         {
             get { return _active; }
             set { _active = value; }
+        }
+        public string ToolTip
+        {
+            get { return "Contractor ID: " + ContractorID + "\n" + "Email: " + Email; }
         }
 
 

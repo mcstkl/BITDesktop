@@ -22,7 +22,7 @@
             <StackPanel x:Name="spTopBar" Grid.Row="0" Background="Transparent" MouseLeftButtonDown="spTopBar_MouseLeftButtonDown">
                 <Border CornerRadius="10 10 0 0" Background="#3D59AB" Height="30">
                     <StackPanel Background="Transparent" HorizontalAlignment="Right" Orientation="Horizontal">
-                        <Label FontSize="16" Content="{Binding SelectedContractor.FullName}" ContentStringFormat="Skills for {0}" VerticalAlignment="Stretch" Margin="0 0 200 0" FontWeight="Bold" Foreground="white"/>
+                        <Label FontSize="16" Content="{Binding SelectedContractor.FullName}" ContentStringFormat="Skills for {0}" VerticalAlignment="Stretch" Margin="0 0 140 0" FontWeight="Bold" Foreground="white"/>
 
                         <StackPanel Background="Transparent" x:Name="spTopbar" Orientation="Horizontal" Margin="0 0 8 0">
                             <Button x:Name="btnMinimizeWindow" Background="#3D59AB" Margin="0" Click="btnMinimizeWindow_Click">
