@@ -23,7 +23,7 @@
             </Grid.ColumnDefinitions>
 
 
-       
+
 
             <Border Width="240" CornerRadius="10 0 0 10">
                 <Border.Background>
@@ -52,13 +52,13 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                
+
                 <!--MAIN MENU-->
                 <StackPanel Width="240">
                     <StackPanel Orientation="Horizontal" Margin="0 50 0 40" HorizontalAlignment="Center">
                         <Image Source="../Images/bitlogo.png" Width="200"/>
                     </StackPanel>
-               
+
 
                     <ToggleButton Style="{StaticResource menuButton}" x:Name="btnHome" 
                             Click="btnHome_Click">
@@ -183,25 +183,33 @@
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" Background="Transparent">
                     <Border CornerRadius="0 10 0 0" Background="#3D59AB" Height="30">
-                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                            <Label FontSize="16" Content="BIT Services Desktop Application" VerticalAlignment="Stretch" Margin="0 0 370 0" FontWeight="Bold" Foreground="white"/>
-                                
-                            <StackPanel x:Name="spTopbar" Orientation="Horizontal" Margin="0 0 8 0">
-                            <Button x:Name="btnUserProfile" Click="btnUserProfile_Click" Background="#3D59AB" Margin="0">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel HorizontalAlignment="Center">
+
+                                <Label Grid.Column="0" FontSize="16" Content="BIT Services Desktop Application" VerticalAlignment="Center" 
+                               Margin="0 0 0 0" FontWeight="Bold" Foreground="white"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" x:Name="spTopbar" Orientation="Horizontal" Margin="0 0 8 0">
+                                <Button x:Name="btnUserProfile" Click="btnUserProfile_Click" Background="#3D59AB" Margin="0">
                                     <Button.ToolTip>
                                         <BulletDecorator>
                                             <TextBlock x:Name="tbUser" FontSize="16"/>
                                         </BulletDecorator>
                                     </Button.ToolTip>
-                                
-                                <StackPanel Margin="5 0 5 0" Grid.Column="0" Grid.Row="0" Orientation="Horizontal" >
-                                    <Ellipse Width="25" Height="25" HorizontalAlignment="Right">
-                                        <Ellipse.Fill>
-                                            <ImageBrush ImageSource="../Images/placeholder-profile.png" />
-                                        </Ellipse.Fill>
-                                    </Ellipse>
-                                </StackPanel>
-                            </Button>
+
+                                    <StackPanel Margin="5 0 5 0" Grid.Column="0" Grid.Row="0" Orientation="Horizontal" >
+                                        <Ellipse Width="25" Height="25" HorizontalAlignment="Right">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="../Images/placeholder-profile.png" />
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                    </StackPanel>
+                                </Button>
                                 <Button x:Name="btnMinimizeMainWindow" Background="#3D59AB" Margin="0" Click="btnMinimizeMainWindow_Click">
                                     <fa:ImageAwesome  Margin="5 8 5 0" Icon="WindowMinimize" Style="{StaticResource buttonIcon}" Width="15" Height="15" Foreground="white" />
                                 </Button>
@@ -212,9 +220,10 @@
                                     <fa:ImageAwesome Margin="5"  Icon="Close" Style="{StaticResource buttonIcon}" Width="15" Height="15" Foreground="white" />
                                 </Button>
                             </StackPanel>
-                        </StackPanel>
+                        </Grid>
                     </Border>
                 </StackPanel>
+
                 <Frame x:Name="contentFrame" Grid.Row="1"
                NavigationUIVisibility="Hidden"/>
             </Grid>
