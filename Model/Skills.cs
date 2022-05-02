@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BITServices.Model
 {
@@ -14,14 +15,20 @@ namespace BITServices.Model
         private SQLHelper _db;
         public Skills()
         {
-            _db = new SQLHelper();
-            string sql = "SELECT * " +
-                         " FROM Skill";
-            DataTable dtSkills = _db.ExecuteSQL(sql);
-            foreach (DataRow dataRow in dtSkills.Rows)
+            try
             {
-                Skill newSkill = new Skill(dataRow);
-                this.Add(newSkill);
+                _db = new SQLHelper();
+                string sql = "SELECT * " +
+                             " FROM Skill";
+                DataTable dtSkills = _db.ExecuteSQL(sql);
+                foreach (DataRow dataRow in dtSkills.Rows)
+                {
+                    Skill newSkill = new Skill(dataRow);
+                    this.Add(newSkill);
+                }
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Could not get Skills", "An Error Has Occured", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -29,29 +36,43 @@ namespace BITServices.Model
 
         public Skills(string skillName)
         {
-            _db = new SQLHelper();
-            string sql = "SELECT SkillName " +
-                            " FROM ContractorSkill " +
-                            " WHERE contractorID = @ContractorID";
-            SqlParameter[] parameters = new SqlParameter[1];
-            parameters[0] = new SqlParameter("ContractorID", DbType.Int32);
-            parameters[0].Value = skillName;
-            DataTable dtSkills = _db.ExecuteSQL(sql, parameters);
-
-            foreach (DataRow dataRow in dtSkills.Rows)
+            try
             {
-                Skill newSkill = new Skill(dataRow);
-                this.Add(newSkill);
+                _db = new SQLHelper();
+                string sql = "SELECT SkillName " +
+                                " FROM ContractorSkill " +
+                                " WHERE contractorID = @ContractorID";
+                SqlParameter[] parameters = new SqlParameter[1];
+                parameters[0] = new SqlParameter("ContractorID", DbType.Int32);
+                parameters[0].Value = skillName;
+                DataTable dtSkills = _db.ExecuteSQL(sql, parameters);
+
+                foreach (DataRow dataRow in dtSkills.Rows)
+                {
+                    Skill newSkill = new Skill(dataRow);
+                    this.Add(newSkill);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not get Skills", "An Error Has Occured", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
 
         public int GetNumberOfSkills()
         {
-            string sql = "select count(*) from ContractorSkill";
-            int rows = (int)_db.ExecuteSQLScalar(sql, null);
-            return rows;
-
+            try
+            {
+                string sql = "select count(*) from ContractorSkill";
+                int rows = (int)_db.ExecuteSQLScalar(sql, null);
+                return rows;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not get number of Skills", "An Error Has Occured", MessageBoxButton.OK, MessageBoxImage.Error);
+                return -1;
+            }
         }
     }
 }

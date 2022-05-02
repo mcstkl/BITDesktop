@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using BITServices.DAL;
 
 namespace BITServices.Model
@@ -120,97 +121,118 @@ namespace BITServices.Model
 
         public int InsertStaff()
         {
-            string sql = "insert into staff(firstName, lastName, street, suburb, postcode, state, phone, email, userName, password, staffType, active) " +
-                " values(@FirstName, @LastName,@Street, @Suburb, @PostCode,@State, @Phone, @Email,@UserName, @Password, @StaffType, @Active)";
-            SqlParameter[] objParams;
-            objParams = new SqlParameter[13];
-            objParams[0] = new SqlParameter("@StaffID", DbType.String);
-            objParams[0].Value = this.StaffID;
-            objParams[1] = new SqlParameter("@FirstName", DbType.String);
-            objParams[1].Value = this.FirstName;
-            objParams[2] = new SqlParameter("@LastName", DbType.String);
-            objParams[2].Value = this.LastName;
-            objParams[3] = new SqlParameter("@Street", DbType.String);
-            objParams[3].Value = this.Street;
-            objParams[4] = new SqlParameter("@Suburb", DbType.String);
-            objParams[4].Value = this.Suburb;
-            objParams[5] = new SqlParameter("@PostCode", DbType.String);
-            objParams[5].Value = this.PostCode;
-            objParams[6] = new SqlParameter("@State", DbType.String);
-            objParams[6].Value = this.State;
-            objParams[7] = new SqlParameter("@Phone", DbType.String);
-            objParams[7].Value = this.Phone;
-            objParams[8] = new SqlParameter("@Email", DbType.String);
-            objParams[8].Value = this.Email;
-            objParams[9] = new SqlParameter("@UserName", DbType.String);
-            objParams[9].Value = this.UserName;
-            objParams[10] = new SqlParameter("@Password", DbType.String);
-            objParams[10].Value = this.Password;
-            objParams[11] = new SqlParameter("@StaffType", DbType.String);
-            objParams[11].Value = this.StaffType;
-            objParams[12] = new SqlParameter("@Active", DbType.String);
-            objParams[12].Value = this.Active;
-            int result = _db.ExecuteNonQuery(sql, objParams);
-            return result;
+            try
+            {
+                string sql = "insert into staff(firstName, lastName, street, suburb, postcode, state, phone, email, userName, password, staffType, active) " +
+                    " values(@FirstName, @LastName,@Street, @Suburb, @PostCode,@State, @Phone, @Email,@UserName, @Password, @StaffType, @Active)";
+                SqlParameter[] objParams;
+                objParams = new SqlParameter[13];
+                objParams[0] = new SqlParameter("@StaffID", DbType.String);
+                objParams[0].Value = this.StaffID;
+                objParams[1] = new SqlParameter("@FirstName", DbType.String);
+                objParams[1].Value = this.FirstName;
+                objParams[2] = new SqlParameter("@LastName", DbType.String);
+                objParams[2].Value = this.LastName;
+                objParams[3] = new SqlParameter("@Street", DbType.String);
+                objParams[3].Value = this.Street;
+                objParams[4] = new SqlParameter("@Suburb", DbType.String);
+                objParams[4].Value = this.Suburb;
+                objParams[5] = new SqlParameter("@PostCode", DbType.String);
+                objParams[5].Value = this.PostCode;
+                objParams[6] = new SqlParameter("@State", DbType.String);
+                objParams[6].Value = this.State;
+                objParams[7] = new SqlParameter("@Phone", DbType.String);
+                objParams[7].Value = this.Phone;
+                objParams[8] = new SqlParameter("@Email", DbType.String);
+                objParams[8].Value = this.Email;
+                objParams[9] = new SqlParameter("@UserName", DbType.String);
+                objParams[9].Value = this.UserName;
+                objParams[10] = new SqlParameter("@Password", DbType.String);
+                objParams[10].Value = this.Password;
+                objParams[11] = new SqlParameter("@StaffType", DbType.String);
+                objParams[11].Value = this.StaffType;
+                objParams[12] = new SqlParameter("@Active", DbType.String);
+                objParams[12].Value = this.Active;
+                int result = _db.ExecuteNonQuery(sql, objParams);
+                return result;
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Could not insert Staff", "An Error Has Occured", MessageBoxButton.OK, MessageBoxImage.Error);
+                return -1;
+            }
         }
         public int UpdateStaff()
         {
-            int result = -1;
-            string sql = "UPDATE staff set " +
-                "firstName = @FirstName, " +
-                "lastName =  @LastName, " +
-                "street = @Street, " +
-                "suburb =  @Suburb," +
-                "postCode = @PostCode, " +
-                "state =  @State, " +
-                "phone = @Phone, " +
-                "email =  @Email, " +
-                "userName = @UserName, " +
-                "password =  @Password, " +
-                "staffType = @StaffType, " +
-                "active = @Active " +
-                " WHERE staffID = @StaffID";
-            SqlParameter[] objParams;
-            objParams = new SqlParameter[13];
-            objParams[0] = new SqlParameter("@StaffID", DbType.String);
-            objParams[0].Value = this.StaffID;
-            objParams[1] = new SqlParameter("@FirstName", DbType.String);
-            objParams[1].Value = this.FirstName;
-            objParams[2] = new SqlParameter("@LastName", DbType.String);
-            objParams[2].Value = this.LastName;
-            objParams[3] = new SqlParameter("@Street", DbType.String);
-            objParams[3].Value = this.Street;
-            objParams[4] = new SqlParameter("@Suburb", DbType.String);
-            objParams[4].Value = this.Suburb;
-            objParams[5] = new SqlParameter("@PostCode", DbType.String);
-            objParams[5].Value = this.PostCode;
-            objParams[6] = new SqlParameter("@State", DbType.String);
-            objParams[6].Value = this.State;
-            objParams[7] = new SqlParameter("@Phone", DbType.String);
-            objParams[7].Value = this.Phone;
-            objParams[8] = new SqlParameter("@Email", DbType.String);
-            objParams[8].Value = this.Email;
-            objParams[9] = new SqlParameter("@UserName", DbType.String);
-            objParams[9].Value = this.UserName;
-            objParams[10] = new SqlParameter("@Password", DbType.String);
-            objParams[10].Value = this.Password;
-            objParams[11] = new SqlParameter("@StaffType", DbType.String);
-            objParams[11].Value = this.StaffType;
-            objParams[12] = new SqlParameter("@Active", DbType.String);
-            objParams[12].Value = this.Active;
-            result = _db.ExecuteNonQuery(sql, objParams);
-            return result;
+            try
+            {
+                int result = -1;
+                string sql = "UPDATE staff set " +
+                    "firstName = @FirstName, " +
+                    "lastName =  @LastName, " +
+                    "street = @Street, " +
+                    "suburb =  @Suburb," +
+                    "postCode = @PostCode, " +
+                    "state =  @State, " +
+                    "phone = @Phone, " +
+                    "email =  @Email, " +
+                    "userName = @UserName, " +
+                    "password =  @Password, " +
+                    "staffType = @StaffType, " +
+                    "active = @Active " +
+                    " WHERE staffID = @StaffID";
+                SqlParameter[] objParams;
+                objParams = new SqlParameter[13];
+                objParams[0] = new SqlParameter("@StaffID", DbType.String);
+                objParams[0].Value = this.StaffID;
+                objParams[1] = new SqlParameter("@FirstName", DbType.String);
+                objParams[1].Value = this.FirstName;
+                objParams[2] = new SqlParameter("@LastName", DbType.String);
+                objParams[2].Value = this.LastName;
+                objParams[3] = new SqlParameter("@Street", DbType.String);
+                objParams[3].Value = this.Street;
+                objParams[4] = new SqlParameter("@Suburb", DbType.String);
+                objParams[4].Value = this.Suburb;
+                objParams[5] = new SqlParameter("@PostCode", DbType.String);
+                objParams[5].Value = this.PostCode;
+                objParams[6] = new SqlParameter("@State", DbType.String);
+                objParams[6].Value = this.State;
+                objParams[7] = new SqlParameter("@Phone", DbType.String);
+                objParams[7].Value = this.Phone;
+                objParams[8] = new SqlParameter("@Email", DbType.String);
+                objParams[8].Value = this.Email;
+                objParams[9] = new SqlParameter("@UserName", DbType.String);
+                objParams[9].Value = this.UserName;
+                objParams[10] = new SqlParameter("@Password", DbType.String);
+                objParams[10].Value = this.Password;
+                objParams[11] = new SqlParameter("@StaffType", DbType.String);
+                objParams[11].Value = this.StaffType;
+                objParams[12] = new SqlParameter("@Active", DbType.String);
+                objParams[12].Value = this.Active;
+                result = _db.ExecuteNonQuery(sql, objParams);
+                return result;
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Could not update Staff", "An Error Has Occured", MessageBoxButton.OK, MessageBoxImage.Error);
+                return -1;
+            }
         }
         public int DeleteStaff()
         {
-            int result = -1;
-            string sql = "DELETE FROM Staff WHERE StaffID = @StaffID";
-            SqlParameter[] objParams;
-            objParams = new SqlParameter[1];
-            objParams[0] = new SqlParameter("@StaffID", DbType.Int32);
-            objParams[0].Value = this.StaffID;
-            result = _db.ExecuteNonQuery(sql, objParams);
-            return result;
+            try
+            {
+                int result = -1;
+                string sql = "DELETE FROM Staff WHERE StaffID = @StaffID";
+                SqlParameter[] objParams;
+                objParams = new SqlParameter[1];
+                objParams[0] = new SqlParameter("@StaffID", DbType.Int32);
+                objParams[0].Value = this.StaffID;
+                result = _db.ExecuteNonQuery(sql, objParams);
+                return result;
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Could not delete Staff", "An Error Has Occured", MessageBoxButton.OK, MessageBoxImage.Error);
+                return -1;
+            }
         }
 
     }

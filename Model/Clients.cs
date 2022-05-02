@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BITServices.Model
 {
@@ -13,24 +14,37 @@ namespace BITServices.Model
         private SQLHelper _db;
         public Clients()
         {
-            _db = new SQLHelper();
-            string sql = "SELECT ClientID, CompanyName, Street, Suburb, PostCode, State, " +
-                               " Phone, Email, UserName, Password, Active " +
-                         " FROM Client";
-            DataTable dtClients = _db.ExecuteSQL(sql);
-            foreach (DataRow dataRow in dtClients.Rows)
+            try
             {
-                Client newClient = new Client(dataRow);
-                this.Add(newClient);
+                _db = new SQLHelper();
+                string sql = "SELECT ClientID, CompanyName, Street, Suburb, PostCode, State, " +
+                                   " Phone, Email, UserName, Password, Active " +
+                             " FROM Client";
+                DataTable dtClients = _db.ExecuteSQL(sql);
+                foreach (DataRow dataRow in dtClients.Rows)
+                {
+                    Client newClient = new Client(dataRow);
+                    this.Add(newClient);
+                }
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Could not get Client List", "An Error Has Occured", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
 
         public int GetNumberOfClients()
         {
-            string sql = "select count(*) from Client";
-            int rows = (int)_db.ExecuteSQLScalar(sql, null);
-            return rows;
+            try
+            {
+                string sql = "select count(*) from Client";
+                int rows = (int)_db.ExecuteSQLScalar(sql, null);
+                return rows;
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Could not get Number of Clients", "An Error Has Occured", MessageBoxButton.OK, MessageBoxImage.Error);
+                return -1;
+            }
 
         }
     }

@@ -63,7 +63,7 @@
             <Grid Margin="0 -50 0 0" Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="15"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border BorderThickness="0.5" Grid.Column="0" Background="WhiteSmoke" BorderBrush="#666" CornerRadius="5,5,5,5" Margin="20 40">
@@ -134,29 +134,29 @@
                 <Border BorderThickness="0.5" Grid.Column="2" Background="WhiteSmoke" BorderBrush="#666" CornerRadius="5,5,5,5" Margin="20 40">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Label FontSize="18" FontWeight="Bold" HorizontalAlignment="Center">Upcoming Jobs</Label>
-                        <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <StackPanel Margin="10 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
 
                             <Label Content="{Binding UpcomingOne.CompanyName}" Margin="0 0 0 0" Foreground="OrangeRed" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16"/>
                             <Label Content="{Binding UpcomingOne.UpcomingJobDate}" Margin="0 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
-                            <Label Content="{Binding UpcomingOne.StartTime}" Margin="20 0 0 0" Foreground="#666" FontSize="16"/>
+                            <Label Content="{Binding UpcomingOne.StartTime}" Margin="30 0 0 0" Foreground="#666" FontSize="16"/>
                             <!--<Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="30 0 0 0" Foreground="Blue" FontSize="16"/>-->
                             <fa:ImageAwesome Icon="InfoCircle" Foreground="Blue" Margin="30 0 0 0" Cursor="Hand" Style="{StaticResource buttonIcon}"/>
                         </StackPanel>
-                        <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <StackPanel Margin="10 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
 
                             <Label Content="{Binding UpcomingTwo.CompanyName}"  Margin="0 0 0 0" Foreground="OrangeRed" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16"/>
                             <Label Content="{Binding UpcomingTwo.UpcomingJobDate}" Margin="0 0 0 0" FontWeight="Bold" Foreground="#666" FontSize="16"/>
-                            <Label Content="{Binding UpcomingTwo.StartTime}" Margin="20 0 0 0" Foreground="#666" FontSize="16"/>
+                            <Label Content="{Binding UpcomingTwo.StartTime}" Margin="30 0 0 0" Foreground="#666" FontSize="16"/>
                             <!--<Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="30 0 0 0" Foreground="Blue" FontSize="16"/>-->
                             <fa:ImageAwesome Icon="InfoCircle" Foreground="Blue" Margin="30 0 0 0" Cursor="Hand" Style="{StaticResource buttonIcon}"/>
                         </StackPanel>
-                        <StackPanel Margin="20 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <StackPanel Margin="10 20 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
 
                             <Label Content="{Binding UpcomingThree.CompanyName}" Margin="0 0 0 0" Foreground="OrangeRed" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16"/>
                             <Label Content="{Binding UpcomingThree.UpcomingJobDate}" FontWeight="Bold" Margin="0 0 0 0" Foreground="#666" FontSize="16"/>
-                            <Label Content="{Binding UpcomingThree.StartTime}"  Margin="20 0 0 0" Foreground="#666" FontSize="16"/>
+                            <Label Content="{Binding UpcomingThree.StartTime}"  Margin="30 0 0 0" Foreground="#666" FontSize="16"/>
                             <!--<Label FontStyle="Italic" Cursor="Hand" Content="Details" Margin="30 0 0 0" Foreground="Blue" FontSize="16"/>-->
                             <fa:ImageAwesome Icon="InfoCircle" Foreground="Blue" Margin="30 0 0 0" Cursor="Hand" Style="{StaticResource buttonIcon}"/>
                         </StackPanel>

@@ -169,7 +169,7 @@ namespace BITServices.Model
             }
             catch (Exception)
             {
-                MessageBox.Show("Could not add client", "Could not add client", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Could not add client", "An Error Has Occured", MessageBoxButton.OK, MessageBoxImage.Error);
                 return -1;
             }
         }
@@ -239,7 +239,7 @@ namespace BITServices.Model
             }
             catch (Exception)
             {
-                MessageBox.Show("Could not delete client", "Could not delete client", MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show("Could not delete client", "An Error Has Occured", MessageBoxButton.OK,MessageBoxImage.Error);
                 return -1;
             }
         }

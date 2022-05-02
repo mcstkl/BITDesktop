@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BITServices.Model
 {
@@ -59,17 +60,24 @@ namespace BITServices.Model
 
         public int InsertSkill()
         {
-            int result = -1;
-            string sql = "insert into ContractorSkill(contractorID, skillName) " +
-                " values(@ContractorID, @SkillName)";
-            SqlParameter[] objParams;
-            objParams = new SqlParameter[2];
-            objParams[0] = new SqlParameter("@ContractorID", DbType.Int32);
-            objParams[0].Value = this.ContractorID;
-            objParams[1] = new SqlParameter("@SkillName", DbType.String);
-            objParams[1].Value = this.SkillName;
-            result = _db.ExecuteNonQuery(sql, objParams);
-            return result;
+            try
+            {
+                int result = -1;
+                string sql = "insert into ContractorSkill(contractorID, skillName) " +
+                    " values(@ContractorID, @SkillName)";
+                SqlParameter[] objParams;
+                objParams = new SqlParameter[2];
+                objParams[0] = new SqlParameter("@ContractorID", DbType.Int32);
+                objParams[0].Value = this.ContractorID;
+                objParams[1] = new SqlParameter("@SkillName", DbType.String);
+                objParams[1].Value = this.SkillName;
+                result = _db.ExecuteNonQuery(sql, objParams);
+                return result;
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Could not insert Skill", "An Error Has Occured", MessageBoxButton.OK, MessageBoxImage.Error);
+                return -1;
+            }
         }
         public int UpdateSkill()
         {
@@ -88,16 +96,23 @@ namespace BITServices.Model
         }
         public int DeleteSkill()
         {
-            int result = -1;
-            string sql = "DELETE FROM ContractorSkill WHERE skillName = @SkillName AND contractorID = @ContractorID";
-            SqlParameter[] objParams;
-            objParams = new SqlParameter[2];
-            objParams[0] = new SqlParameter("@ContractorID", DbType.Int32);
-            objParams[0].Value = this.ContractorID;
-            objParams[1] = new SqlParameter("@SkillName", DbType.String);
-            objParams[1].Value = this.SkillName;
-            result = _db.ExecuteNonQuery(sql, objParams);
-            return result;
+            try
+            {
+                int result = -1;
+                string sql = "DELETE FROM ContractorSkill WHERE skillName = @SkillName AND contractorID = @ContractorID";
+                SqlParameter[] objParams;
+                objParams = new SqlParameter[2];
+                objParams[0] = new SqlParameter("@ContractorID", DbType.Int32);
+                objParams[0].Value = this.ContractorID;
+                objParams[1] = new SqlParameter("@SkillName", DbType.String);
+                objParams[1].Value = this.SkillName;
+                result = _db.ExecuteNonQuery(sql, objParams);
+                return result;
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Could not delete skill", "An Error Has Occured", MessageBoxButton.OK, MessageBoxImage.Error);
+                return -1;
+            }
         }
     }
 }
