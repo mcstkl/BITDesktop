@@ -10,7 +10,10 @@
       Title="StaffManagementView">
 
     <Grid Margin="5 0 5 0">
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -275,5 +278,8 @@
                 </Grid>
             </StackPanel>
         </Grid>
+        <StackPanel Grid.Row="2">
+            <TextBlock x:Name="tbClock" Foreground="#666" Background="Transparent" Width="300" Height="50" FontSize="16" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 -190 0"/>
+        </StackPanel>
     </Grid>
 </Page>

@@ -78,7 +78,7 @@
                             </Border>
                             <Label Content="{Binding ContractorOne.FullName}" Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16"/>
                             <!--<Label Content="{Binding ContractorOne.ContractorRating}" Margin="0 0 0 0" FontWeight="Bold" Background="#03AC13" Foreground="white" FontSize="16"/>-->
-                            <TextBox Text="{Binding ContractorOne.ContractorRating}" FontWeight="Bold" Padding="5" Margin="0 0 0 0" Background="#03AC13" Foreground="white" FontSize="16">
+                            <TextBox IsReadOnly="True" Text="{Binding ContractorOne.ContractorRating}" FontWeight="Bold" Padding="5" Margin="0 0 0 0" Background="#03AC13" Foreground="white" FontSize="16">
                                 <TextBox.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="3"/>
@@ -98,7 +98,7 @@
                             </Border>
                             <Label Content="{Binding ContractorTwo.FullName}" Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold"  FontSize="16"/>
                             <!--<Label Content="{Binding ContractorTwo.ContractorRating}" Margin="0 0 0 0" FontWeight="Bold" Background="#03AC13" Foreground="white" FontSize="16"/>-->
-                            <TextBox Text="{Binding ContractorTwo.ContractorRating}" FontWeight="Bold" Padding="5" Margin="0 0 0 0" Background="#03AC13" Foreground="white" FontSize="16">
+                            <TextBox IsReadOnly="True" Text="{Binding ContractorTwo.ContractorRating}" FontWeight="Bold" Padding="5" Margin="0 0 0 0" Background="#03AC13" Foreground="white" FontSize="16">
                                 <TextBox.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="3"/>
@@ -118,7 +118,7 @@
                             </Border>
                             <Label Content="{Binding ContractorThree.FullName}" Margin="10 0 0 0" Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold"  FontSize="16"/>
                             <!--<Label Content="{Binding ContractorThree.ContractorRating}" FontWeight="Bold" Margin="0 0 0 0" Background="#03AC13" Foreground="white" FontSize="16"/>-->
-                            <TextBox Text="{Binding ContractorThree.ContractorRating}" FontWeight="Bold" Padding="5" Margin="0 0 0 0" Background="#03AC13" Foreground="white" FontSize="16">
+                            <TextBox IsReadOnly="True" Text="{Binding ContractorThree.ContractorRating}" FontWeight="Bold" Padding="5" Margin="0 0 0 0" Background="#03AC13" Foreground="white" FontSize="16">
                                 <TextBox.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="3"/>

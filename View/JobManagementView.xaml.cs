@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace BITServices.View
 {
@@ -21,13 +22,24 @@ namespace BITServices.View
     /// </summary>
     public partial class JobManagementView : Page
     {
+        private DispatcherTimer Timer = new System.Windows.Threading.DispatcherTimer();
+        private string date = DateTime.Now.Date.ToShortDateString();
+        private string time = string.Empty;
         public JobManagementView()
         {
             InitializeComponent();
             this.DataContext = new JobManagementViewModel();
-            
+            Timer.Tick += new EventHandler(Timer_Click);
+            Timer.Interval = new TimeSpan(0, 0, 1);
+            Timer.Start();
         }
-
+        private void Timer_Click(object sender, EventArgs e)
+        {
+            DateTime d;
+            d = DateTime.Now;
+            time = string.Format("{0,8:hh:mm:ss tt}", d);
+            tbClock.Text = time + "\n " + date;
+        }
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             dgJobs.IsEnabled = false;
