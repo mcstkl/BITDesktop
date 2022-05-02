@@ -187,7 +187,15 @@
                     <TextBox x:Name="tbStaffType" IsEnabled="False" Grid.Row="7" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedStaff.StaffType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 </Grid>
-                <StackPanel  Margin="80 10 0 0" Grid.Row="11" Orientation="Horizontal" >
+                <!--<StackPanel  Margin="80 10 0 0" Grid.Row="11" Orientation="Horizontal" >-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
                     <!--<Button  x:Name="btnSave" Click="btnSave_Click" Margin="130 0 40 0" Command="{Binding SaveCommand}" 
                             Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white" IsEnabled="False">
                         <Button.Resources>
@@ -200,7 +208,7 @@
                             <TextBlock Margin="0 0 10 0" FontSize="18" Text="Save" />
                         </StackPanel>
                     </Button>-->
-                    <Button x:Name="btnSaveUpdate" Click="btnSaveUpdate_Click" Margin="130 0 40 0" Command="{Binding UpdateCommand}" 
+                    <Button x:Name="btnSaveUpdate" Grid.Column="1" Click="btnSaveUpdate_Click" Margin="-120 0 40 0" Command="{Binding UpdateCommand}" 
                             Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white" IsEnabled="False">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -212,7 +220,7 @@
                             <TextBlock Margin="0 0 10 0" FontSize="18" Text="Save" />
                         </StackPanel>
                     </Button>
-                    <Button x:Name="btnCancel" Click="btnCancel_Click" Margin="-27 0 0 0"  Command="{Binding CancelCommand}" 
+                    <Button x:Name="btnCancel" Grid.Column="1" Click="btnCancel_Click" Margin="180 0 0 0"  Command="{Binding CancelCommand}" 
                             Width="110"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white" IsEnabled="False">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -225,7 +233,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Margin="220 0 0 0"  Command="{Binding LoginsCommand}" 
+                    <Button Margin="160 0 0 0" Grid.Column="4" Command="{Binding LoginsCommand}" 
                             Width="160"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -238,7 +246,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Margin="30 0 100 0"  Command="{Binding CancelCommand}" 
+                    <Button Margin="-110 0 100 0" Grid.Column="4" Command="{Binding CancelCommand}" 
                             Width="160"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -263,7 +271,8 @@
                             <TextBlock Margin="0 0 10 0" FontSize="18" Text="Rating" />
                         </StackPanel>
                     </Button>-->
-                </StackPanel>
+                <!--</StackPanel>-->
+                </Grid>
             </StackPanel>
         </Grid>
     </Grid>
