@@ -358,21 +358,30 @@ namespace BITServices.ViewModel
         {
             var fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "log.txt");
             List<string> allLinesText = File.ReadAllLines(fileName).ToList();
-            string userLogins = string.Empty;
-            foreach(string line in allLinesText)
+            List<string> allUserLogins = new List<string>();
+            foreach (string line in allLinesText)
             {
                 if (line.Contains(SelectedStaff.UserName))
                 {
-                    userLogins += line + "\n";
+                    allUserLogins.Add(line);
                 }
             }
-            if (string.IsNullOrEmpty(userLogins))
+            allUserLogins.Reverse();
+            string lastUserLogins = string.Empty;
+            for(int i = 0; i < 10; i++)
             {
-                MessageBox.Show("No Logins for this user", "No Logins");
+                lastUserLogins += allUserLogins[i] + "\n";
+            }
+
+
+
+            if (string.IsNullOrEmpty(lastUserLogins))
+            {
+                MessageBox.Show("No Logins for this user", "No Logins", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show(userLogins, "Logins for " + SelectedStaff.FirstName + " " + SelectedStaff.LastName);
+                MessageBox.Show(lastUserLogins, "Last 10 Logins for " + SelectedStaff.FirstName + " " + SelectedStaff.LastName, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

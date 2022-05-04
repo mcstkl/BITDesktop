@@ -190,7 +190,7 @@
                     <TextBox x:Name="tbUser" IsEnabled="False" Grid.Row="9" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <!--<TextBox x:Name="tbPassword" IsEnabled="False" Grid.Row="10" Grid.Column="1" FontSize="16" Margin="0 0 0 10" Background="NavajoWhite" BorderThickness="0 0 0 1" Text="{Binding SelectedClient.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />-->
 
-                    <Label x:Name="lblJobs" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="3" ContentStringFormat="Current Job Requests {0}" Content="{Binding SelectedClient.CompanyName}"/>
+                    <Label x:Name="lblJobs" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="3" ContentStringFormat="Job Requests {0}" Content="{Binding SelectedClient.CompanyName}"/>
                     <DataGrid GridLinesVisibility="None" AutoGenerateColumns="False" ItemsSource="{Binding CurrentJobs}" Grid.Column="3" 
                               Grid.Row="2" Grid.RowSpan="9" HorizontalScrollBarVisibility="Hidden" AlternatingRowBackground="WhiteSmoke" 
                               Height="280" HeadersVisibility="Column" Margin="10 0 0 0" BorderThickness="0.2" Background="Transparent">

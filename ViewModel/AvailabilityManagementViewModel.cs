@@ -12,7 +12,6 @@ namespace BITServices.ViewModel
 {
         public class AvailabilityManagementViewModel : INotifyPropertyChanged
         {
-
             private ObservableCollection<Availability> _availabilities;
             private Availability _selectedAvailability;
             public string _selectedItemInFilter = string.Empty;
