@@ -14,89 +14,13 @@ namespace BITServices.ViewModel
 {
     public class StaffManagementViewModel : INotifyPropertyChanged
     {
-        ////list class in C# that listens to the events
-        ////OverservableCollection<T>
-
-        //private ObservableCollection<Staff> _Staffs;
-        //private Staff _selectedStaff;
-        ////private ObservableCollection<Skill> _skills;
-
-
-        //private RelayCommand _updateCommand;
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //public RelayCommand UpdateCommand
-        //{
-        //    get
-        //    {
-        //        if (_updateCommand == null)
-        //        {
-        //            //Remember RelayCommand is taking first parameter as Action
-        //            //Action is nothing but a Method. Only use the Method name
-        //            _updateCommand = new RelayCommand(this.UpdateMethod, true);
-        //        }
-        //        return _updateCommand;
-        //    }
-        //    set
-        //    { _updateCommand = value; }
-        //}
-        //public void UpdateMethod()
-        //{
-        //    SelectedStaff.UpdateStaff();
-        //    MessageBox.Show("Staff Updated");
-        //}
-
-
-        //private void OnPropertyChanged(string prop)
-        //{
-        //    if (PropertyChanged != null)
-        //    {
-        //        PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        //    }
-        //}
-        //public Staff SelectedStaff
-        //{
-        //    get { return _selectedStaff; }
-        //    set
-        //    {
-        //        _selectedStaff = value;
-        //        OnPropertyChanged("SelectedStaff");
-        //        //Skills allSkills = new Skills(SelectedStaff.StaffID);
-        //        //this.Skills = new ObservableCollection<Skill>(allSkills);
-        //    }
-        //}
-
-        //public ObservableCollection<Staff> Staffs
-        //{
-        //    get { return _Staffs; }
-        //    set { _Staffs = value; }
-        //}
-        ////public ObservableCollection<Skill> Skills
-        ////{
-        ////    get { return _skills; }
-        ////    set
-        ////    {
-        ////        _skills = value;
-        ////        OnPropertyChanged("Skills");
-        ////    }
-        ////}
-
-
-        //public StaffManagementViewModel()
-        //{
-        //    Staffs allStaffs = new Staffs();
-        //    this.Staffs = new ObservableCollection<Staff>(allStaffs);
-
-        //}
-
-
-
+        /// <summary>
+        /// Fields and Properties
+        /// </summary>
         private ObservableCollection<Staff> _staffs;
         private Staff _selectedStaff;
         public string _selectedItemInFilter = string.Empty;
         public string _searchValue = string.Empty;
-
 
         private RelayCommand _updateCommand;
         private RelayCommand _addCommand;
@@ -143,8 +67,23 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("Staffs");
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
 
+
+        /// <summary>
+        /// OnPropertyChanged Boilerplate
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string prop)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public StaffManagementViewModel()
         {
             Staffs allStaffs = new Staffs();
@@ -152,6 +91,9 @@ namespace BITServices.ViewModel
             OnPropertyChanged("Staffs");
         }
 
+        /// <summary>
+        /// Relay Commands for MVVM
+        /// </summary>
         public RelayCommand UpdateCommand
         {
             get
@@ -245,28 +187,19 @@ namespace BITServices.ViewModel
         }
 
 
-
-        private void OnPropertyChanged(string prop)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-            }
-        }
+        /// <summary>
+        /// MVVM Methods
+        /// </summary>
         public void UpdateMethod()
         {
             SelectedStaff.UpdateStaff();
         }
-
         private void Window1_DataChanged(object sender, EventArgs e)
         {
             MessageBox.Show("Client Added", "Client Added");
         }
         public void AddMethod()
         {
-            //SelectedStaff = new Staff();
-            //this.Staffs.Add(SelectedStaff);
-
             AddStaffView addStaffView = new AddStaffView();
             addStaffView.DataChanged += Window1_DataChanged;
             addStaffView.ShowDialog();
@@ -367,10 +300,16 @@ namespace BITServices.ViewModel
                 }
             }
             allUserLogins.Reverse();
+
             string lastUserLogins = string.Empty;
-            for(int i = 0; i < 10; i++)
+            int numberOfLogins = 10;
+            if(allUserLogins.Count < numberOfLogins)
             {
-                lastUserLogins += allUserLogins[i] + "\n";
+                numberOfLogins = allUserLogins.Count;
+            }
+            for(int i = 0; i < numberOfLogins; i++)
+            {
+                    lastUserLogins += allUserLogins[i] + "\n";
             }
 
 
@@ -386,14 +325,14 @@ namespace BITServices.ViewModel
         }
 
 
-        // ------------------------ HELPERS -------------------------
-        // ----------------------------------------------------------
+        /// <summary>
+        /// HELPER Methods
+        /// </summary>
         private void LoadGrid()
         {
             Staffs allStaffs = new Staffs();
             this.Staffs = new ObservableCollection<Staff>(allStaffs);
         }
-        // ----------------------------------------------------------
 
     }
 }

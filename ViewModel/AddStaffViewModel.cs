@@ -1,23 +1,19 @@
 ﻿using BITServices.Model;
 using BITServices.View;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
 
 namespace BITServices.ViewModel
 {
     public class AddStaffViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Fields and Properties
+        /// </summary>
         private ObservableCollection<Staff> _staffs;
         private Staff _selectedStaff;
-
 
         private RelayCommand _saveCommand;
         private RelayCommand _cancelCommand;
@@ -41,6 +37,10 @@ namespace BITServices.ViewModel
             }
         }
 
+
+        /// <summary>
+        /// OnPropertyChanged Boilerplate
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string prop)
         {
@@ -50,6 +50,9 @@ namespace BITServices.ViewModel
             }
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public AddStaffViewModel()
         {
             SelectedStaff = new Staff();
@@ -59,6 +62,9 @@ namespace BITServices.ViewModel
         }
 
 
+        /// <summary>
+        /// RelayCommands MVVM
+        /// </summary>
         public RelayCommand SaveCommand
         {
             get
@@ -89,6 +95,10 @@ namespace BITServices.ViewModel
             set
             { _cancelCommand = value; }
         }
+
+        /// <summary>
+        /// MVVM Methods
+        /// </summary>
         public void SaveMethod()
         {
             try
@@ -108,6 +118,9 @@ namespace BITServices.ViewModel
         }
 
 
+        /// <summary>
+        /// HELPER Methods
+        /// </summary>
         private void LoadGrid()
         {
             Staffs allStaffs = new Staffs();

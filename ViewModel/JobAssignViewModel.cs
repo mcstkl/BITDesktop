@@ -12,7 +12,9 @@ namespace BITServices.ViewModel
 {
     public class JobAssignViewModel : INotifyPropertyChanged
     {
-
+        /// <summary>
+        /// Fields and Properties
+        /// </summary>
         private Job _selectedJob;
         private ObservableCollection<Contractor> _contractors;
         private Decimal _selectedPayRate;
@@ -23,16 +25,6 @@ namespace BITServices.ViewModel
 
         private RelayCommand _assignCommand;
         private RelayCommand _refreshCommand;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string prop)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-            }
-        }
-
 
         public ObservableCollection<Contractor> Contractors
         {
@@ -91,7 +83,22 @@ namespace BITServices.ViewModel
         }
 
 
+        /// <summary>
+        /// OnPropertyChanged Boilerplate
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string prop)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
 
+
+        /// <summary>
+        /// RelayCommands for MVVM
+        /// </summary>
         public RelayCommand AssignCommand
         {
             get
@@ -120,6 +127,9 @@ namespace BITServices.ViewModel
         }
 
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public JobAssignViewModel()
         {
 
@@ -133,6 +143,9 @@ namespace BITServices.ViewModel
         }
 
 
+        /// <summary>
+        /// MVVM Methods
+        /// </summary>
         public void AssignMethod()
         {
             if (SelectedJob != null)
@@ -157,7 +170,6 @@ namespace BITServices.ViewModel
                 }
             }
         }
-
         public void RefreshMethod()
         {
             LoadSkilledContractors();
@@ -171,8 +183,6 @@ namespace BITServices.ViewModel
             }
             this.SkilledContractors = new ObservableCollection<Contractor>(filteredContractors);
         }
-
-
         public void LoadSkilledContractors()
         {
             Contractors skilledContractors = new Contractors(SelectedJob.JobID);

@@ -12,11 +12,12 @@ namespace BITServices.ViewModel
 {
     public class SettingsEditSkillsViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Fields and Properties
+        /// </summary>
         private ObservableCollection<Skill> _skills;
         private Skill _selectedSkill;
         private Skill _newSkill = new Skill();
-
-
 
         private RelayCommand _saveCommand;
         private RelayCommand _removeCommand;
@@ -49,6 +50,10 @@ namespace BITServices.ViewModel
             }
         }
 
+
+        /// <summary>
+        /// OnPropertyChanged Boilerplate
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string prop)
         {
@@ -58,6 +63,9 @@ namespace BITServices.ViewModel
             }
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public SettingsEditSkillsViewModel()
         {
             SelectedSkill = new Skill();
@@ -66,7 +74,9 @@ namespace BITServices.ViewModel
             OnPropertyChanged("Skills");
         }
 
-
+        /// <summary>
+        /// Relay Commands for MVVM
+        /// </summary>
         public RelayCommand SaveCommand
         {
             get
@@ -98,7 +108,9 @@ namespace BITServices.ViewModel
             { _removeCommand = value; }
         }
 
-
+        /// <summary>
+        /// MVVM Methods 
+        /// </summary>
         public void SaveMethod()
         {
             try
@@ -128,12 +140,13 @@ namespace BITServices.ViewModel
         }
 
 
+        /// <summary>
+        /// HELPER Method
+        /// </summary>
         private void LoadGrid()
         {
             Skills allSkills = new Skills();
             this.Skills = new ObservableCollection<Skill>(allSkills);
         }
-
-
     }
 }

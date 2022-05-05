@@ -46,28 +46,5 @@ namespace BITServices.Model
                 return 0;
             }
         }
-
-        //public DataTable GetContractorAvailabilities()
-        //{
-        //    string sql = "SELECT c.FirstName, c.LastName, a.AvailableDate, a.StartTime, a.FinishTime " +
-        //                 " FROM Contractor AS c " +
-        //                 " INNER JOIN Availability AS a ON c.ContractorID = a.ContractorID";
-        //    DataTable dtAvailabilities = _db.ExecuteSQL(sql);
-        //    return dtAvailabilities;
-        //}
-
-        //public DataTable GetContractorAvailability(int contractorID)
-        //{
-        //    string sql = "SELECT c.FirstName, c.LastName, a.AvailableDate, a.StartTime, a.FinishTime " +
-        //                 " FROM Contractor AS c " +
-        //                 " INNER JOIN Availability AS a ON c.ContractorID = a.ContractorID" +
-        //                 " WHERE a.ContractorID = @ContractorID";
-        //    SqlParameter[] objParams;
-        //    objParams = new SqlParameter[1];
-        //    objParams[0] = new SqlParameter("@ContractorID", DbType.String);
-        //    objParams[0].Value = contractorID;
-        //    DataTable dtAvailabilities = _db.ExecuteSQL(sql);
-        //    return dtAvailabilities;
-        //}
     }
 }

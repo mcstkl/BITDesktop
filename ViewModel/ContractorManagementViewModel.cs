@@ -14,95 +14,18 @@ namespace BITServices.ViewModel
 {
     public class ContractorManagementViewModel : INotifyPropertyChanged
     {
-        ////list class in C# that listens to the events
-        ////OverservableCollection<T>
-
-        //private ObservableCollection<Contractor> _Contractors;
-        //private Contractor _selectedContractor;
-        ////private ObservableCollection<Skill> _skills;
-
-
-        //private RelayCommand _updateCommand;
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //public RelayCommand UpdateCommand
-        //{
-        //    get
-        //    {
-        //        if (_updateCommand == null)
-        //        {
-        //            //Remember RelayCommand is taking first parameter as Action
-        //            //Action is nothing but a Method. Only use the Method name
-        //            _updateCommand = new RelayCommand(this.UpdateMethod, true);
-        //        }
-        //        return _updateCommand;
-        //    }
-        //    set
-        //    { _updateCommand = value; }
-        //}
-        //public void UpdateMethod()
-        //{
-        //    SelectedContractor.UpdateContractor();
-        //    MessageBox.Show("Contractor Updated");
-        //}
-
-
-        //private void OnPropertyChanged(string prop)
-        //{
-        //    if (PropertyChanged != null)
-        //    {
-        //        PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        //    }
-        //}
-        //public Contractor SelectedContractor
-        //{
-        //    get { return _selectedContractor; }
-        //    set
-        //    {
-        //        _selectedContractor = value;
-        //        OnPropertyChanged("SelectedContractor");
-        //        //Skills allSkills = new Skills(SelectedContractor.ContractorID);
-        //        //this.Skills = new ObservableCollection<Skill>(allSkills);
-        //    }
-        //}
-
-        //public ObservableCollection<Contractor> Contractors
-        //{
-        //    get { return _Contractors; }
-        //    set { _Contractors = value; }
-        //}
-        ////public ObservableCollection<Skill> Skills
-        ////{
-        ////    get { return _skills; }
-        ////    set
-        ////    {
-        ////        _skills = value;
-        ////        OnPropertyChanged("Skills");
-        ////    }
-        ////}
-
-
-        //public ContractorManagementViewModel()
-        //{
-        //    Contractors allContractors = new Contractors();
-        //    this.Contractors = new ObservableCollection<Contractor>(allContractors);
-
-        //}
-
-
-
+        /// <summary>
+        /// Fields and Properties
+        /// </summary>
         private ObservableCollection<Contractor> _contractors;
         private Contractor _selectedContractor;
         public string _selectedItemInFilter = string.Empty;
         public string _searchValue = string.Empty;
 
-
         private RelayCommand _updateCommand;
         private RelayCommand _addCommand;
         private RelayCommand _deleteCommand;
         private RelayCommand _searchCommand;
-        //private RelayCommand _saveCommand;
         private RelayCommand _cancelCommand;
         private RelayCommand _skillsCommand;
         private RelayCommand _availabilitiesCommand;
@@ -116,7 +39,6 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("SelectedContractor");
             }
         }
-
         public ObservableCollection<Contractor> Contractors
         {
             get { return _contractors; }
@@ -146,7 +68,23 @@ namespace BITServices.ViewModel
             }
         }
 
+
+        /// <summary>
+        /// OnPropertyChanged Boilerplate
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string prop)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
+        
+        
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ContractorManagementViewModel()
         {
             Contractors allContractors = new Contractors();
@@ -154,6 +92,10 @@ namespace BITServices.ViewModel
             OnPropertyChanged("Contractors");
         }
 
+
+        /// <summary>
+        /// RelayCommands for MVVM
+        /// </summary>
         public RelayCommand UpdateCommand
         {
             get
@@ -206,19 +148,6 @@ namespace BITServices.ViewModel
             set
             { _searchCommand = value; }
         }
-        //public RelayCommand SaveCommand
-        //{
-        //    get
-        //    {
-        //        if (_saveCommand == null)
-        //        {
-        //            _saveCommand = new RelayCommand(this.SaveMethod, true);
-        //        }
-        //        return _saveCommand;
-        //    }
-        //    set
-        //    { _saveCommand = value; }
-        //}
         public RelayCommand CancelCommand
         {
             get
@@ -260,16 +189,11 @@ namespace BITServices.ViewModel
         }
 
 
-        private void OnPropertyChanged(string prop)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-            }
-        }
-
-
-
+        /// <summary>
+        /// MVVM Methods
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window1_DataChanged(object sender, EventArgs e)
         {
             MessageBox.Show("Contractor Added", "Contractor Added", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -358,18 +282,6 @@ namespace BITServices.ViewModel
                 this.Contractors = new ObservableCollection<Contractor>(searchedContractors);
             }
         }
-        //public void SaveMethod()
-        //{
-        //    try
-        //    {
-        //        SelectedContractor.InsertContractor();
-
-        //    }
-        //    catch (Exception)
-        //    {
-        //        MessageBox.Show("Couldn't save Contractor. Please fill in complete Contractor details.", "Unable to Save Contractor", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
-        //}
         public void CancelMethod()
         {
             Contractors allContractors = new Contractors();
@@ -393,7 +305,6 @@ namespace BITServices.ViewModel
                 MessageBox.Show("Please select a contractor to view skills");
             }
         }
-
         public void AvailabilitiesMethod()
         {
             if (SelectedContractor != null)
@@ -409,15 +320,14 @@ namespace BITServices.ViewModel
         }
 
 
-
-        // ------------------------ HELPERS -------------------------
-        // ----------------------------------------------------------
+        /// <summary>
+        /// HELPER Methods
+        /// </summary>
         private void LoadGrid()
         {
             Contractors allContractors = new Contractors();
             this.Contractors = new ObservableCollection<Contractor>(allContractors);
         }
-        // ----------------------------------------------------------
 
     }
 }

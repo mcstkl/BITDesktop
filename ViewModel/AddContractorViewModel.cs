@@ -15,9 +15,11 @@ namespace BITServices.ViewModel
 {
     public class AddContractorViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Fields and Properties
+        /// </summary>
         private ObservableCollection<Contractor> _contractors;
         private Contractor _selectedContractor;
-
 
         private RelayCommand _saveCommand;
         private RelayCommand _cancelCommand;
@@ -41,6 +43,10 @@ namespace BITServices.ViewModel
             }
         }
 
+
+        /// <summary>
+        /// OnPropertyChanged Boilerplate
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string prop)
         {
@@ -50,6 +56,9 @@ namespace BITServices.ViewModel
             }
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public AddContractorViewModel()
         {
             SelectedContractor = new Contractor();
@@ -58,7 +67,9 @@ namespace BITServices.ViewModel
             //OnPropertyChanged("Contractors");
         }
 
-
+        /// <summary>
+        /// RelayCommands for MVVM
+        /// </summary>
         public RelayCommand SaveCommand
         {
             get
@@ -89,6 +100,10 @@ namespace BITServices.ViewModel
             set
             { _cancelCommand = value; }
         }
+
+        /// <summary>
+        /// MVVM Methods
+        /// </summary>
         public void SaveMethod()
         {
             try
@@ -108,6 +123,9 @@ namespace BITServices.ViewModel
         }
 
 
+        /// <summary>
+        /// HELPER Methods
+        /// </summary>
         private void LoadGrid()
         {
             Contractors allContractors = new Contractors();

@@ -12,23 +12,15 @@ namespace BITServices.ViewModel
 {
     public class ContractorAvailabilityViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Fields and Properties
+        /// </summary>
         private ObservableCollection<Availability> _availabilities;
         private Availability _selectedAvailability;
         private Availability _newAvailability = new Availability();
         private Contractor _selectedContractor;
         private RelayCommand _addCommand;
         private RelayCommand _removeCommand;
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string prop)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-            }
-        }
-
 
         public ObservableCollection<Availability> Availabilities
         {
@@ -62,6 +54,49 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("SelectedContractor");
             }
         }
+
+
+        /// <summary>
+        /// OnPropertyChanged Boilerplate
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string prop)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public ContractorAvailabilityViewModel()
+        {
+            Availabilities allAvailabilities = new Availabilities();
+            Availabilities = new ObservableCollection<Availability>(allAvailabilities);
+        }
+        public ContractorAvailabilityViewModel(Contractor currentContractor)
+        {
+            SelectedAvailability = new Availability();
+            SelectedContractor = currentContractor;
+            Availabilities availabilities = new Availabilities();
+            List<Availability> contractorAvailabilities = new List<Availability>();
+            foreach(Availability availability in availabilities)
+            {
+                if(availability.ContractorID == SelectedContractor.ContractorID)
+                {
+                    contractorAvailabilities.Add(availability);
+                }
+            }
+            this.Availabilities = new ObservableCollection<Availability>(contractorAvailabilities);
+            OnPropertyChanged("Availabilities");
+        }
+
+
+        /// <summary>
+        /// RelayCommands for MVVM
+        /// </summary>
         public RelayCommand AddCommand
         {
             get
@@ -93,29 +128,9 @@ namespace BITServices.ViewModel
             { _removeCommand = value; }
         }
 
-        public ContractorAvailabilityViewModel()
-        {
-            Availabilities allAvailabilities = new Availabilities();
-            Availabilities = new ObservableCollection<Availability>(allAvailabilities);
-        }
-        public ContractorAvailabilityViewModel(Contractor currentContractor)
-        {
-            SelectedAvailability = new Availability();
-            SelectedContractor = currentContractor;
-            Availabilities availabilities = new Availabilities();
-            List<Availability> contractorAvailabilities = new List<Availability>();
-            foreach(Availability availability in availabilities)
-            {
-                if(availability.ContractorID == SelectedContractor.ContractorID)
-                {
-                    contractorAvailabilities.Add(availability);
-                }
-            }
-            this.Availabilities = new ObservableCollection<Availability>(contractorAvailabilities);
-            OnPropertyChanged("Availabilities");
-        }
-
-
+        /// <summary>
+        /// MVVM Methods
+        /// </summary>
         public void AddMethod()
         {
             if (NewAvailability != null)
@@ -162,7 +177,9 @@ namespace BITServices.ViewModel
             }
         }
 
-
+        /// <summary>
+        /// HELPER Methods
+        /// </summary>
         private void LoadGrid()
         {
             Availabilities availabilities = new Availabilities();

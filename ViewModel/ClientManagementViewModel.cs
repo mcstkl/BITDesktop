@@ -18,9 +18,9 @@ namespace BITServices.ViewModel
 {
     public class ClientManagementViewModel : INotifyPropertyChanged
     {
-
-        // --------------------- FIELDS -------------------------
-        // ------------------------------------------------------
+        /// <summary>
+        /// Fields and Properties
+        /// </summary>
         private ObservableCollection<Client> _clients;
         private ObservableCollection<Job> _currentJobs;
         private Client _selectedClient;
@@ -31,14 +31,9 @@ namespace BITServices.ViewModel
         private RelayCommand _addCommand;
         private RelayCommand _deleteCommand;
         private RelayCommand _searchCommand;
-        //private RelayCommand _saveCommand;
         private RelayCommand _cancelCommand;
         private RelayCommand _showAllCommand;
-        // ------------------------------------------------------
 
-
-        // ---------------------- PROPS -------------------------
-        // ------------------------------------------------------
         public Client SelectedClient
         {
             get { return _selectedClient; }
@@ -100,11 +95,11 @@ namespace BITServices.ViewModel
                 OnPropertyChanged("CurrentJobs");
             }
         }
-        // -------------------------------------------------------
 
 
-        // ------------------- CONSTRUCTOR -----------------------
-        // -------------------------------------------------------
+        /// <summary>
+        /// Constructors
+        /// </summary>
         public ClientManagementViewModel()
         {
             SelectedClient = new Client();
@@ -114,14 +109,11 @@ namespace BITServices.ViewModel
             this.CurrentJobs = new ObservableCollection<Job>(allJobs);
             //OnPropertyChanged("Clients");
         }
-        // -------------------------------------------------------
 
 
-
-
-
-        // ----------------- PROPCHANGED BP ---------------------
-        // ------------------------------------------------------
+        /// <summary>
+        /// OnPropertyChanged Boilerplate
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string prop)
         {
@@ -130,12 +122,11 @@ namespace BITServices.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
-        // ------------------------------------------------------
 
 
-        // ------------------- RELAY BOILERPLATE -------------------
-        // ---------------------------------------------------------
-
+        /// <summary>
+        /// RelayCommands for MVVM
+        /// </summary>
         public RelayCommand UpdateCommand
         {
             get
@@ -194,21 +185,6 @@ namespace BITServices.ViewModel
             set
             { _searchCommand = value; }
         }
-        //public RelayCommand SaveCommand
-        //{
-        //    get
-        //    {
-        //        if (_saveCommand == null)
-        //        {
-        //            //Remember RelayCommand is taking first parameter as Action
-        //            //Action is nothing but a Method. Only use the Method name
-        //            _saveCommand = new RelayCommand(this.SaveMethod, true);
-        //        }
-        //        return _saveCommand;
-        //    }
-        //    set
-        //    { _saveCommand = value; }
-        //}
         public RelayCommand CancelCommand
         {
             get
@@ -239,13 +215,11 @@ namespace BITServices.ViewModel
             set
             { _showAllCommand = value; }
         }
-        // ----------------------------------------------------------
 
 
-
-
-        // --------------------- METHODS --------------------------
-        // --------------------------------------------------------
+        /// <summary>
+        /// MVVM Methods
+        /// </summary>
         public void UpdateMethod()
         {
             
@@ -257,7 +231,6 @@ namespace BITServices.ViewModel
             Jobs allJobs = new Jobs();
             this.CurrentJobs = new ObservableCollection<Job>(allJobs);
         }
-
         private void Window1_DataChanged(object sender, EventArgs e)
         {
             MessageBox.Show("Client Added", "Client Added");
@@ -334,41 +307,20 @@ namespace BITServices.ViewModel
                 this.Clients = new ObservableCollection<Client>(searchedClients);
             }
         }
-        //public void SaveMethod()
-        //{
-
-        //    try
-        //    {
-        //        SelectedClient.InsertClient();
-            
-        //    }
-        //    catch (Exception)
-        //    {
-        //        MessageBox.Show("Couldn't save Client. Please fill in complete client details.", "Unable to Save Client", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
-        //    LoadGrid();
-        //}
-
         public void CancelMethod()
         {
             LoadGrid();
         }
-        // ---------------------------------------------------------
 
 
-
-
-
-        // ------------------------ HELPERS -------------------------
-        // ----------------------------------------------------------
+        /// <summary>
+        /// HELPER Methods
+        /// </summary>
         public void LoadGrid()
         {
             Clients allClients = new Clients();
             this.Clients = new ObservableCollection<Client>(allClients);
         }
-
-        // ----------------------------------------------------------
-
     }
 }
 

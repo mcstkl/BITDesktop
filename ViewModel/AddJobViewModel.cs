@@ -1,24 +1,22 @@
 ﻿using BITServices.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace BITServices.ViewModel
 {
     public class AddJobViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Fields and Properties
+        /// </summary>
         private Client _selectedClient;
         private Job _selectedJob;
         private Skill _selectedSkill;
         private ObservableCollection<Client> _clients;
         private ObservableCollection<Job> _jobs;
         private ObservableCollection<Skill> _skills;
-
 
         private RelayCommand _saveCommand;
         private RelayCommand _cancelCommand;
@@ -51,8 +49,6 @@ namespace BITServices.ViewModel
             }
         }
 
-
-
         public Client SelectedClient
         {
             get { return _selectedClient; }
@@ -82,6 +78,9 @@ namespace BITServices.ViewModel
         }
 
 
+        /// <summary>
+        /// OnPropertyChanged Boilerplate
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string prop)
         {
@@ -91,6 +90,10 @@ namespace BITServices.ViewModel
             }
         }
 
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public AddJobViewModel()
         {
             SelectedClient = new Client();
@@ -106,6 +109,9 @@ namespace BITServices.ViewModel
         }
 
 
+        /// <summary>
+        /// RelayCommands for MVVM
+        /// </summary>
         public RelayCommand SaveCommand
         {
             get
@@ -137,7 +143,10 @@ namespace BITServices.ViewModel
             { _cancelCommand = value; }
         }
        
-        
+
+        /// <summary>
+        /// MVVM Methods
+        /// </summary>
         public void SaveMethod()
         {
             try

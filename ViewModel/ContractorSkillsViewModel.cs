@@ -12,6 +12,9 @@ namespace BITServices.ViewModel
 {
     public class ContractorSkillsViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Fields and Properties
+        /// </summary>
         private ObservableCollection<Skill> _skills;
         private Contractor _selectedContractor;
         private Skill _selectedSkill;
@@ -64,10 +67,26 @@ namespace BITServices.ViewModel
             }
         }
 
-
         private RelayCommand _addCommand;
         private RelayCommand _removeCommand;
 
+
+        /// <summary>
+        /// OnPropertyChanged Boilerplate
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string prop)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
+
+
+        /// <summary>
+        /// Constructors
+        /// </summary>
         public ContractorSkillsViewModel()
         {
             Skills skills = new Skills();
@@ -85,17 +104,9 @@ namespace BITServices.ViewModel
         }
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string prop)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-            }
-        }
-
-
-
+        /// <summary>
+        /// RelayCommands for MVVM
+        /// </summary>
         public RelayCommand AddCommand
         {
             get
@@ -127,7 +138,9 @@ namespace BITServices.ViewModel
             { _removeCommand = value; }
         }
 
-
+        /// <summary>
+        /// MVVM Methods
+        /// </summary>
         public void AddMethod()
         {
             if(SelectedSkill != null)
@@ -172,6 +185,9 @@ namespace BITServices.ViewModel
         }
 
 
+        /// <summary>
+        /// HELPER Methods
+        /// </summary>
         private void LoadGrid()
         {
             ContractorSkills allSkills = new ContractorSkills(SelectedContractor.ContractorID);

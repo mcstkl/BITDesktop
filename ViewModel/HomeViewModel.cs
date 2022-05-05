@@ -11,6 +11,9 @@ namespace BITServices.ViewModel
 {
     public class HomeViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Fields and Properties
+        /// </summary>
         private int _numberOfClients;
         private int _numberOfContractors;
         private int _numberOfActiveJobs;
@@ -24,7 +27,6 @@ namespace BITServices.ViewModel
         private Job _upcomingTwo;
         private Job _upcomingThree;
         private DateTime _timeNow = DateTime.Now;
-
 
         public Contractor ContractorOne
         {
@@ -128,6 +130,9 @@ namespace BITServices.ViewModel
         }
 
 
+        /// <summary>
+        /// OnPropertyChanged Boilerplate
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string prop)
         {
@@ -137,7 +142,10 @@ namespace BITServices.ViewModel
             }
         }
 
-        
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public HomeViewModel()
         {
             //Number of Contractors
@@ -192,6 +200,9 @@ namespace BITServices.ViewModel
         }
 
 
+        /// <summary>
+        /// Methods
+        /// </summary>
         public ObservableCollection<Contractor> GetTopContractors()
         {
             Contractors topContractors = new Contractors();
@@ -199,7 +210,6 @@ namespace BITServices.ViewModel
             topContractors.Reverse();
             return new ObservableCollection<Contractor>(topContractors);
         }
-
         public ObservableCollection<Job> GetUpcomingJobs()
         {
             Jobs sortedJobs = new Jobs();

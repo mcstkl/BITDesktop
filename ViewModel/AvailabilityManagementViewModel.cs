@@ -12,53 +12,17 @@ namespace BITServices.ViewModel
 {
         public class AvailabilityManagementViewModel : INotifyPropertyChanged
         {
+            /// <summary>
+            /// Fields and Properties
+            /// </summary>
             private ObservableCollection<Availability> _availabilities;
             private Availability _selectedAvailability;
             public string _selectedItemInFilter = string.Empty;
             public string _searchValue = string.Empty;
 
-            private RelayCommand _updateCommand;
-            private RelayCommand _addCommand;
-            private RelayCommand _deleteCommand;
             private RelayCommand _searchCommand;
-            private RelayCommand _saveCommand;
-            private RelayCommand _cancelCommand;
 
-            public AvailabilityManagementViewModel()
-            {
-                SelectedAvailability = new Availability();
-                Availabilities allAvailabilities = new Availabilities();
-                this.Availabilities = new ObservableCollection<Availability>(allAvailabilities);
-                OnPropertyChanged("Availabilities");
-            }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-            private void OnPropertyChanged(string prop)
-            {
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs(prop));
-                }
-            }
-
-
-        public RelayCommand SearchCommand
-        {
-            get
-            {
-                if (_searchCommand == null)
-                {
-                    //Remember RelayCommand is taking first parameter as Action
-                    //Action is nothing but a Method. Only use the Method name
-                    _searchCommand = new RelayCommand(this.SearchMethod, true);
-                }
-                return _searchCommand;
-            }
-            set
-            { _searchCommand = value; }
-        }
-
-        public Availability SelectedAvailability
+            public Availability SelectedAvailability
             {
                 get { return _selectedAvailability; }
                 set
@@ -94,9 +58,57 @@ namespace BITServices.ViewModel
                     OnPropertyChanged("Availabilities");
                 }
             }
-            
 
-        public void SearchMethod()
+
+            /// <summary>
+            /// OnPropertyChanged Boilerplate
+            /// </summary>
+            public event PropertyChangedEventHandler PropertyChanged;
+            private void OnPropertyChanged(string prop)
+            {
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs(prop));
+                }
+            }
+           
+        
+            /// <summary>
+            /// Constructors
+            /// </summary>
+            public AvailabilityManagementViewModel()
+            {
+                SelectedAvailability = new Availability();
+                Availabilities allAvailabilities = new Availabilities();
+                this.Availabilities = new ObservableCollection<Availability>(allAvailabilities);
+                OnPropertyChanged("Availabilities");
+            }
+
+
+            /// <summary>
+            /// RelayCommands for MVVM
+            /// </summary>
+            public RelayCommand SearchCommand
+        {
+            get
+            {
+                if (_searchCommand == null)
+                {
+                    //Remember RelayCommand is taking first parameter as Action
+                    //Action is nothing but a Method. Only use the Method name
+                    _searchCommand = new RelayCommand(this.SearchMethod, true);
+                }
+                return _searchCommand;
+            }
+            set
+            { _searchCommand = value; }
+        }
+
+            
+            /// <summary>
+            /// MVVM Methods
+            /// </summary>
+            public void SearchMethod()
         {
             string selectedSearch = SelectedItemInFilter.ToString();
 
@@ -142,7 +154,10 @@ namespace BITServices.ViewModel
             }
         }
 
-        public void LoadGrid()
+            /// <summary>
+            /// HELPER Methods
+            /// </summary>
+            public void LoadGrid()
         {
             Availabilities allAvailabilities = new Availabilities();
             this.Availabilities = new ObservableCollection<Availability>(allAvailabilities);

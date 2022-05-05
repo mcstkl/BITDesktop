@@ -13,8 +13,9 @@ namespace BITServices.ViewModel
 {
     public class RecordManagementViewModel : INotifyPropertyChanged
     {
-        // --------------------- FIELDS -------------------------
-        // ------------------------------------------------------
+        /// <summary>
+        /// Fields and Properties
+        /// </summary>
         private ObservableCollection<Job> _jobs;
         private ObservableCollection<Skill> _skills;
         private ObservableCollection<Client> _clients;
@@ -28,13 +29,8 @@ namespace BITServices.ViewModel
         private RelayCommand _addCommand;
         private RelayCommand _deleteCommand;
         private RelayCommand _searchCommand;
-        //private RelayCommand _saveCommand;
         private RelayCommand _cancelCommand;
-        // ------------------------------------------------------
-
-
-        // ---------------------- PROPS -------------------------
-        // ------------------------------------------------------
+ 
         public Job SelectedJob
         {
             get { return _selectedJob; }
@@ -109,23 +105,20 @@ namespace BITServices.ViewModel
 
             }
         }
-        // -------------------------------------------------------
 
 
-        // ------------------- CONSTRUCTOR -----------------------
-        // -------------------------------------------------------
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public RecordManagementViewModel()
         {
             LoadGrid();
         }
-        // -------------------------------------------------------
 
 
-
-
-
-        // ----------------- PROPCHANGED BP ---------------------
-        // ------------------------------------------------------
+        /// <summary>
+        /// OnPropertyChanged Boilerplate
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string prop)
         {
@@ -134,12 +127,11 @@ namespace BITServices.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
-        // ------------------------------------------------------
 
 
-        // ------------------- RELAY BOILERPLATE -------------------
-        // ---------------------------------------------------------
-
+        /// <summary>
+        /// RelayCommands for MVVM
+        /// </summary>
         public RelayCommand UpdateCommand
         {
             get
@@ -205,13 +197,11 @@ namespace BITServices.ViewModel
             set
             { _cancelCommand = value; }
         }
-        // ----------------------------------------------------------
 
 
-
-
-        // --------------------- METHODS --------------------------
-        // --------------------------------------------------------
+        /// <summary>
+        /// MVVM Methods
+        /// </summary>
         public void UpdateMethod()
         {
 
@@ -247,14 +237,10 @@ namespace BITServices.ViewModel
             LoadGrid();
         }
 
-        // ---------------------------------------------------------
 
-
-
-
-
-        // ------------------------ HELPERS -------------------------
-        // ----------------------------------------------------------
+        /// <summary>
+        /// HELPER Methods
+        /// </summary>
         public void LoadGrid()
         {
             Jobs allJobs = new Jobs();
@@ -268,10 +254,6 @@ namespace BITServices.ViewModel
             }
             this.Records = new ObservableCollection<Job>(records);
         }
-
-        // ----------------------------------------------------------
-
-
     }
 }
 
