@@ -17,8 +17,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Height="40" Margin="0 5 0 0">
@@ -87,11 +87,11 @@
                 </StackPanel>
             </StackPanel>
 
-            <DataGrid x:Name="dgStaffs" VerticalAlignment="top" IsReadOnly="true" Grid.Row="1" GridLinesVisibility="None" AutoGenerateColumns="false"
+            <DataGrid x:Name="dgStaffs" VerticalAlignment="Stretch" IsReadOnly="true" Grid.Row="1" GridLinesVisibility="None" AutoGenerateColumns="false"
                   ItemsSource="{Binding Staffs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedStaff, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalScrollBarVisibility="Hidden" 
                   AlternatingRowBackground="WhiteSmoke"
-                  Height="280" HeadersVisibility="Column" Margin="0 5 0 0" BorderThickness="0.2" Background="Transparent">
+                   HeadersVisibility="Column" Margin="0 5 0 0" BorderThickness="0.2" Background="Transparent">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Firstname" Width="*"/>
                     <DataGridTextColumn Binding="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Lastname" Width="*"/>

@@ -17,9 +17,9 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height=".72*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Height="40" Margin="0 5 0 0">
                 <fa:ImageAwesome Foreground="#666" Icon="ChevronCircleRight" HorizontalAlignment="Right" 
@@ -87,11 +87,11 @@
                 </StackPanel>
             </StackPanel>
 
-            <DataGrid x:Name="dgClients" VerticalAlignment="top" IsReadOnly="true" Grid.Row="1" GridLinesVisibility="None" AutoGenerateColumns="false"
+            <DataGrid x:Name="dgClients" VerticalAlignment="Stretch" IsReadOnly="true" Grid.Row="1" GridLinesVisibility="None" AutoGenerateColumns="false"
                   ItemsSource="{Binding Clients, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedClient, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalScrollBarVisibility="Hidden" 
                   AlternatingRowBackground="WhiteSmoke"
-                  Height="280" HeadersVisibility="Column" Margin="0 5 0 0" BorderThickness="0.2" Background="Transparent">
+                  HeadersVisibility="Column" Margin="0 5 0 0" BorderThickness="0.2" Background="Transparent">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Client" Width="*"/>
                     <DataGridTextColumn Binding="{Binding Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Street"/>

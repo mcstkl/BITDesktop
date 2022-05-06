@@ -18,8 +18,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Height="40" Margin="0 5 0 0">
@@ -87,11 +87,11 @@
                 </StackPanel>
             </StackPanel>
 
-            <DataGrid x:Name="dgRecords" VerticalAlignment="top" IsReadOnly="true" Grid.Row="1" GridLinesVisibility="None" AutoGenerateColumns="false"
+            <DataGrid x:Name="dgRecords" VerticalAlignment="Stretch" IsReadOnly="true" Grid.Row="1" GridLinesVisibility="None" AutoGenerateColumns="false"
                   ItemsSource="{Binding Records, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedJob, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalScrollBarVisibility="Hidden" 
                   AlternatingRowBackground="WhiteSmoke"
-                  Height="280" HeadersVisibility="Column" Margin="0 5 0 0" BorderThickness="0.2" Background="Transparent">
+                   HeadersVisibility="Column" Margin="0 5 0 0" BorderThickness="0.2" Background="Transparent">
                 <DataGrid.Columns>
                     <DataGridTextColumn  Binding="{Binding Date, StringFormat=\{0:dd/MM/yyyy\}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Date"/>
                     <!--<DataGridTextColumn Binding="{Binding StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Start Time"/>-->

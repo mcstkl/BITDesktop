@@ -17,7 +17,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
@@ -86,11 +86,11 @@
                 </StackPanel>
             </StackPanel>
 
-            <DataGrid x:Name="dgAvailabilities" VerticalAlignment="top" IsReadOnly="true" Grid.Row="1" GridLinesVisibility="None" AutoGenerateColumns="false"
+            <DataGrid x:Name="dgAvailabilities" VerticalAlignment="Top" IsReadOnly="true" Grid.Row="1" GridLinesVisibility="None" AutoGenerateColumns="false"
                   ItemsSource="{Binding Availabilities, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedAvailability, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalScrollBarVisibility="Hidden" 
                   AlternatingRowBackground="WhiteSmoke"
-                  Height="280" HeadersVisibility="Column" Margin="0 5 0 0" BorderThickness="0.2" Background="Transparent">
+                   HeadersVisibility="Column" Margin="0 5 0 0" BorderThickness="0.2" Background="Transparent">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Fullname" Width="*"/>
                     <DataGridTextColumn Binding="{Binding AvailableDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" Header="Available Date"/>

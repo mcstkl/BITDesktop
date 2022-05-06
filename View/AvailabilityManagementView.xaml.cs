@@ -32,6 +32,7 @@ namespace BITServices.View
             Timer.Tick += new EventHandler(Timer_Click);
             Timer.Interval = new TimeSpan(0, 0, 1);
             Timer.Start();
+            
         }
         private void Timer_Click(object sender, EventArgs e)
         {
