@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BITServices.View"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="ContractorAvailabilityView" Height="600" Width="650"
         WindowStyle="None" Background="Transparent"
@@ -106,7 +107,8 @@
 
                         <Grid  Margin="0 0 0 0">
                             <Label FontSize="16" Grid.Row="0" HorizontalAlignment="Center" Margin="0 20 0 0" Grid.Column="1"  FontWeight="Bold">Add/Remove Availabilities</Label>
-                            <DatePicker x:Name="dtpDate" SelectedDate="{Binding NewAvailability.AvailableDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="17" Height="30" Margin="10 -350 10 0" />
+                                <DatePicker DisplayDateStart="{Binding Mode=OneWay, Source={x:Static System:DateTime.Today}}" 
+                                            x:Name="dtpDate" SelectedDate="{Binding NewAvailability.AvailableDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="17" Height="30" Margin="10 -350 10 0" />
                             <StackPanel Orientation="Horizontal" Margin="10 120 0 0">
                                 <ComboBox x:Name="cboStartTime" SelectedValuePath="Content" SelectedValue="{Binding NewAvailability.StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                           FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30">

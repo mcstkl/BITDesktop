@@ -38,7 +38,7 @@
                         </ComboBox>
                     </Border>
                 </Border>
-                <TextBox Text="{Binding SearchValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Margin="5 0 0 0" Width="220" Height="28"></TextBox>
+                <TextBox Text="{Binding SearchValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Margin="5 0 0 0" Width="210" Height="28"></TextBox>
                 <StackPanel Margin="0 0 0 0" Orientation="Horizontal" >
                     <Button Command="{Binding SearchCommand}" x:Name="btnSearch" Margin="5 0 60 0" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
                         <Button.Resources>

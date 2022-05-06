@@ -37,7 +37,7 @@
                         </ComboBox>
                     </Border>
                 </Border>
-                <TextBox Text="{Binding SearchValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Margin="5 0 0 0" Width="220" Height="28"></TextBox>
+                <TextBox Text="{Binding SearchValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Margin="5 0 0 0" Width="575" Height="28"></TextBox>
                 <StackPanel Margin="0 0 0 0" Orientation="Horizontal" >
                     <Button Command="{Binding SearchCommand}" x:Name="btnSearch" Margin="5 0 60 0" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
                         <Button.Resources>
@@ -50,7 +50,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Command="{Binding AddCommand}" IsEnabled="False" x:Name="btnAdd" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
+                    <!--<Button Command="{Binding AddCommand}" IsEnabled="False" x:Name="btnAdd" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>
@@ -82,7 +82,7 @@
                             <fa:ImageAwesome Icon="ArrowUp" Foreground="#666" Margin="0 0 10 0" Width="20" Height="14"/>
                             <TextBlock Margin="0 0 10 0" FontSize="18" Text="Update" />
                         </StackPanel>
-                    </Button>
+                    </Button>-->
                 </StackPanel>
             </StackPanel>
 
@@ -221,7 +221,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Margin="-250 0 0 0" Grid.Column="4" Command="{Binding CancelCommand}" 
+                    <!--<Button Margin="-250 0 0 0" Grid.Column="4" Command="{Binding CancelCommand}" 
                             Width="160"  Height="45" FontWeight="Bold" Background="#3D59AB" Foreground="white">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -245,7 +245,7 @@
                             <fa:ImageAwesome Icon="Book" Foreground="#ffcc00" Margin="0 0 5 0" Width="30" Height="18"/>
                             <TextBlock Margin="0 0 10 0" FontSize="18" Text="History" />
                         </StackPanel>
-                    </Button>
+                    </Button>-->
                 </Grid>
 
                 <!--</StackPanel>-->
