@@ -63,7 +63,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Border Grid.Row="1" Grid.Column="1" Width="150" Height="150" CornerRadius="80,80,80,80">
+                        <Border Grid.Row="1" Grid.Column="1" Width="150" Height="150" CornerRadius="10">
                             <Border.Background>
                                 <ImageBrush Stretch="Fill" ImageSource="{Binding SelectedContractor.Profile}"/>
                             </Border.Background>

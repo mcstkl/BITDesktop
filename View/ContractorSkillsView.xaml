@@ -65,7 +65,7 @@
                         </Grid.RowDefinitions>
                         <!--<Label FontSize="16" FontWeight="Bold" Grid.Row="1" Grid.Column="1" ContentStringFormat="Company Details {0}" Content="{Binding SelectedContractor.CompanyName}"/>-->
                         <!--<Image Grid.Row="1" Grid.Column="1" Width="100" Height="100" Source="../Images/placeholder-profile.png">-->
-                        <Border Grid.Row="1" Grid.Column="1" Width="150" Height="150" CornerRadius="80,80,80,80">
+                        <Border Grid.Row="1" Grid.Column="1" Width="150" Height="150" CornerRadius="10">
                             <Border.Background>
                                 <ImageBrush Stretch="Fill" ImageSource="{Binding SelectedContractor.Profile}"/>
                             </Border.Background>
