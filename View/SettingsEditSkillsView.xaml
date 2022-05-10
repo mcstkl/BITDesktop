@@ -71,6 +71,8 @@
                 </ListView.View>
             </ListView>
 
+            
+
             <StackPanel Grid.ColumnSpan="2" Margin="0 10 0 0" Grid.Row="3" Orientation="Horizontal" >
            
                 <Button  x:Name="btnRemove" Click="btnRemove_Click" Margin="50 0 70 0" Command="{Binding RemoveCommand}" 

@@ -119,9 +119,10 @@ namespace BITServices.Model
 
 
 
-        public Contractor()
+        public Contractor(bool createHelper = true)
         {
-            _db = new SQLHelper();
+            if(createHelper)
+                _db = new SQLHelper();
         }
 
         public Contractor(DataRow dr)

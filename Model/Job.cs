@@ -208,9 +208,10 @@ namespace BITServices.Model
 
 
 
-        public Job()
+        public Job(bool createHelper = true)
         {
-            _db = new SQLHelper();
+            if(createHelper)
+                _db = new SQLHelper();
         }
 
         public Job(DataRow dr)
