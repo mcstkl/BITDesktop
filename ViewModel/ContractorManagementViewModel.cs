@@ -329,6 +329,13 @@ namespace BITServices.ViewModel
             this.Contractors = new ObservableCollection<Contractor>(allContractors);
         }
 
+        public virtual ObservableCollection<Contractor> GetContractors()
+        {
+            Contractors allContractors = new Contractors();
+            return new ObservableCollection<Contractor>(allContractors);
+
+        }
+
     }
 }
 

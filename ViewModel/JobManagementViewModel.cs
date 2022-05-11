@@ -373,5 +373,12 @@ namespace BITServices.ViewModel
             Jobs allJobs = new Jobs();
             this.Jobs = new ObservableCollection<Job>(allJobs);
         }
+
+        public virtual ObservableCollection<Job> GetJobs()
+        {
+            Jobs allJobs = new Jobs();
+            return new ObservableCollection<Job>(allJobs);
+
+        }
     }
 }

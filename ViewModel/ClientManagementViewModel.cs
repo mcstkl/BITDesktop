@@ -321,6 +321,12 @@ namespace BITServices.ViewModel
             Clients allClients = new Clients();
             this.Clients = new ObservableCollection<Client>(allClients);
         }
+        public virtual ObservableCollection<Client> GetClients()
+        {
+            Clients allClients = new Clients();
+            return new ObservableCollection<Client>(allClients);
+
+        }
     }
 }
 
