@@ -280,54 +280,44 @@ namespace BITServices.ViewModel
         }
         public void SearchMethod()
         {
-            //string selectedSearch = SelectedItemInFilter.ToString();
+            string selectedSearch = SelectedItemInFilter.ToString();
+            if(selectedSearch != "Unassigned" &&
+                selectedSearch != "Assigned" &&
+                selectedSearch != "Accepted" &&
+                selectedSearch != "Rejected" &&
+                selectedSearch != "Completed" &&
+                selectedSearch != "Verified"
+                )
+            {
+                LoadGrid();
+                return;
+            }
+            Jobs allJobs = new Jobs();
+            Jobs searchedJobs = new Jobs();
+            searchedJobs.Clear();
+            foreach (Job Job in allJobs)
+            {
+                if (Job.JobStatus == selectedSearch)
+                {
+                      searchedJobs.Add(Job);
+                }
+            }
 
-            //Jobs allJobs = new Jobs();
-            //Jobs searchedJobs = new Jobs();
-            //searchedJobs.Clear();
-            //if (string.IsNullOrEmpty(SearchValue.ToString()))
-            //{
-            //    LoadGrid();
-            //    return;
-            //}
-            //foreach (Job Job in allJobs)
-            //{
-            //    switch (selectedSearch)
-            //    {
-            //        case "Company":
-            //            if (Job.CompanyName.StartsWith(SearchValue))
-            //            {
-            //                searchedJobs.Add(Job);
-            //            }
-            //            break;
-            //        case "Phone":
-            //            if (Job.Phone.StartsWith(SearchValue))
-            //            {
-            //                searchedJobs.Add(Job);
-            //            }
-            //            break;
-            //        case "Postcode":
-            //            if (Job.PostCode.StartsWith(SearchValue))
-            //            {
-            //                searchedJobs.Add(Job);
-            //            }
-            //            break;
-            //        default:
-            //            return;
-            //    }
-            //}
+            if (searchedJobs.Count == 0)
+            {
+                this.Jobs.Clear();
+                MessageBox.Show("No results found.");
+                return;
+            }
 
-            //if (searchedJobs.Count == 0)
-            //{
-            //    this.Jobs.Clear();
-            //    MessageBox.Show("No results found.");
-            //    return;
-            //}
-
-            //else if (searchedJobs.Count > 0)
-            //{
-            //    this.Jobs = new ObservableCollection<Job>(searchedJobs);
-            //}
+            else if (searchedJobs.Count > 0)
+            {
+                this.Jobs = new ObservableCollection<Job>(searchedJobs);
+            }
+            else
+            {
+                LoadGrid();
+            }
         }
         public void CancelMethod()
         {

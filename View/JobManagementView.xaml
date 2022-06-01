@@ -22,24 +22,30 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal" Height="40" Margin="0 5 0 0">
+            <StackPanel Orientation="Horizontal"  Height="40" Margin="0 5 0 0">
                 <fa:ImageAwesome Foreground="#666" Icon="ChevronCircleRight" HorizontalAlignment="Right" 
                                      Visibility="Visible" Height="20"  Margin="10 0 0 0"/>
                 <Label Foreground="#666" FontSize="20" FontWeight="Bold" Margin="10 0 0 0">Job Requests</Label>
-                <Label Height="35" FontSize="18" Margin="20 0 0 0">Search By:</Label>
+                <StackPanel Margin="0 0 -830 0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Height="35" FontSize="18" Margin="20 0 0 0">Job Status:</Label>
 
                 <Border BorderThickness="1 1 0 0" CornerRadius="3.2" BorderBrush="Black" Background="Transparent" Height="28" Margin="6">
                     <Border BorderThickness="0 0 1 1" CornerRadius="3.2" BorderBrush="#444" Padding="1">
-                        <ComboBox SelectedIndex="0" SelectedValue="{Binding SelectedItemInFilter, Mode=OneWayToSource}" SelectedValuePath="Content" Margin="-1 -1 -1 -1" FontSize="16" Height="29">
+                        <ComboBox SelectedIndex="0" Width="150" SelectedValue="{Binding SelectedItemInFilter, Mode=OneWayToSource}" SelectedValuePath="Content" Margin="-1 -1 -1 -1" FontSize="16" Height="29">
                             <ComboBoxItem>-- Select --</ComboBoxItem>
-                            <ComboBoxItem>Date</ComboBoxItem>
-                            <ComboBoxItem>Contractor</ComboBoxItem>
+                            <ComboBoxItem>All</ComboBoxItem>
+                            <ComboBoxItem>Unassigned</ComboBoxItem>
+                            <ComboBoxItem>Assigned</ComboBoxItem>
+                            <ComboBoxItem>Accepted</ComboBoxItem>
+                            <ComboBoxItem>Rejected</ComboBoxItem>
+                            <ComboBoxItem>Completed</ComboBoxItem>
+                            <ComboBoxItem>Verified</ComboBoxItem>
 
                         </ComboBox>
                     </Border>
                 </Border>
-                <TextBox Text="{Binding SearchValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Margin="5 0 0 0" Width="210" Height="28"></TextBox>
-                <StackPanel Margin="0 0 0 0" Orientation="Horizontal" >
+                <!--<TextBox Text="{Binding SearchValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Margin="5 0 0 0" Width="210" Height="28"></TextBox>-->
+                <!--<StackPanel Margin="0 0 0 0" Orientation="Horizontal">-->
                     <Button Command="{Binding SearchCommand}" x:Name="btnSearch" Margin="5 0 60 0" Height="28" FontWeight="Bold" Background="White" Foreground="#444">
                         <Button.Resources>
                             <Style TargetType="Border">
