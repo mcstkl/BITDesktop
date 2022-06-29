@@ -329,7 +329,8 @@ namespace BITServices.ViewModel
             {
                 SelectedJob.JobStatusID = 6;
                 SelectedJob.UpdateJob();
-                LoadGrid();
+                Jobs completedJobs = new Jobs("completed",5);
+                this.Jobs = new ObservableCollection<Job>(completedJobs);
             }
             else if ( SelectedJob.JobStatus == "Verified")
             {

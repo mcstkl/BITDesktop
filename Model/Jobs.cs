@@ -64,6 +64,30 @@ namespace BITServices.Model
                 MessageBox.Show("Could not get Jobs", "An Error Has Occured", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        public Jobs(string jobStatus, int jobStatusID)
+        {
+            try
+            {
+                _db = new SQLHelper();
+                string sql = "SELECT * " +
+                                " FROM Job " +
+                                " WHERE JobStatusID = @JobStatusID";
+                SqlParameter[] parameters = new SqlParameter[1];
+                parameters[0] = new SqlParameter("@JobStatusID", DbType.Int32);
+                parameters[0].Value = jobStatusID;
+                DataTable dtJobs = _db.ExecuteSQL(sql, parameters);
+
+                foreach (DataRow dataRow in dtJobs.Rows)
+                {
+                    Job newJob = new Job(dataRow);
+                    this.Add(newJob);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not get Jobs", "An Error Has Occured", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
     }
 }
